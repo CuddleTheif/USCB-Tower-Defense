@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=entity
+comment0.target=Spawner(Entity)
+comment0.text=\r\n\ Initilizes\ an\ Spawner\ Behavior\ for\ the\ given\ entity\r\n\ \r\n\ @param\ entity\ \ \ The\ entity\ that\ has\ this\ behavior\r\n
+comment1.params=entityType
+comment1.target=boolean\ spawnOne(Entity)
+comment1.text=\r\n\ Creates\ an\ entity\ of\ the\ given\ type\ at\ this\ entity\r\n\ \r\n\ @param\ entityType\ \ \ The\ type\ of\ entity\ to\ spawn\r\n\ @return\ \ \ \ \ \ \ \ \ \ \ \ \ If\ the\ entity\ was\ spawned\ succesfully\r\n
+comment2.params=number\ entityType
+comment2.target=int\ spawn(int,\ Attribute)
+comment2.text=\r\n\ Creates\ the\ given\ number\ of\ entities\ of\ the\ given\ entity\ at\ this\ entity\r\n\ \r\n\ @param\ number\ \ \ \ \ \ \ The\ number\ of\ Enitities\ to\ spawn\r\n\ @param\ entityType\ \ \ The\ type\ of\ entity\ to\ Spawn\r\n\ @return\ \ \ \ \ \ \ \ \ \ \ \ \ The\ number\ of\ entities\ that\ were\ spawned\ succesfully\r\n
+numComments=3

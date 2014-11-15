@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=entity
+comment0.target=Spawnable(Entity)
+comment0.text=\r\n\ Initilizes\ an\ Spawnable\ Behavior\ for\ the\ given\ entity\r\n\ \r\n\ @param\ entity\ \ \ The\ entity\ that\ has\ this\ behavior\r\n
+comment1.params=world\ xPos\ yPos
+comment1.target=boolean\ spawn(greenfoot.World,\ int,\ int)
+comment1.text=\r\n\ Spawns\ the\ entity\ in\ the\ given\ world\ and\ at\ the\ given\ location\ and\ runs\ the\ \r\n\ spawn\ behavior\ for\ this\ entity\r\n\ \r\n\ @param\ world\ \ \ The\ world\ to\ spawn\ this\ entity\ into\r\n\ @param\ xPos\ \ \ \ The\ postion\ to\ spawn\ at\ on\ the\ x-axis\r\n\ @param\ yPos\ \ \ \ The\ postion\ to\ spawn\ at\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ If\ the\ spawn\ was\ successful\ or\ not\r\n
+numComments=2
