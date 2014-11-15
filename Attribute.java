@@ -7,7 +7,7 @@
 public enum Attribute{
     
     MAX_HP(Type.COMBAT), HP(Type.COMBAT), ATK(Type.COMBAT), DEF(Type.COMBAT), 
-        DEATH_ANIMATION(Type.ANIMATION);
+        DEATH_ANIMATION(Type.ANIMATION), SPAWNABLE(Type.OTHER);
     
         
     /**

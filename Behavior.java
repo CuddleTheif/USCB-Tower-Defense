@@ -11,7 +11,7 @@ public class Behavior{
      */
     public enum Type{
         
-        MOVEMENT, ANIMATION, COMBAT, SPAWNABLE;
+        MOVEMENT, ANIMATION, COMBAT;
         
     }// End enum Behaviors
     

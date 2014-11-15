@@ -28,7 +28,8 @@ public class Spawner extends Behavior{
     private boolean spawnOne(Entity entityType){
         
         /* Make sure the given Entity can be spawned */
-            if(!entityType.hasBehavior(Type.SPAWNABLE)){
+            if(!entityType.hasAttribute(Attribute.SPAWNABLE) || 
+                !(Boolean) entityType.getAttribute(Attribute.SPAWNABLE)){
                 
                 /* Spawn falied so return false */
                     return false;
@@ -36,10 +37,15 @@ public class Spawner extends Behavior{
             }// End if(!entityType.isAssignableFrom(Entity.class))
             
             
-        /* Spawn an entity of the given type into the world at this entity and return the result */
-            Spawnable newlySpawn = (Spawnable) entityType.clone().getBehavior(Type.SPAWNABLE);
-            return newlySpawn.spawn(entity.getWorld(), entity.getX(), entity.getY());
+        /* Create a copy of the given entity and place it in the world at this entity */
+            Entity newEntity = entityType.clone();
+            entity.getWorld().addObject(newEntity, entity.getX(), entity.getY());
         
+            
+        /* Return true because spawn was succesfull */
+            return true;
+            
+            
     }// End method spawnOne
     
     
