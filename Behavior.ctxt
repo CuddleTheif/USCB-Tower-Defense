@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=entity
+comment0.target=Behavior(Entity)
+comment0.text=\r\n\ Creates\ a\ blank\ Behavior\ tied\ to\ the\ given\ entity\r\n\ \r\n\ @param\ entity\ \ \ The\ entity\ this\ behavior\ applies\ to\r\n
+comment1.params=
+comment1.target=void\ stop()
+comment1.text=\r\n\ Stops\ all\ previous\ behaviors\ of\ this\ type.\r\n
+numComments=2
