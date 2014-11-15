@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=entity
+comment0.target=Movement(Entity)
+comment0.text=\r\n\ Initilizes\ a\ Movement\ Behavior\ for\ the\ given\ entity\r\n\ \r\n\ @param\ entity\ \ \ The\ entity\ that\ has\ this\ behavior\r\n
+comment1.params=path
+comment1.target=boolean\ moveAlongPath(Path)
+comment1.text=\r\n\ Moves\ the\ Entity\ to\ the\ closest\ part\ of\ the\ path\ and\ \r\n\ moves\ it\ along\ the\ path\ until\ it\ reaches\ the\ end.\r\n\ \r\n\ @return\ \ \ If\ the\ Entity\ has\ reached\ the\ end\ of\ the\ path.\r\n
+comment2.params=cls\ offset
+comment2.target=boolean\ moveToClosest(java.lang.Class,\ int)
+comment2.text=\r\n\ Moves\ the\ Entity\ to\ the\ closest\ actor\ of\ a\ given\ class\r\n\ \r\n\ @param\ cls\ \ \ \ \ \ The\ class\ of\ the\ actor\ to\ move\ to\r\n\ @param\ offset\ \ \ The\ offset\ the\ Entity\ can\ be\ to\ have\ "reached"\ the\ actor\r\n\ @return\ \ \ \ \ \ \ \ \ If\ the\ Entity\ has\ reached\ one\ yet\ with\ the\ given\ offset\r\n
+numComments=3
