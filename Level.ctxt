@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Level()
+comment0.text=\r\n\ Create\ A\ Level\ with\ road\ shape\ "Z"\r\n
+comment1.params=
+comment1.target=Path\ getPath()
+comment1.text=\r\n\ Gets\ the\ current\ Path\ of\ the\ Level\r\n\ \r\n\ @return\ \ \ The\ current\ Path\ of\ the\ Level\r\n
+comment2.params=
+comment2.target=USCB\ getUSCB()
+comment2.text=\r\n\ Gets\ the\ current\ USCB\ Bulding\ of\ the\ Level\r\n\ \r\n\ @return\ \ \ The\ current\ USCB\ Bulding\ of\ the\ Level\r\n
+numComments=3
