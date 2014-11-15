@@ -10,6 +10,7 @@ import java.util.List;
 public class Movement extends Behavior {
 
     private Actor actor; // An actor for the target of movement
+    private int counter; // Counter used for turing every so often
     
     
     /**
@@ -43,26 +44,8 @@ public class Movement extends Behavior {
                                     null;
             
                                     
-        /* Check to see if the Entity is heading toward the path, following the path, or neither */
-            if(step==-1){// Entity has not started yet
-                
-                /* Find the closest road piece */
-                    roadPiece = (RoadPiece) entity.getClosestActor(RoadPiece.class);
-                            
-                            
-                /* Turn towards the closest road piece */
-                    entity.turnTowards(roadPiece.getX(), roadPiece.getY());
-                    
-                    
-                /* Set step to value where Entity is moving toward the path */
-                    step = -2;
-                
-            }
-            else if(step==-2){// Entity is heading toward the path
-                
-                /* Get the roadpieces the entity is on */
-                    List<RoadPiece> roadPieces = entity.getIntersectingObjects(RoadPiece.class);
-                
+        /* Check to see if the Entity is on the path yet or not */
+            if(step==-1){
                     
                 /* Check if the entity is on the path yet and if on the center */
                     if(roadPiece!=null){
@@ -71,17 +54,14 @@ public class Movement extends Behavior {
                             step = path.getRoadPieceNum(roadPiece);
                             
                     }// End if(path.isRoadAt(entity.getX(), entity.getY()))
-                    else if(roadPieces.size()!=0){
-                        
-                        /* Move closer to the center of the square */
-                            entity.turnTowards(
-                                roadPieces.get(0).getX(), roadPieces.get(0).getY());
-                            entity.move(1);
-                        
-                    }// End else if(entity.getIntersectingObjects(RoadPiece.class).size()!=0)
                     else{
                         
-                        /* move towards the closest road piece */
+                        /* Find the closest road piece */
+                            roadPiece = (RoadPiece) entity.getClosestActor(RoadPiece.class);
+                        
+                            
+                        /* Move closer to the center of the square */
+                            entity.turnTowards(roadPiece.getX(), roadPiece.getY());
                             entity.move(1);
                         
                     }// End else for if(path.isRoadAt(entity.getX(), entity.getY()))
