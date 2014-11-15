@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=startX\ startY\ endX\ endY
+comment0.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment0.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Horizontal\ Z\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment1.params=startX\ startY\ endX\ endY
+comment1.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment1.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Vertical\ Z\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment2.params=startX\ startY\ endX\ endY
+comment2.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment2.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Horizontal\ S\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment3.params=startX\ startY\ endX\ endY
+comment3.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment3.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Vertical\ S\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment4.params=startX\ startY\ endX\ endY
+comment4.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment4.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Horizontal\ Bolt\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\ (must\ be\ \=\ endY)\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\ (must\ be\ \=\ startY)\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment5.params=startX\ startY\ endX\ endY
+comment5.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment5.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ Vertical\ Bolt\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\ (must\ be\ \=\ endX)\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\ (must\ be\ \=\ startX)\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+comment6.params=startX\ startY\ endX\ endY
+comment6.target=java.awt.Point[]\ getPoints(int,\ int,\ int,\ int)
+comment6.text=\r\n\ Gets\ the\ junctions'\ postions\ of\ the\ shape\r\n\ \r\n\ @param\ startX\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ startY\ \ \ The\ starting\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @param\ endX\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ x-axis\r\n\ @param\ endY\ \ \ \ \ The\ ending\ postion\ of\ the\ shape\ on\ the\ y-axis\r\n\ @return\ \ \ \ \ \ \ \ \ The\ junctions'\ postions\ of\ the\ shape\r\n
+numComments=7
