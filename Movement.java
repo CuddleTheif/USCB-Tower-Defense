@@ -34,6 +34,8 @@ public class Movement extends Behavior {
      */
     public boolean moveAlongPath(Path path){
         
+        System.out.println(entity);
+        
         /* 
          * Intilize a varible to hold the road piece at the entity's postion and set it to 
          * the road piece at the entity's position if there is one or set it to null if 

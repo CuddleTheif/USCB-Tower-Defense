@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Map;
 import java.util.HashMap;
 import java.lang.CloneNotSupportedException;
+import java.util.Collections;
  
 
 /**
@@ -94,6 +96,7 @@ public class Entity extends Actors implements Cloneable{
         
     }// End method getAttributesType
     
+    
     /**
      * Determines if this entity has the given attribute or not
      * 
@@ -146,8 +149,35 @@ public class Entity extends Actors implements Cloneable{
         /* Try to Use clone method to get a copy */
             try{
                 
-                /* Return a clone with Object's clone method */
-                    return (Entity) super.clone();
+                /* Get a clone with Object's clone method */
+                    Entity entity = (Entity) super.clone();
+                
+                    
+                /* Copy all the behaviors to a new Map */
+                    HashMap<Behavior.Type, Behavior> newBehaviors = 
+                        (HashMap<Behavior.Type, Behavior>) behaviors.clone();
+                    
+                        
+                /* Create clones of each behavior */
+                    for(Behavior.Type type : newBehaviors.keySet()){
+                        
+                        /* Clone the current behavior */
+                            Behavior behavior = newBehaviors.get(type).clone();
+                            
+                            
+                        /* Replace it's entity with the new one and put it back in the Map */
+                            behavior.setEntity(entity);
+                            newBehaviors.replace(type, behavior);
+                        
+                    }// End for(Behavior.Type type : newBehaviors.keySet())
+                    
+                    
+                /* Replace the entity's behaviors with the newley cloned ones */
+                    entity.replaceAllBehaviors(newBehaviors);
+                    
+                    
+                /* Return the newley cloned entity */
+                    return entity;
                 
             }
             catch(CloneNotSupportedException e){
@@ -158,6 +188,24 @@ public class Entity extends Actors implements Cloneable{
             }
             
     }// End method getClone
+    
+    
+    /**
+     * Set all this entities behaviors to the new given Hashmap (used in cloning)
+     * 
+     * @param behaviors   The new behaviors
+     */
+    public void replaceAllBehaviors(HashMap<Behavior.Type, Behavior> behaviors){
+        
+        /* Make sure the new behaviors is the same size as the old */
+            if(behaviors.size()==this.behaviors.size()){
+                
+                /* Set the old class variable for behaviors to the given one */
+                    this.behaviors = behaviors;
+                
+            }// End ifif(behaviors.size()==this.behaviors.size())
+        
+    }// End method setAllBehaviors
     
     
     /**

@@ -1,17 +1,20 @@
+import java.lang.CloneNotSupportedException;
+import java.util.Collections;
+
 /**
  * A Behavior an Entity can have. Something an Entity can do.
  * 
  * @author NecroTheif
  * @version 2014.12.11
  */
-public class Behavior{
+public class Behavior implements Cloneable{
     
     /**
      * The Behaviors Possible
      */
     public enum Type{
         
-        MOVEMENT, ANIMATION, COMBAT;
+        MOVEMENT, ANIMATION, COMBAT, SPAWNER;
         
     }// End enum Behaviors
     
@@ -35,6 +38,43 @@ public class Behavior{
             step = -1;
         
     }//End one-argument constructor for Behavior
+    
+    
+    /**
+     * Sets the entity for this behavior to the given one
+     * 
+     * @param entity   The new entity this behavior applies to
+     */
+    public void setEntity(Entity entity){
+        
+        /* Initilize class variable for entity to given entity */
+            this.entity = entity;
+        
+    }// End method setEntity
+    
+    
+    /**
+     * Creates and returns a copy of this behavior
+     * 
+     * @return   A copy of this behavior
+     */
+    public Behavior clone(){
+        
+        /* Try to Use clone method to get a copy */
+            try{
+                
+                /* Return a clone with Object's clone method */
+                    return (Behavior) super.clone();
+                
+            }
+            catch(CloneNotSupportedException e){
+                
+                /* return null for the error */
+                    return null;
+                    
+            }
+            
+    }// End method getClone
     
     
     /**

@@ -60,13 +60,13 @@ public class USCB extends Entity{
             }// End for(int i=0;i<25;i++)
             
             
-        /* Store the death animation images as an attribute */
+        /* Store the death animation images as an attribute and the building health */
             attributes.put(Attribute.DEATH_ANIMATION, images);
+            attributes.put(Attribute.MAX_HP, maxHealth);
+            attributes.put(Attribute.HP, maxHealth);
             
-            
-        /* Initlize and store the Animation and Combat Behavior */
+        /* Initlize and store the Animation Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
-            behaviors.put(Behavior.Type.COMBAT, new Combat(this, maxHealth, 0, 0));
             
     }// End one-argument constructor
     

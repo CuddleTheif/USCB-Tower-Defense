@@ -37,13 +37,9 @@ public class Level extends World{
             addObject(uscb, 550, 50);
             
             
-        /* Create And Place Random TestEntities */
-            for(int i=0;i<15;i++){
-                
-                TestEntity testEntity = new TestEntity();
-                addObject(testEntity, Greenfoot.getRandomNumber(601), Greenfoot.getRandomNumber(401));
-                
-            }// End for(int i=0;i<15;i++)
+        /* Create And Place Random EntitySpawner at the start of the path */
+            EntitySpawner spawner = new EntitySpawner(new TestEntity());
+            addObject(spawner, 0, 50);
             
     }// End zero-argument consturctor for USCB
     

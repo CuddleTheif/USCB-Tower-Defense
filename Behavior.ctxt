@@ -2,7 +2,13 @@
 comment0.params=entity
 comment0.target=Behavior(Entity)
 comment0.text=\r\n\ Creates\ a\ blank\ Behavior\ tied\ to\ the\ given\ entity\r\n\ \r\n\ @param\ entity\ \ \ The\ entity\ this\ behavior\ applies\ to\r\n
-comment1.params=
-comment1.target=void\ stop()
-comment1.text=\r\n\ Stops\ all\ previous\ behaviors\ of\ this\ type.\r\n
-numComments=2
+comment1.params=entity
+comment1.target=void\ setEntity(Entity)
+comment1.text=\r\n\ Sets\ the\ entity\ for\ this\ behavior\ to\ the\ given\ one\r\n\ \r\n\ @param\ entity\ \ \ The\ new\ entity\ this\ behavior\ applies\ to\r\n
+comment2.params=
+comment2.target=Behavior\ clone()
+comment2.text=\r\n\ Creates\ and\ returns\ a\ copy\ of\ this\ behavior\r\n\ \r\n\ @return\ \ \ A\ copy\ of\ this\ behavior\r\n
+comment3.params=
+comment3.target=void\ stop()
+comment3.text=\r\n\ Stops\ all\ previous\ behaviors\ of\ this\ type.\r\n
+numComments=4
