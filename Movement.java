@@ -8,10 +8,9 @@ import java.util.List;
  * @version 2014.13.11
  */
 public class Movement extends Behavior {
-
-    private Actor actor; // An actor for the target of movement
-    private int counter; // Counter used for turing every so often
     
+    private Entity target; // The target of movements
+    private Path path; // The path this entity is following
     
     /**
      * Initilizes a Movement Behavior for the given entity
@@ -22,6 +21,11 @@ public class Movement extends Behavior {
         
         /* Call the superclass' constructor to store the given entity */
             super(entity);
+            
+            
+        /* Set path and target to null since it's not following or targeting anything */
+            path = null;
+            target = null;
         
     }// End one-argument constructor for Movement
     
@@ -46,6 +50,9 @@ public class Movement extends Behavior {
         /* Check to see if the Entity is on the path yet or not */
             if(step==-1){
                     
+                /* Set the class variable to hold the given path to indicate this entity is following it */
+                    this.path = path;
+                
                 /* Check if the entity is on the path yet and if on the center */
                     if(roadPiece!=null){
                         
@@ -103,6 +110,19 @@ public class Movement extends Behavior {
     
     
     /**
+     * Gets the path this entity is following if any.
+     * 
+     * @return   The path this entity is following (null if it's not following any)
+     */
+    public Path getPath(){
+        
+        /* return the class variable holding the path */
+            return path;
+        
+    }// End method getPath
+    
+    
+    /**
      * Moves the Entity to the closest actor of a given class
      * 
      * @param cls      The class of the actor to move to
@@ -110,16 +130,8 @@ public class Movement extends Behavior {
      */
     public boolean moveToClosest(Class cls){
         
-        /* Check to see if the Entity is moving towards the Actor yet or not */
-            if(step==-1){
-                
-                /* Get and store the closest Actor of the given class */
-                    actor = entity.getClosestActor(cls);
-                
-                /* Set the step variable to 0 to indicate starting movement */
-                    step = 0;
-                
-            }// End if(step==-1)
+        /* Get and store the closest Actor of the given class */
+            Actor actor = entity.getClosestActor(cls);
                 
             
         /* Turn and move towards the actor */
@@ -134,34 +146,97 @@ public class Movement extends Behavior {
     
     
     /**
-     * Moves the Entity to the closest actor with a given attribute at true
+     * Moves the Entity to the closest entity with a given attribute at true
      * 
      * @param attribute      The attribute the target entity must have set to true
      * @return               If the Entity has reached one yet
      */
     public boolean moveToClosest(Attribute attribute){
-        
-        /* Check to see if the Entity is moving towards the Actor yet or not */
-            if(step==-1){
                 
-                /* Get and store the closest Actor of the with the given attribute at true */
-                    actor = entity.getClosestEntity(attribute);
-                
-                /* Set the step variable to 0 to indicate starting movement */
-                    step = 0;
-                
-            }// End if(step==-1)
-                
+        /* Get and store the closest Actor of the with the given attribute at true */
+            Entity closeEntity = entity.getClosestEntity(attribute);
             
-        /* Turn and move towards the actor */
-            entity.turnTowards(actor.getX(), actor.getY());
+            
+        /* Make sure it found one */
+            if(closeEntity==null){
+                
+                /* Move the entity forward and return false since it didn't reach one */
+                    entity.move(1);
+                    return false;
+                
+            }// End if(closeEntity==null)
+        
+        
+        /* Turn and move towards the entity */
+            entity.turnTowards(closeEntity.getX(), closeEntity.getY());
             entity.move(1);
             
             
         /* Return If the Entity has reached that actor */
-            return entity.getIntersectingObjects(actor.getClass()).contains(actor);
+            return entity.getIntersectingObjects(closeEntity.getClass()).contains(closeEntity);
         
     }// End method moveToClosest
+    
+    
+    /**
+     * Moves the Entity to the last entity on the given path within the given range with the given attribute at true
+     * 
+     * @param path        The path to look on
+     * @param range       The range that it can target in
+     * @param attribute   The attribute the target entity must have set to true
+     * @return            If the Entity has reached one yet
+     */
+    public boolean moveToLastInRange(Path path, int range, Attribute attribute){
+        
+        /* Check if targeted on the entity or not yet */
+            if(step==-1){
+                
+                /* Get all entities in the given range with the given attribute set to true */
+                    List<Entity> entities = entity.getEntitiesInRange(range, attribute);
+                    
+                    
+                /* Initilize a varible to hold the entites found on the path */
+                    List<Entity> foundEntities = new ArrayList<Entity>();
+                    
+                    
+                /* Check each entity to see if any are on the path */
+                    for(int i=0;i<entities.size();i++){
+                        
+                        /* Check if the current entity has the behavior movement and get it */
+                            Movement movement = entities.get(i).hasBehavior(Type.MOVEMENT) ?
+                                                (Movement)entities.get(i).getBehavior(Type.MOVEMENT) :
+                                                null;
+                        
+                        /* 
+                         * Check the current entity to see if it can move and 
+                         * is following the given path 
+                         */
+                            if(movement!=null && movement.getPath()==path){
+                                
+                                /* Add the found entity to the list */
+                                    foundEntities.add(entities.get(i));
+                                    
+                            }// End if(entities.hasBehavior(Type.MOVEMENT) &&...
+                        
+                    }// End for(int i=0;i<entities.size();i++)
+                    
+                
+            }// End if(step==-1)
+        
+    }// End method moveToLastInRange
+    
+    
+    /**
+     * Gets the target this entity is moving to if any.
+     * 
+     * @return   The target this entity is moving to (null if it's not moving to any)
+     */
+    public Entity getTarget(){
+        
+        /* return the class variable holding the target */
+            return target;
+        
+    }// End method getTarget
     
     
 }// End class Movement

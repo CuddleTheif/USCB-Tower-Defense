@@ -176,13 +176,99 @@ public class Entity extends Actors implements Cloneable{
                     entity.replaceAllBehaviors(newBehaviors);
                     
                     
+                /* Copy all the attributes to a new Map */
+                    HashMap<Attribute, Object> newAttributes = 
+                        (HashMap<Attribute, Object>) attributes.clone();
+                    
+                        
+                /* Create clones of each attribute */
+                    for(Attribute attribute : newAttributes.keySet()){
+                        
+                        /* Get the current attribute */
+                            Object value = newAttributes.get(attribute);
+                            
+                            
+                        /* Check if the current attribute is anything cloneable */
+                            if(Integer.class==value.getClass()){
+                                
+                                /* clone the Integer by createing a new one */
+                                    value = new Integer((Integer)value);
+                                
+                            }// End if(Integer.class==value.getClass()))
+                            else if(Character.class==value.getClass()){
+                                
+                                /* clone the Character by createing a new one */
+                                    value = new Character((Character)value);
+                                
+                            }// End else if(Character.class==value.getClass()))
+                            else if(Long.class==value.getClass()){
+                                
+                                /* clone the Long by createing a new one */
+                                    value = new Long((Long)value);
+                                
+                            }// End else if(Long.class==value.getClass()))
+                            else if(Byte.class==value.getClass()){
+                                
+                                /* clone the Byte by createing a new one */
+                                    value = new Byte((Byte)value);
+                                
+                            }// End else if(Byte.class==value.getClass()))
+                            else if(Short.class==value.getClass()){
+                                
+                                /* clone the Short by createing a new one */
+                                    value = new Short((Short)value);
+                                
+                            }// End else if(Short.class==value.getClass()))
+                            else if(String.class==value.getClass()){
+                                
+                                /* clone the String by createing a new one */
+                                    value = new String((String)value);
+                                
+                            }// End else if(String.class==value.getClass()))
+                            else if(Boolean.class==value.getClass()){
+                                
+                                /* clone the Boolean by createing a new one */
+                                    value = new Boolean((Boolean)value);
+                                
+                            }// End else if(Boolean.class==value.getClass()))
+                            else if(Double.class==value.getClass()){
+                                
+                                /* clone the Double by createing a new one */
+                                    value = new Double((Double)value);
+                                
+                            }// End else if(Double.class==value.getClass()))
+                            else if(Float.class==value.getClass()){
+                                
+                                /* clone the Float by createing a new one */
+                                    value = new Float((Float)value);
+                                
+                            }// End else if(Float.class==value.getClass()))
+                            else if(Entity.class==value.getClass()){
+                                
+                                /* clone the Entity by calling it's clone method */
+                                    value = ((Entity)value).clone();
+                                
+                            }// End else if(Entity.class==value.getClass()))
+                            
+                            
+                        /* Put it back in the Map */
+                            newAttributes.replace(attribute, value);
+                        
+                    }// End for(Attribute attribute : newAttributes.keySet())
+                    
+                    
+                /* Replace the entity's behaviors with the newley cloned ones */
+                    entity.replaceAllAttributes(newAttributes);
+                    
+                    
                 /* Return the newley cloned entity */
                     return entity;
                 
             }
             catch(CloneNotSupportedException e){
                 
-                /* return null for the error */
+                /* return null for the error and print the error */
+                    System.out.println(e);
                     return null;
                     
             }
@@ -205,7 +291,25 @@ public class Entity extends Actors implements Cloneable{
                 
             }// End ifif(behaviors.size()==this.behaviors.size())
         
-    }// End method setAllBehaviors
+    }// End method replaceAllBehaviors
+    
+    
+    /**
+     * Set all this entities attributes to the new given Hashmap (used in cloning)
+     * 
+     * @param attributes   The new attributes
+     */
+    public void replaceAllAttributes(HashMap<Attribute, Object> attributes){
+        
+        /* Make sure the new attributes is the same size as the old */
+            if(attributes.size()==this.attributes.size()){
+                
+                /* Set the old class variable for attributes to the given one */
+                    this.attributes = attributes;
+                
+            }// End ifif(attributes.size()==this.attributes.size())
+        
+    }// End method replaceAllAttributes
     
     
     /**
@@ -304,17 +408,21 @@ public class Entity extends Actors implements Cloneable{
     
     
     /**
-     * Determines if there is an entity with the given radius around this entity that has the
+     * Gets all entities within the given radius around this entity and that have the
      * given attribute set to true
      * 
      * @param radius         radius around the entity to look in
      * @param attribute      The attribute to check for
-     * @return               If an Entity is in the given radius and has the given attribute at true
+     * @return               The List of entites found
      */
-    public boolean hasEntityInRange(int radius, Attribute attribute){
+    public List<Entity> getEntitiesInRange(int radius, Attribute attribute){
         
         /* Get all the entities in the given radius */
             List<Entity> entities = getObjectsInRange(radius, Entity.class);
+            
+            
+        /* Intilize variable to hold found entites with the attribute set to true */
+            List<Entity> foundEntities = new ArrayList<Entity>();
             
             
         /* Check each entity to see if any have the attribute set to true */
@@ -324,16 +432,16 @@ public class Entity extends Actors implements Cloneable{
                     if(entities.get(i).hasAttribute(attribute) && 
                         (Boolean) entities.get(i).getAttribute(attribute)){
                             
-                            /* Return true because one was found */
-                                return true;
+                            /* add the found entity to the list */
+                                foundEntities.add(entities.get(i));
                             
                     }// End if(entities.get(i).hasAttribute(attribute) &&...
                 
             }// End for(int i=0;i<entities.size();i++)
             
             
-        /* Return false because none were found */
-            return false;
+        /* Return the found entities */
+            return foundEntities;
         
     }// End method getObjectsInRange
     

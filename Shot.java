@@ -29,9 +29,11 @@ public class Shot extends Entity
             }// End for(int i=0;i<25;i++)
             
             
-        /* Store the death animation images, death sound, and bulding health as an attribute */
+        /* Store the death animation images, death sound, and death state as an attribute */
             attributes.put(Attribute.DEATH_ANIMATION, images);
             attributes.put(Attribute.DEATH_SOUND, "Explosion.wav");
+            attributes.put(Attribute.DIE, false);
+            
             
         /* Initlize and store the Animation and Movement and Combat Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
@@ -51,32 +53,45 @@ public class Shot extends Entity
             Movement movement = (Movement)behaviors.get(Behavior.Type.MOVEMENT);
             
             
-        /* Move towards the closest Enemy and explode when it reaches it */
-            if(movement!=null && movement.moveToClosest(Attribute.ENEMY)){
-                
-                /* Get all the entities the entity is touching */
-                    List<Entity> entities = getIntersectingObjects(Entity.class);
-                
-                /* Attack the entities it is touching */
-                    Combat combat = (Combat)behaviors.get(Behavior.Type.COMBAT);
-                    for(int i=0;i<entities.size();i++){
+        /* If not exploding, Move towards the closest Enemy and explode when it reaches it */
+            if(!((Boolean)attributes.get(Attribute.DIE)) &&
+                movement.moveToClosest(Attribute.ENEMY)){
                         
-                        /* Attack the current entity */
-                            combat.attackEntity(entities.get(i), Combat.Maneuver.NORMAL);
+                        /* Get all the entities the entity is touching */
+                            List<Entity> entities = getIntersectingObjects(Entity.class);
+                    
                         
-                    }// End for(int i=0;i<entities.size();i++)
+                        /* Attack the entities it is touching */
+                            Combat combat = (Combat)behaviors.get(Behavior.Type.COMBAT);
+                            for(int i=0;i<entities.size();i++){
+                                
+                                /* Attack the current entity */
+                                    combat.attackEntity(entities.get(i), Combat.Maneuver.NORMAL);
+                                
+                            }// End for(int i=0;i<entities.size();i++)
+                            
+                            
+                        /* Set to exploding */
+                            attributes.replace(Attribute.DIE, true);
+                            
+            }// End if(!((Boolean)attributes.get(Attribute.DIE)) &&...
+            else if((Boolean)attributes.get(Attribute.DIE)){
                     
                 /* Play explosion animation and sound */
                     Animation animation = (Animation) behaviors.get(
                                                             Behavior.Type.ANIMATION);
-                    animation.loopThroughTimes(Attribute.DEATH_ANIMATION, 1,
-                                                    Attribute.DEATH_SOUND);
+                    boolean doneAni = animation.loopThroughTimes(Attribute.DEATH_ANIMATION, 1,
+                                                                    Attribute.DEATH_SOUND);
                                                     
-                /* Remove this actor */
-                    behaviors.replace(Behavior.Type.MOVEMENT, null);
-                    getWorld().removeObject(this);
-                
-            }// End if(movement.moveToClosest(Attribute.ENEMY))
+                /* Remove this actor if the animation is done */
+                    if(doneAni){
+                        
+                        /* Remove this actor from the world */
+                        getWorld().removeObject(this);
+                        
+                    }// End if(doneAni)
+                    
+            }// End else if((Boolean)attributes.get(Attribute.DIE))
             
     }// End method act
 }

@@ -34,8 +34,6 @@ public class TestEntity extends Entity{
      */
     public void act() 
     {
-        /* Make sure this actor is still in the world */
-            if(getWorld()!=null){
         /* Follow the path */
             if(((Movement)behaviors.get(Behavior.Type.MOVEMENT)).moveAlongPath(((Level)getWorld()).getPath())){
                 ((Combat)behaviors.get(Behavior.Type.COMBAT)).attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
@@ -43,6 +41,6 @@ public class TestEntity extends Entity{
             }
             
         /* If the entity is dead remove it */
-            if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);}
+            if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);
     }    
 }

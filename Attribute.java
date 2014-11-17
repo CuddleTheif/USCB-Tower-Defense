@@ -8,7 +8,8 @@ public enum Attribute{
     
     MAX_HP(Type.COMBAT), HP(Type.COMBAT), ATK(Type.COMBAT), DEF(Type.COMBAT), 
         DEATH_ANIMATION(Type.ANIMATION), DEATH_SOUND(Type.ANIMATION), SPAWNS(Type.SPAWN),
-        ENEMY(Type.TARGET), RANGE(Type.OTHER), MAX_COOLDOWN(Type.OTHER), CUR_COOLDOWN(Type.OTHER);
+        ENEMY(Type.TARGET), RANGE(Type.OTHER), MAX_COOLDOWN(Type.OTHER), CUR_COOLDOWN(Type.OTHER),
+        DIE(Type.OTHER);
     
         
     /**
