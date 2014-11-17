@@ -117,7 +117,7 @@ public class Entity extends Actors implements Cloneable{
      * @param behaviorType   The behavior wanted's type
      * @return               The behavior wanted
      */
-    public Object getBehavior(Behavior.Type behaviorType){
+    public Behavior getBehavior(Behavior.Type behaviorType){
         
         /* Return the behavior from the class variable */
             return behaviors.get(behaviorType);
@@ -444,6 +444,7 @@ public class Entity extends Actors implements Cloneable{
             return foundEntities;
         
     }// End method getObjectsInRange
+    
     
     /**
      * Pause the Entity

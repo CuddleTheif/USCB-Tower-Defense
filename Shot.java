@@ -10,10 +10,18 @@ import java.util.List;
 public class Shot extends Entity
 {
     
-    public Shot(){
+    /**
+     * Inilitizes a shot entity that targets enemy's in it's given range
+     * 
+     * @param   The range of this shot
+     */
+    public Shot(int range){
         
         /* Call the superclass' constructor to initlize behaivor and attribute variables */
             super();
+            
+        /* Make the shot bigger */
+            getImage().scale(16,4);
             
         /* Initilize variable to hold the images for the death animation */
             GreenfootImage images[] = new GreenfootImage[25];
@@ -29,10 +37,11 @@ public class Shot extends Entity
             }// End for(int i=0;i<25;i++)
             
             
-        /* Store the death animation images, death sound, and death state as an attribute */
+        /* Store the death animation images, death sound, range, and death state as attributes */
             attributes.put(Attribute.DEATH_ANIMATION, images);
             attributes.put(Attribute.DEATH_SOUND, "Explosion.wav");
             attributes.put(Attribute.DIE, false);
+            attributes.put(Attribute.RANGE, range);
             
             
         /* Initlize and store the Animation and Movement and Combat Behavior */
@@ -55,10 +64,15 @@ public class Shot extends Entity
             
         /* If not exploding, Move towards the closest Enemy and explode when it reaches it */
             if(!((Boolean)attributes.get(Attribute.DIE)) &&
-                movement.moveToClosest(Attribute.ENEMY)){
+                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
+                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
+                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
+                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
+                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
+                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY)){
                         
                         /* Get all the entities the entity is touching */
-                            List<Entity> entities = getIntersectingObjects(Entity.class);
+                            List<Entity> entities = getObjectsInRange(25-getImage().getWidth(), Entity.class);
                     
                         
                         /* Attack the entities it is touching */

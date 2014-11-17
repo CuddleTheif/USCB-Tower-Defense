@@ -54,6 +54,19 @@ public class Behavior implements Cloneable{
     
     
     /**
+     * Gets the step this Behavior is on
+     * 
+     * @return   The step this behavior is on
+     */
+    public int getStep(){
+        
+        /* Return the step variable */
+            return step;
+        
+    }// End method getStep
+    
+    
+    /**
      * Creates and returns a copy of this behavior
      * 
      * @return   A copy of this behavior

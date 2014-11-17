@@ -28,7 +28,7 @@ public class Tower extends Entity
             
             
         /* Store a shot as it's entity Spawn attribute */
-            attributes.put(Attribute.SPAWNS, new Shot());
+            attributes.put(Attribute.SPAWNS, new Shot(range));
             
             
         /* Give spawning behavior to spawn shots */
@@ -51,7 +51,7 @@ public class Tower extends Entity
                 
                 
                 /* Test to see if there is an enemy is this tower's range */
-                    if(hasEntityInRange(range, Attribute.ENEMY)){
+                    if(getEntitiesInRange(range, Attribute.ENEMY).size()!=0){
                         
                         /* Spawn a shot that will attack the entity */
                             Spawner spawner = (Spawner) behaviors.get(Behavior.Type.SPAWNER);

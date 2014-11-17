@@ -1,5 +1,6 @@
 import greenfoot.*;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * The Beahvior of an Entity to Move
@@ -177,9 +178,55 @@ public class Movement extends Behavior {
         
     }// End method moveToClosest
     
+    /**
+     * Gets the Entities in the given range of this entity with the given attribute set to true
+     * And in the given path.
+     * 
+     * @param path        The path to look on
+     * @param range       The range to look in
+     * @param attribute   The attribute the target entity must have set to true
+     * @return            The Entities in the range, in the path, and with the attribute set to true
+     */
+    private List getEntitiesInRangeAndPath(Path path, int range, Attribute attribute){
+        
+        /* Get all entities in the given range with the given attribute set to true */
+            List<Entity> entities = entity.getEntitiesInRange(range, attribute);
+            
+            
+        /* Initilize a varible to hold the entites found on the path */
+            List<Entity> foundEntities = new ArrayList<Entity>();
+            
+            
+        /* Check each entity to see if any are on the path */
+            for(int i=0;i<entities.size();i++){
+                
+                /* Check if the current entity has the behavior movement and get it */
+                    Movement movement = entities.get(i).hasBehavior(Type.MOVEMENT) ?
+                                        (Movement)entities.get(i).getBehavior(Type.MOVEMENT) :
+                                        null;
+                
+                /* 
+                 * Check the current entity to see if it can move and 
+                 * is following the given path 
+                 */
+                    if(movement!=null && movement.getPath()==path){
+                        
+                        /* Add the found entity to the list */
+                            foundEntities.add(entities.get(i));
+                            
+                    }// End if(entities.hasBehavior(Type.MOVEMENT) &&...
+                
+            }// End for(int i=0;i<entities.size();i++)
+            
+        /* Return the entities found */
+            return foundEntities;
+        
+    }// End method getEntitiesInRangeAndPath
+    
     
     /**
-     * Moves the Entity to the last entity on the given path within the given range with the given attribute at true
+     * Moves the Entity to the last entity on the given path within the given range with the 
+     * given attribute at true
      * 
      * @param path        The path to look on
      * @param range       The range that it can target in
@@ -191,37 +238,75 @@ public class Movement extends Behavior {
         /* Check if targeted on the entity or not yet */
             if(step==-1){
                 
-                /* Get all entities in the given range with the given attribute set to true */
-                    List<Entity> entities = entity.getEntitiesInRange(range, attribute);
+                /* Get the entities on the path with the attribute and in the range */
+                    List<Entity> entities = getEntitiesInRangeAndPath(path, range, attribute);
                     
                     
-                /* Initilize a varible to hold the entites found on the path */
-                    List<Entity> foundEntities = new ArrayList<Entity>();
+                /* Make sure entities were found */
+                    if(entities.size()==0){
+                        
+                        /* Return false because none were found so none were reached */
+                            return false;
+                        
+                    }// End if(entities.size()==0)
                     
                     
-                /* Check each entity to see if any are on the path */
+                /* 
+                 * Intilize variables to hold the farthest entity on the path and how far it is
+                 * and set them to the first entity on the list
+                 */
+                    Entity lastEntity = entities.get(0);
+                    int lastStep = lastEntity.getBehavior(Type.MOVEMENT).getStep();
+                    
+                /* Check each entity to find the farthest entity */
                     for(int i=0;i<entities.size();i++){
                         
-                        /* Check if the current entity has the behavior movement and get it */
-                            Movement movement = entities.get(i).hasBehavior(Type.MOVEMENT) ?
-                                                (Movement)entities.get(i).getBehavior(Type.MOVEMENT) :
-                                                null;
-                        
-                        /* 
-                         * Check the current entity to see if it can move and 
-                         * is following the given path 
-                         */
-                            if(movement!=null && movement.getPath()==path){
+                        /* Get the current entities Step */
+                            int currentStep = entities.get(i).getBehavior(Type.MOVEMENT).getStep();
+                            
+                            
+                        /* Check if the current step is later than the current last one */
+                            if(currentStep>lastStep){
                                 
-                                /* Add the found entity to the list */
-                                    foundEntities.add(entities.get(i));
-                                    
-                            }// End if(entities.hasBehavior(Type.MOVEMENT) &&...
+                                /* Set the new last step and entity to the current one */
+                                    lastStep = currentStep;
+                                    lastEntity = entities.get(i);
+                                
+                            }// End if(currentStep>lastStep)
                         
                     }// End for(int i=0;i<entities.size();i++)
-                    
                 
+                    
+                /* Make the last entity this entities target and set step to the next phase */
+                   target = lastEntity;
+                   step = 0;
+                   
+                   
+                /* return false because entity didn't even move */
+                    return false;
+                   
             }// End if(step==-1)
+            else{
+                
+                /* Make sure the target exist */
+                    if(target.getWorld()==null){
+                        
+                        /* Return false because there was no target and set step back to retarget */
+                            step = -1;
+                            return false;
+                        
+                    }// End if(target.getWorld()==null)
+                    
+                    
+                /* Turn and move towards the target entity */
+                    entity.turnTowards(target.getX(), target.getY());
+                    entity.move(1);
+                    
+                    
+                /* Check to see if it has reached the entity yet */
+                    return entity.getObjectsInRange(25-entity.getImage().getWidth(), target.getClass()).contains(target);
+                
+            }// End else for if(step==-1)
         
     }// End method moveToLastInRange
     
