@@ -1,8 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.Map;
 import java.util.HashMap;
-import java.lang.CloneNotSupportedException;
-import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+import java.awt.Point;
  
 
 /**
@@ -207,6 +207,135 @@ public class Entity extends Actors implements Cloneable{
         
     }// End method setAllBehaviors
     
+    
+    /**
+     * Gets the closest entity with the given attribute set to true
+     * 
+     * @param attribute   the attribute to look for and check
+     */
+    public Entity getClosestEntity(Attribute attribute){
+        
+        /* Get all entities in this entity's world */
+            List<Entity> entities = getWorld().getObjects(Entity.class);
+            
+            
+        /* Intilize a list to hold the entity's that have the attribute set to true */
+            ArrayList<Entity> trueEntities = new ArrayList<Entity>();
+            
+            
+        /*
+         * Create a list holding all the entities from the list of entities that have that 
+         * attribute and have it set to true
+         */
+            for(int i=0;i<entities.size();i++){
+                
+                /* Check the current entity for the attribute and it's value */
+                    if(entities.get(i).hasAttribute(attribute) && 
+                        (Boolean) entities.get(i).getAttribute(attribute)){
+                            
+                            /* Add this entity to the new list */
+                                trueEntities.add(entities.get(i));
+                            
+                    }// End if(entities.get(i).hasAttribute(attribute) &&...
+                
+            }// End for(int i=0;i<entities.size();i++)
+            
+            
+        /* Check to make sure any entities were found */
+            if(trueEntities.size()==0){
+                
+                /* return null because no entity's were found */
+                    return null;
+                
+            }// End if(trueEntities.size()==0)
+        
+        
+        /* 
+         * Intilize variable to hold the current Entity that is the closest and
+         * set if the first entity on the list is not this entity set it to that one
+         * otherwise set it to the second entity on the list
+         */
+            Entity closestEntity = trueEntities.get(0)!=this ? 
+                                        trueEntities.get(0) : trueEntities.get(1);
+            
+            
+            
+        /* Intilize Point variable to hold this actor's postion for easy distance calculations */
+            Point postion = new Point(getX(), getY());
+            
+            
+        /* 
+         * Intilize a variable to hold the currently closest distance from the closest 
+         * actor to this one and set it equal to the distance between this and closestActor
+         */
+            double closestDistance = postion.distance(closestEntity.getX(), closestEntity.getY());
+        
+            
+        /* Check all of the entities postions */
+            for(int i=0;i<trueEntities.size();i++){
+                
+                /* Check to make sure the current entity is not this entity */
+                    if(trueEntities.get(i)!=this){
+                        
+                       /* Get the distance from current entity to this entity */
+                           double currentDistance = 
+                                    postion.distance(
+                                        trueEntities.get(i).getX(), trueEntities.get(i).getY());
+                                        
+                                        
+                       /* Check to see if the current distance is smaller than the closest */
+                           if(currentDistance<closestDistance){
+                               
+                               /* Set the new closest variable's to this entity's */
+                                   closestDistance = currentDistance;
+                                   closestEntity = trueEntities.get(i);
+                               
+                            }// End if(currentDistance<closestDistance)
+                       
+                    }// End if(trueEntities.get(i)!=this)
+                
+            }// End for(int i=0;i<trueEntities.size();i++)
+        
+            
+        /* Return the closest Entity */
+            return closestEntity;
+            
+    }// End method getCLosestObject(Class object)
+    
+    
+    /**
+     * Determines if there is an entity with the given radius around this entity that has the
+     * given attribute set to true
+     * 
+     * @param radius         radius around the entity to look in
+     * @param attribute      The attribute to check for
+     * @return               If an Entity is in the given radius and has the given attribute at true
+     */
+    public boolean hasEntityInRange(int radius, Attribute attribute){
+        
+        /* Get all the entities in the given radius */
+            List<Entity> entities = getObjectsInRange(radius, Entity.class);
+            
+            
+        /* Check each entity to see if any have the attribute set to true */
+            for(int i=0;i<entities.size();i++){
+                
+                /* Check the current entity for the attribute and it's value */
+                    if(entities.get(i).hasAttribute(attribute) && 
+                        (Boolean) entities.get(i).getAttribute(attribute)){
+                            
+                            /* Return true because one was found */
+                                return true;
+                            
+                    }// End if(entities.get(i).hasAttribute(attribute) &&...
+                
+            }// End for(int i=0;i<entities.size();i++)
+            
+            
+        /* Return false because none were found */
+            return false;
+        
+    }// End method getObjectsInRange
     
     /**
      * Pause the Entity

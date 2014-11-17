@@ -26,7 +26,7 @@ public class USCB extends Entity{
             
         /* Get and Store the start and end death animation images */
             GreenfootImage images[] = new GreenfootImage[27];
-            images[0] = new GreenfootImage("USCBSandSharks.png");
+            images[0] = new GreenfootImage("bullet.png");
             images[0].scale(size, size);
             images[26] = new GreenfootImage("skull-crossbones.png");
             images[26].scale(size, size);
@@ -60,8 +60,9 @@ public class USCB extends Entity{
             }// End for(int i=0;i<25;i++)
             
             
-        /* Store the death animation images as an attribute and the building health */
+        /* Store the death animation images, death sound, and bulding health as an attribute */
             attributes.put(Attribute.DEATH_ANIMATION, images);
+            attributes.put(Attribute.DEATH_SOUND, "Explosion.wav");
             attributes.put(Attribute.MAX_HP, maxHealth);
             attributes.put(Attribute.HP, maxHealth);
             
@@ -77,6 +78,6 @@ public class USCB extends Entity{
      */
     public void act() 
     {
-        if((Integer)attributes.get(Attribute.HP)==0)((Animation)behaviors.get(Behavior.Type.ANIMATION)).loopThroughTimes(Attribute.DEATH_ANIMATION, 1);
+        if((Integer)attributes.get(Attribute.HP)==0)((Animation)behaviors.get(Behavior.Type.ANIMATION)).loopThroughTimes(Attribute.DEATH_ANIMATION, 1, Attribute.DEATH_SOUND);
     }    
 }

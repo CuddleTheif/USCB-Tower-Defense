@@ -138,7 +138,7 @@ public class Animation extends Behavior {
     
     
     /**
-     * Animate through the given images a given number of times.
+     * Animate through the given images a given number of times with.
      * 
      * @param animation   The animation attribute holding the images to animate with
      * @param times       The number of times to animate
@@ -188,6 +188,87 @@ public class Animation extends Behavior {
         
         /* Check if the loops have started yet or not */
             if(step==-1){
+                
+                /* Set counter to zero for counting number of loops */
+                    counter = 0;
+                    
+            }// End if(step==-1)
+        
+        /* Check to see if you still have loops left */
+            if(counter<times){
+                
+                /* Loop back and forth with the images */
+                    loopBackAndForth(images);
+                
+            }// End if(counter<times)
+            
+            
+        /* Return if there are no more loops left yet or not */
+            return counter>=times;
+        
+    }// End method loopBackAndForthTimes
+    
+    
+    /**
+     * Animate through the given images a given number of times with the given sound.
+     * 
+     * @param animation   The animation attribute holding the images to animate with
+     * @param times       The number of times to animate
+     * @return            If the animation is done yet or not
+     */
+    public boolean loopThroughTimes(Attribute animation, int times, Attribute sound){
+        
+        /* Get the images to animate with for the given attribute */
+            GreenfootImage images[] = animations.get(animation);
+        
+            
+        /* Check if the loops have started yet or not */
+            if(step==-1){
+                
+                /* Play the given sound */
+                    String soundFile = (String) entity.getAttribute(sound);
+                    Greenfoot.playSound(soundFile);
+                
+                /* Set counter to zero for counting number of loops */
+                    counter = 0;
+                    
+            }// End if(step==-1)
+        
+        /* Check to see if you still have loops left */
+            if(counter<times){
+                
+                /* Loop through the images */
+                    loopThrough(images);
+                
+            }// End if(counter<times)
+            
+            
+        /* Return if there are no more loops left yet or not */
+            return counter>=times;
+        
+    }// End method loopThroughTimes
+    
+    
+    /**
+     * Animate back and forth with the given images a given number of times with the given sound.
+     * 
+     * @param attribute   The attribute holding the images to animate with
+     * @param times       The number of times to animate
+     * @param sound       The sound to play with the animation
+     * @return            If the animation is done yet or not
+     */
+    public boolean loopBackAndForthTimes(Attribute attribute , int times, Attribute sound){
+        
+        /* Get the images to animate with for the given attribute */
+            GreenfootImage images[] = (GreenfootImage[]) entity.getAttribute(attribute);
+            
+        
+        /* Check if the loops have started yet or not */
+            if(step==-1){
+                
+                /* Play the given sound */
+                    String soundFile = (String) entity.getAttribute(sound);
+                    Greenfoot.playSound(soundFile);
                 
                 /* Set counter to zero for counting number of loops */
                     counter = 0;

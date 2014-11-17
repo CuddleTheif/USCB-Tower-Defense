@@ -34,16 +34,13 @@ public class Movement extends Behavior {
      */
     public boolean moveAlongPath(Path path){
         
-        System.out.println(entity);
-        
         /* 
          * Intilize a varible to hold the road piece at the entity's postion and set it to 
          * the road piece at the entity's position if there is one or set it to null if 
          * there isn't 
          */
-            RoadPiece roadPiece = entity.getObjectsInRange(0, RoadPiece.class).size()!=0 ?
-                                    (RoadPiece) entity.getObjectsInRange(0, RoadPiece.class).get(0) :
-                                    null;
+            List<RoadPiece> roadPieces = entity.getObjectsInRange(0, RoadPiece.class);
+            RoadPiece roadPiece = roadPieces.size()!=0 ? roadPieces.get(0) : null;
             
                                     
         /* Check to see if the Entity is on the path yet or not */
@@ -109,12 +106,11 @@ public class Movement extends Behavior {
      * Moves the Entity to the closest actor of a given class
      * 
      * @param cls      The class of the actor to move to
-     * @param offset   The offset the Entity can be to have "reached" the actor
-     * @return         If the Entity has reached one yet with the given offset
+     * @return         If the Entity has reached one yet
      */
-    public boolean moveToClosest(Class cls, int offset){
+    public boolean moveToClosest(Class cls){
         
-        /* Check to see if the ENtity is move towards the Actor yet or not */
+        /* Check to see if the Entity is moving towards the Actor yet or not */
             if(step==-1){
                 
                 /* Get and store the closest Actor of the given class */
@@ -131,11 +127,39 @@ public class Movement extends Behavior {
             entity.move(1);
             
             
-        /* Return If the Entity has reached that actor with the given offset */
-            return entity.getX()<=actor.getX()+offset &&
-                        entity.getX()>=actor.getX()-offset &&
-                        entity.getY()<=actor.getY()+offset &&
-                        entity.getY()>=actor.getY()-offset;
+        /* Return If the Entity has reached that actor */
+            return entity.getIntersectingObjects(cls).contains(actor);
+        
+    }// End method moveToClosest
+    
+    
+    /**
+     * Moves the Entity to the closest actor with a given attribute at true
+     * 
+     * @param attribute      The attribute the target entity must have set to true
+     * @return               If the Entity has reached one yet
+     */
+    public boolean moveToClosest(Attribute attribute){
+        
+        /* Check to see if the Entity is moving towards the Actor yet or not */
+            if(step==-1){
+                
+                /* Get and store the closest Actor of the with the given attribute at true */
+                    actor = entity.getClosestEntity(attribute);
+                
+                /* Set the step variable to 0 to indicate starting movement */
+                    step = 0;
+                
+            }// End if(step==-1)
+                
+            
+        /* Turn and move towards the actor */
+            entity.turnTowards(actor.getX(), actor.getY());
+            entity.move(1);
+            
+            
+        /* Return If the Entity has reached that actor */
+            return entity.getIntersectingObjects(actor.getClass()).contains(actor);
         
     }// End method moveToClosest
     

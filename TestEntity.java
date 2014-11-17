@@ -1,7 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Collections;
 
 /**
  * An Entity to test Beahviors
@@ -22,9 +21,10 @@ public class TestEntity extends Entity{
             
         /* Create and Add the TestEntity's Behaviors */
             behaviors.put(Behavior.Type.MOVEMENT, new Movement(this));
-            behaviors.put(Behavior.Type.COMBAT, new Combat(this, 100, 10, 0));
+            behaviors.put(Behavior.Type.COMBAT, new Combat(this, 20, 10, 0));
         
         /* Add the TestEntity's Attributes */
+            attributes.put(Attribute.ENEMY, true);
         
     }// End no-argument constructor
     
@@ -34,10 +34,15 @@ public class TestEntity extends Entity{
      */
     public void act() 
     {
+        /* Make sure this actor is still in the world */
+            if(getWorld()!=null){
         /* Follow the path */
             if(((Movement)behaviors.get(Behavior.Type.MOVEMENT)).moveAlongPath(((Level)getWorld()).getPath())){
                 ((Combat)behaviors.get(Behavior.Type.COMBAT)).attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
                 getWorld().removeObject(this);
             }
+            
+        /* If the entity is dead remove it */
+            if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);}
     }    
 }

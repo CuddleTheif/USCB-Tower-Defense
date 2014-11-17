@@ -41,6 +41,10 @@ public class Level extends World{
             EntitySpawner spawner = new EntitySpawner(new TestEntity());
             addObject(spawner, 0, 50);
             
+        
+        /* Build a tower */
+            
+            
     }// End zero-argument consturctor for USCB
     
     
