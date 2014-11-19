@@ -189,61 +189,7 @@ public class Entity extends Actors implements Cloneable{
                             
                             
                         /* Check if the current attribute is anything cloneable */
-                            if(Integer.class==value.getClass()){
-                                
-                                /* clone the Integer by createing a new one */
-                                    value = new Integer((Integer)value);
-                                
-                            }// End if(Integer.class==value.getClass()))
-                            else if(Character.class==value.getClass()){
-                                
-                                /* clone the Character by createing a new one */
-                                    value = new Character((Character)value);
-                                
-                            }// End else if(Character.class==value.getClass()))
-                            else if(Long.class==value.getClass()){
-                                
-                                /* clone the Long by createing a new one */
-                                    value = new Long((Long)value);
-                                
-                            }// End else if(Long.class==value.getClass()))
-                            else if(Byte.class==value.getClass()){
-                                
-                                /* clone the Byte by createing a new one */
-                                    value = new Byte((Byte)value);
-                                
-                            }// End else if(Byte.class==value.getClass()))
-                            else if(Short.class==value.getClass()){
-                                
-                                /* clone the Short by createing a new one */
-                                    value = new Short((Short)value);
-                                
-                            }// End else if(Short.class==value.getClass()))
-                            else if(String.class==value.getClass()){
-                                
-                                /* clone the String by createing a new one */
-                                    value = new String((String)value);
-                                
-                            }// End else if(String.class==value.getClass()))
-                            else if(Boolean.class==value.getClass()){
-                                
-                                /* clone the Boolean by createing a new one */
-                                    value = new Boolean((Boolean)value);
-                                
-                            }// End else if(Boolean.class==value.getClass()))
-                            else if(Double.class==value.getClass()){
-                                
-                                /* clone the Double by createing a new one */
-                                    value = new Double((Double)value);
-                                
-                            }// End else if(Double.class==value.getClass()))
-                            else if(Float.class==value.getClass()){
-                                
-                                /* clone the Float by createing a new one */
-                                    value = new Float((Float)value);
-                                
-                            }// End else if(Float.class==value.getClass()))
-                            else if(Entity.class==value.getClass()){
+                            if(Entity.class==value.getClass()){
                                 
                                 /* clone the Entity by calling it's clone method */
                                     value = ((Entity)value).clone();
