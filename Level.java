@@ -24,7 +24,7 @@ public class Level extends World{
          * and green background. 
          */
             super(600, 400, 1); 
-            setBackground(new GreenfootImage("green-grass-texture.jpg"));
+            setBackground(new GreenfootImage("images/green-grass-texture.jpg"));
             
         /* Create Road */
             path = new Path(25, PathShape.HORIZONTAL_BOLT, 0, 50, 550, 50);

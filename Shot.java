@@ -31,7 +31,7 @@ public class Shot extends Entity
             for(int i=0;i<25;i++){
                 
                 /* Get and Overlay the current explosion image */
-                    images[i] = new GreenfootImage("explosion"+String.valueOf(i)+".png");
+                    images[i] = new GreenfootImage("images/explosion"+String.valueOf(i)+".png");
                     images[i].scale(16, 16);
                 
             }// End for(int i=0;i<25;i++)
@@ -39,7 +39,7 @@ public class Shot extends Entity
             
         /* Store the death animation images, death sound, range, and death state as attributes */
             attributes.put(Attribute.DEATH_ANIMATION, images);
-            attributes.put(Attribute.DEATH_SOUND, "Explosion.wav");
+            attributes.put(Attribute.DEATH_SOUND, "sounds/Explosion.wav");
             attributes.put(Attribute.DIE, false);
             attributes.put(Attribute.RANGE, range);
             

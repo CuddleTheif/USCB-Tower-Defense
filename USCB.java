@@ -26,9 +26,9 @@ public class USCB extends Entity{
             
         /* Get and Store the start and end death animation images */
             GreenfootImage images[] = new GreenfootImage[27];
-            images[0] = new GreenfootImage("bullet.png");
+            images[0] = new GreenfootImage("images/USCBSandSharks.png");
             images[0].scale(size, size);
-            images[26] = new GreenfootImage("skull-crossbones.png");
+            images[26] = new GreenfootImage("images/skull-crossbones.png");
             images[26].scale(size, size);
             
             
@@ -39,20 +39,20 @@ public class USCB extends Entity{
                     if(i<12){
                         
                         /* Load the bulding for under the explosion */
-                            images[i+1] = new GreenfootImage("USCBSandSharks.png");
+                            images[i+1] = new GreenfootImage("images/USCBSandSharks.png");
                         
                     }// Emd if(1<12)
                     else{
                         
                         /* Load the skull for under the explosion */
-                            images[i+1] = new GreenfootImage("skull-crossbones.png");
+                            images[i+1] = new GreenfootImage("images/skull-crossbones.png");
 
                     }// End else for if(i<12)
                     
                 
                 /* Get and Overlay the current explosion image */
                     GreenfootImage curImage = new GreenfootImage(
-                                                    "explosion"+String.valueOf(i)+".png");
+                                                    "images/explosion"+String.valueOf(i)+".png");
                     curImage.scale(size, size);
                     images[i+1].scale(size, size);
                     images[i+1].drawImage(curImage, 0, 0);
@@ -62,7 +62,7 @@ public class USCB extends Entity{
             
         /* Store the death animation images, death sound, and bulding health as an attribute */
             attributes.put(Attribute.DEATH_ANIMATION, images);
-            attributes.put(Attribute.DEATH_SOUND, "Explosion.wav");
+            attributes.put(Attribute.DEATH_SOUND, "sounds/Explosion.wav");
             attributes.put(Attribute.MAX_HP, maxHealth);
             attributes.put(Attribute.HP, maxHealth);
             
