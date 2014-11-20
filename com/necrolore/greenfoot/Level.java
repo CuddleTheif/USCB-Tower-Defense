@@ -1,8 +1,6 @@
 package com.necrolore.greenfoot;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-import java.awt.Color;
-
 import com.necrolore.entity.*;
 import com.necrolore.road.Path;
 import com.necrolore.road.PathShape;

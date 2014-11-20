@@ -1,5 +1,6 @@
 package com.necrolore.road;
 import greenfoot.*;
+
 import java.awt.Point;
 import java.util.List;
 
@@ -190,7 +191,8 @@ public class Path{
             
             
         /* Get the RoadPieces at the given postion */
-            List<RoadPiece> roadPieces = world.getObjectsAt(xPos, yPos, RoadPiece.class);
+            @SuppressWarnings("unchecked")
+			List<RoadPiece> roadPieces = world.getObjectsAt(xPos, yPos, RoadPiece.class);
             
         /* Get the road piece of the given number */
             RoadPiece roadPiece = getRoadPiece(number);

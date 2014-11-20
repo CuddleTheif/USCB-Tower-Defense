@@ -7,7 +7,7 @@ import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Entity;
 
 /**
- * The Beahvior of an Entity to Animate through images
+ * The Behavior of an Entity to Animate through images
  * 
  * @author NecroTheif
  * @version 2014.14.11
@@ -24,7 +24,8 @@ public class Animation extends Behavior {
      * 
      * @param entity   The entity that has this behavior
      */
-    public Animation(Entity entity){
+    @SuppressWarnings("unchecked")
+	public Animation(Entity entity){
         
         /* Call the superclass' constructor to store the given entity */
             super(entity);

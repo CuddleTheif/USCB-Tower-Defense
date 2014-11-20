@@ -51,7 +51,8 @@ public class Movement extends Behavior {
          * the road piece at the entity's position if there is one or set it to null if 
          * there isn't 
          */
-            List<RoadPiece> roadPieces = entity.getObjectsInRange(0, RoadPiece.class);
+            @SuppressWarnings("unchecked")
+			List<RoadPiece> roadPieces = entity.getObjectsInRange(0, RoadPiece.class);
             RoadPiece roadPiece = roadPieces.size()!=0 ? roadPieces.get(0) : null;
             
                                     
@@ -136,7 +137,8 @@ public class Movement extends Behavior {
      * @param cls      The class of the actor to move to
      * @return         If the Entity has reached one yet
      */
-    public boolean moveToClosest(Class cls){
+    @SuppressWarnings("rawtypes")
+	public boolean moveToClosest(Class cls){
         
         /* Get and store the closest Actor of the given class */
             Actor actor = entity.getClosestActor(cls);
@@ -194,7 +196,8 @@ public class Movement extends Behavior {
      * @param attribute   The attribute the target entity must have set to true
      * @return            The Entities in the range, in the path, and with the attribute set to true
      */
-    private List getEntitiesInRangeAndPath(Path path, int range, Attribute attribute){
+    @SuppressWarnings("rawtypes")
+	private List getEntitiesInRangeAndPath(Path path, int range, Attribute attribute){
         
         /* Get all entities in the given range with the given attribute set to true */
             List<Entity> entities = entity.getEntitiesInRange(range, attribute);
@@ -246,7 +249,8 @@ public class Movement extends Behavior {
             if(step==-1){
                 
                 /* Get the entities on the path with the attribute and in the range */
-                    List<Entity> entities = getEntitiesInRangeAndPath(path, range, attribute);
+                    @SuppressWarnings("unchecked")
+					List<Entity> entities = getEntitiesInRangeAndPath(path, range, attribute);
                     
                     
                 /* Make sure entities were found */
