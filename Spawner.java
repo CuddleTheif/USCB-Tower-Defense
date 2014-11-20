@@ -7,7 +7,7 @@
 public class Spawner extends Behavior{
     
     /**
-     * Initilizes an Spawner Behavior for the given entity
+     * Initializes an Spawner Behavior for the given entity
      * 
      * @param entity   The entity that has this behavior
      */
@@ -23,7 +23,7 @@ public class Spawner extends Behavior{
      * Creates an entity of the given type at this entity
      * 
      * @param entityType   The type of entity to spawn
-     * @return             If the entity was spawned succesfully
+     * @return             If the entity was spawned successfully
      */
     private boolean spawnOne(Entity entityType){
 
@@ -32,7 +32,7 @@ public class Spawner extends Behavior{
             entity.getWorld().addObject(newEntity, entity.getX(), entity.getY());
             
             
-        /* Return true because spawn was succesfull */
+        /* Return true because spawn was successful */
             return true;
             
             
@@ -42,13 +42,13 @@ public class Spawner extends Behavior{
     /**
      * Creates the given number of entities of the given entity at this entity
      * 
-     * @param number       The number of Enitities to spawn
+     * @param number       The number of Entities to spawn
      * @param entityType   The type of entity to Spawn
-     * @return             The number of entities that were spawned succesfully
+     * @return             The number of entities that were spawned successfully
      */
     public int spawn(int number, Entity entityType){
             
-        /* Spawn that enity the number of given time */
+        /* Spawn that entity the number of given time */
             for(int i=0;i<number;i++){
                 
                 /* attempt to spawn one entity */
@@ -63,8 +63,8 @@ public class Spawner extends Behavior{
         
         
         /* 
-         * return the number of entites to spawn given since all 
-         * entities were spawned succesfully 
+         * return the number of entities to spawn given since all 
+         * entities were spawned successfully 
          */
             return number;
             
@@ -74,9 +74,9 @@ public class Spawner extends Behavior{
     /**
      * Creates the given number of entities of the given entity at this entity
      * 
-     * @param number       The number of Enitities to spawn
+     * @param number       The number of Entities to spawn
      * @param entityType   The type of entity to Spawn
-     * @return             The number of entities that were spawned succesfully
+     * @return             The number of entities that were spawned successfully
      */
     public int spawn(int number, Attribute entityType){
         
@@ -92,10 +92,10 @@ public class Spawner extends Behavior{
     /**
      * Creates the given number of entities of the given entity at this entity
      * 
-     * @param number        The number of Enitities to spawn
+     * @param number        The number of Entities to spawn
      * @param entityArray   An array holding the type of entity to Spawn
      * @param entityIndex   The index of the type of entity to Spawn
-     * @return              The number of entities that were spawned succesfully
+     * @return              The number of entities that were spawned successfully
      */
     public int spawnfromArray(int number, Attribute entityArray, int entityIndex){
         

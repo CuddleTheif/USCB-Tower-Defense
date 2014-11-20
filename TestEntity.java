@@ -1,9 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.Map;
-import java.util.HashMap;
-
 /**
- * An Entity to test Beahviors
+ * An Entity to test Behaviors
  * 
  * @author NecroTheif
  * @version 2014.14.11
@@ -15,7 +11,7 @@ public class TestEntity extends Entity{
      */
     public TestEntity(){
         
-        /* Call the superclass' constructor to Initilize Behaviors and Attributes */
+        /* Call the superclass' constructor to Initialize Behaviors and Attributes */
             super();
             getImage().scale(25, 25);
             

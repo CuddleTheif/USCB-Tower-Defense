@@ -1,4 +1,3 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,11 +18,11 @@ public class Entity extends Actors implements Cloneable{
     
     
     /**
-     * Initilizes an Entity with no attributes and no behaviors
+     * Initializes an Entity with no attributes and no behaviors
      */
     public Entity(){
         
-        /* Initilize beahviors and attributes */
+        /* Initialize behaviors and attributes */
             behaviors = new HashMap<Behavior.Type, Behavior>();
             attributes = new HashMap<Attribute, Object>();
         
@@ -41,7 +40,7 @@ public class Entity extends Actors implements Cloneable{
         /* Check to see if the Attribute already exists */
             if(attributes.containsKey(attribute)){
                 
-                /* Remove the Atrribute */
+                /* Remove the Attribute */
                     attributes.remove(attribute);
                 
             }// End if(attributes.containsKey(attribute))
@@ -71,9 +70,10 @@ public class Entity extends Actors implements Cloneable{
      * @param type   The type of attributes to get
      * @return       The attributes this entity has of the given types
      */
-    public HashMap getAttributesType(Attribute.Type type){
+    @SuppressWarnings("rawtypes")
+	public HashMap getAttributesType(Attribute.Type type){
         
-        /* Initilize a variable to hold all the attributes found */
+        /* Initialize a variable to hold all the attributes found */
             HashMap<Attribute, Object> foundAttributes = new HashMap<Attribute, Object>();
             
             
@@ -144,7 +144,7 @@ public class Entity extends Actors implements Cloneable{
      * 
      * @return   A copy of this entity
      */
-    public Entity clone(){
+	public Entity clone(){
         
         /* Try to Use clone method to get a copy */
             try{
@@ -154,7 +154,8 @@ public class Entity extends Actors implements Cloneable{
                 
                     
                 /* Copy all the behaviors to a new Map */
-                    HashMap<Behavior.Type, Behavior> newBehaviors = 
+                    @SuppressWarnings("unchecked")
+					HashMap<Behavior.Type, Behavior> newBehaviors = 
                         (HashMap<Behavior.Type, Behavior>) behaviors.clone();
                     
                         
@@ -177,7 +178,8 @@ public class Entity extends Actors implements Cloneable{
                     
                     
                 /* Copy all the attributes to a new Map */
-                    HashMap<Attribute, Object> newAttributes = 
+                    @SuppressWarnings("unchecked")
+					HashMap<Attribute, Object> newAttributes = 
                         (HashMap<Attribute, Object>) attributes.clone();
                     
                         
@@ -203,11 +205,11 @@ public class Entity extends Actors implements Cloneable{
                     }// End for(Attribute attribute : newAttributes.keySet())
                     
                     
-                /* Replace the entity's behaviors with the newley cloned ones */
+                /* Replace the entity's behaviors with the newly cloned ones */
                     entity.replaceAllAttributes(newAttributes);
                     
                     
-                /* Return the newley cloned entity */
+                /* Return the newly cloned entity */
                     return entity;
                 
             }
@@ -266,10 +268,11 @@ public class Entity extends Actors implements Cloneable{
     public Entity getClosestEntity(Attribute attribute){
         
         /* Get all entities in this entity's world */
-            List<Entity> entities = getWorld().getObjects(Entity.class);
+            @SuppressWarnings("unchecked")
+			List<Entity> entities = getWorld().getObjects(Entity.class);
             
             
-        /* Intilize a list to hold the entity's that have the attribute set to true */
+        /* Initialize a list to hold the entity's that have the attribute set to true */
             ArrayList<Entity> trueEntities = new ArrayList<Entity>();
             
             
@@ -301,7 +304,7 @@ public class Entity extends Actors implements Cloneable{
         
         
         /* 
-         * Intilize variable to hold the current Entity that is the closest and
+         * Initialize variable to hold the current Entity that is the closest and
          * set if the first entity on the list is not this entity set it to that one
          * otherwise set it to the second entity on the list
          */
@@ -310,18 +313,18 @@ public class Entity extends Actors implements Cloneable{
             
             
             
-        /* Intilize Point variable to hold this actor's postion for easy distance calculations */
+        /* Initialize Point variable to hold this actor's postion for easy distance calculations */
             Point postion = new Point(getX(), getY());
             
             
         /* 
-         * Intilize a variable to hold the currently closest distance from the closest 
+         * Initialize a variable to hold the currently closest distance from the closest 
          * actor to this one and set it equal to the distance between this and closestActor
          */
             double closestDistance = postion.distance(closestEntity.getX(), closestEntity.getY());
         
             
-        /* Check all of the entities postions */
+        /* Check all of the entities positions */
             for(int i=0;i<trueEntities.size();i++){
                 
                 /* Check to make sure the current entity is not this entity */
@@ -364,10 +367,11 @@ public class Entity extends Actors implements Cloneable{
     public List<Entity> getEntitiesInRange(int radius, Attribute attribute){
         
         /* Get all the entities in the given radius */
-            List<Entity> entities = getObjectsInRange(radius, Entity.class);
+            @SuppressWarnings("unchecked")
+			List<Entity> entities = getObjectsInRange(radius, Entity.class);
             
             
-        /* Intilize variable to hold found entites with the attribute set to true */
+        /* Initialize variable to hold found entities with the attribute set to true */
             List<Entity> foundEntities = new ArrayList<Entity>();
             
             

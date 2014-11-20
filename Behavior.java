@@ -1,5 +1,4 @@
 import java.lang.CloneNotSupportedException;
-import java.util.Collections;
 
 /**
  * A Behavior an Entity can have. Something an Entity can do.
@@ -30,11 +29,11 @@ public class Behavior implements Cloneable{
      */
     public Behavior(Entity entity){
         
-        /* Initilize class variable for entity to given entity */
+        /* Initialize class variable for entity to given entity */
             this.entity = entity;
             
             
-        /* Initilize the step variable to doing nothing */
+        /* Initialize the step variable to doing nothing */
             step = -1;
         
     }//End one-argument constructor for Behavior
@@ -47,7 +46,7 @@ public class Behavior implements Cloneable{
      */
     public void setEntity(Entity entity){
         
-        /* Initilize class variable for entity to given entity */
+        /* Initialize class variable for entity to given entity */
             this.entity = entity;
         
     }// End method setEntity

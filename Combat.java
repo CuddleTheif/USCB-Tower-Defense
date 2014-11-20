@@ -1,7 +1,5 @@
-import java.util.HashMap;
-
 /**
- * The Beahvior of an Entity to Fight.
+ * The Behavior of an Entity to Fight.
  * 
  * @author NecroTheif
  * @version 2014.14.11
@@ -16,30 +14,30 @@ public class Combat extends Behavior
         
         STRONG(2), NORMAL(1), WEAK(.5);
         
-        private double muti; // The mutiplyer to do to Maneuvers of this Maneuver type
+        private double muti; // The multiplier to do to Maneuvers of this Maneuver type
         
         
         /**
-         * Creates an Maneuver Type with the given mutiplyer
+         * Creates an Maneuver Type with the given multiplier
          * 
-         * @param muti   The mutiplyer of Maneuvers of this Maneuver type
+         * @param muti   The multiplier of Maneuvers of this Maneuver type
          */
         private Maneuver(double muti){
             
-            /* Intilize class' variable muti to given value */
+            /* Initialize class' variable muti to given value */
                 this.muti = muti;
             
         }// End one-argument constructor for Maneuver
         
         
         /**
-         * Gets the mutiplyer of this Maneuver type
+         * Gets the multiplier of this Maneuver type
          * 
-         * @return   The mutiplyer of Maneuvers of this Maneuver type
+         * @return   The multiplier of Maneuvers of this Maneuver type
          */
         public double getMuti(){
             
-            /* Return the mutiplyer */
+            /* Return the multiplier */
                 return muti;
                 
         }// End method getMuti
@@ -52,7 +50,7 @@ public class Combat extends Behavior
     
     
     /**
-     * Initilizes a Combat Behavior for the given entity with the given max health, attack, and defense
+     * Initialize a Combat Behavior for the given entity with the given max health, attack, and defense
      * 
      * @param entity      The entity that has this behavior
      * @param maxHealth   The max health of the entity
@@ -65,7 +63,7 @@ public class Combat extends Behavior
             super(entity);
         
         
-        /* Intilize and store the attributes for holding Health, Attack, and Defense */
+        /* Initialize and store the attributes for holding Health, Attack, and Defense */
             this.maxHealth = maxHealth;
             health = maxHealth;
             this.attack = attack;
@@ -112,7 +110,7 @@ public class Combat extends Behavior
             entity.setAttribute(Attribute.DEF, defense);
         
         
-        /* Reset the defening varibale to null to indicate no longer defending */
+        /* Reset the defending variable to null to indicate no longer defending */
             defending = null;
         
     }// End method stopDefending
@@ -155,12 +153,12 @@ public class Combat extends Behavior
             }// End if(targetEntity.hasAttribute(Entity.Attribute.DEF))
             
             
-        /* Get the attack of this entity wiht the given attack type */
+        /* Get the attack of this entity with the given attack type */
             int totAttack = (int) (attack*attackType.getMuti());
             
             
         /* Calculate and Do the damage to the health of the target entity (reducing it to a min of 0) */
-            int damage = attack-targetDefense;
+            int damage = totAttack-targetDefense;
             damage = damage<0 ? 0 : damage;
             targetHealth -= damage;
             targetHealth = targetHealth<0 ? 0 : targetHealth;
@@ -170,7 +168,7 @@ public class Combat extends Behavior
             targetEntity.setAttribute(Attribute.HP, targetHealth);
             
             
-        /* Return true since the attack was succesful */
+        /* Return true since the attack was successful */
             return true;
         
     }// End method attackEntity

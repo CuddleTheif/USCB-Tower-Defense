@@ -14,18 +14,18 @@ public enum PathShape{
     HORIZONTAL_Z{
         
         /**
-         * Gets the junctions' postions of the Horizontal Z shape
+         * Gets the junctions' positions of the Horizontal Z shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis
-         * @param startY   The starting postion of the shape on the y-axis
-         * @param endX     The ending postion of the shape on the x-axis
-         * @param endY     The ending postion of the shape on the y-axis
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis
+         * @param startY   The starting position of the shape on the y-axis
+         * @param endX     The ending position of the shape on the x-axis
+         * @param endY     The ending position of the shape on the y-axis
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[4];
                 
                 
@@ -49,18 +49,18 @@ public enum PathShape{
     VERTICAL_Z{
         
         /**
-         * Gets the junctions' postions of the Vertical Z shape
+         * Gets the junctions' positions of the Vertical Z shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis
-         * @param startY   The starting postion of the shape on the y-axis
-         * @param endX     The ending postion of the shape on the x-axis
-         * @param endY     The ending postion of the shape on the y-axis
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis
+         * @param startY   The starting position of the shape on the y-axis
+         * @param endX     The ending position of the shape on the x-axis
+         * @param endY     The ending position of the shape on the y-axis
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[4];
                 
                 
@@ -84,18 +84,18 @@ public enum PathShape{
     HORIZONTAL_S{
         
         /**
-         * Gets the junctions' postions of the Horizontal S shape
+         * Gets the junctions' positions of the Horizontal S shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis
-         * @param startY   The starting postion of the shape on the y-axis
-         * @param endX     The ending postion of the shape on the x-axis
-         * @param endY     The ending postion of the shape on the y-axis
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis
+         * @param startY   The starting position of the shape on the y-axis
+         * @param endX     The ending position of the shape on the x-axis
+         * @param endY     The ending position of the shape on the y-axis
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[6];
                 
                 
@@ -124,18 +124,18 @@ public enum PathShape{
     VERTICAL_S{
         
         /**
-         * Gets the junctions' postions of the Vertical S shape
+         * Gets the junctions' positions of the Vertical S shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis
-         * @param startY   The starting postion of the shape on the y-axis
-         * @param endX     The ending postion of the shape on the x-axis
-         * @param endY     The ending postion of the shape on the y-axis
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis
+         * @param startY   The starting position of the shape on the y-axis
+         * @param endX     The ending position of the shape on the x-axis
+         * @param endY     The ending position of the shape on the y-axis
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[6];
                 
                 
@@ -164,18 +164,18 @@ public enum PathShape{
     HORIZONTAL_BOLT{
         
         /**
-         * Gets the junctions' postions of the Horizontal Bolt shape
+         * Gets the junctions' positions of the Horizontal Bolt shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis
-         * @param startY   The starting postion of the shape on the y-axis (must be = endY)
-         * @param endX     The ending postion of the shape on the x-axis
-         * @param endY     The ending postion of the shape on the y-axis (must be = startY)
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis
+         * @param startY   The starting position of the shape on the y-axis (must be = endY)
+         * @param endX     The ending position of the shape on the x-axis
+         * @param endY     The ending position of the shape on the y-axis (must be = startY)
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[10];
                 
                 
@@ -208,18 +208,18 @@ public enum PathShape{
     VERTICAL_BOLT{
         
         /**
-         * Gets the junctions' postions of the Vertical Bolt shape
+         * Gets the junctions' positions of the Vertical Bolt shape
          * 
-         * @param startX   The starting postion of the shape on the x-axis (must be = endX)
-         * @param startY   The starting postion of the shape on the y-axis
-         * @param endX     The ending postion of the shape on the x-axis (must be = startX)
-         * @param endY     The ending postion of the shape on the y-axis
-         * @return         The junctions' postions of the shape
+         * @param startX   The starting position of the shape on the x-axis (must be = endX)
+         * @param startY   The starting position of the shape on the y-axis
+         * @param endX     The ending position of the shape on the x-axis (must be = startX)
+         * @param endY     The ending position of the shape on the y-axis
+         * @return         The junctions' positions of the shape
          */
         @Override
         public Point[] getPoints(int startX, int startY, int endX, int endY){
             
-            /* Intilize the Array to hold the points */
+            /* Initialize the Array to hold the points */
                 Point points[] = new Point[10];
                 
                 
@@ -248,13 +248,13 @@ public enum PathShape{
     
     
     /**
-     * Gets the junctions' postions of the shape
+     * Gets the junctions' positions of the shape
      * 
-     * @param startX   The starting postion of the shape on the x-axis
-     * @param startY   The starting postion of the shape on the y-axis
-     * @param endX     The ending postion of the shape on the x-axis
-     * @param endY     The ending postion of the shape on the y-axis
-     * @return         The junctions' postions of the shape
+     * @param startX   The starting position of the shape on the x-axis
+     * @param startY   The starting position of the shape on the y-axis
+     * @param endX     The ending position of the shape on the x-axis
+     * @param endY     The ending position of the shape on the y-axis
+     * @return         The junctions' positions of the shape
      */
     public abstract Point[] getPoints(int startX, int startY, int endX, int endY);
     

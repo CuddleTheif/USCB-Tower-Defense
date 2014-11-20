@@ -1,5 +1,3 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * A Piece of a road with it's image.
  * 
@@ -8,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RoadPiece extends Actors{
     
-    private int globalX, globalY; // The global corrdinates of the road piece
+    private int globalX, globalY; // The global coordinates of the road piece
     
     
     /**
@@ -20,7 +18,7 @@ public class RoadPiece extends Actors{
      */
     public RoadPiece(int size, int globalX, int globalY){
         
-        /* Intilizles the class' variables to given ones */
+        /* Initializes the class' variables to given ones */
             this.globalX = globalX;
             this.globalY = globalY;
         

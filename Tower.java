@@ -1,5 +1,3 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * A Tower that shots out shots when enemy's are in it's range
  * 
@@ -17,7 +15,7 @@ public class Tower extends Entity
      */
     public Tower(int range, int cooldown){
         
-        /* Call the superclass' constructor to initlize behaivor and attribute variables */
+        /* Call the superclass' constructor to Initialize behavior and attribute variables */
             super();
             
         

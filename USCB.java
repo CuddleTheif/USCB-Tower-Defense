@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The USCB Buliding that has Health and a Death Animation
+ * The USCB Building that has Health and a Death Animation
  * 
  * @author NecroTheif
  * @version 2014.14.11
@@ -9,14 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class USCB extends Entity{
     
     /**
-     * Creates a USCB Bulding With Max Health being the given value and with the given size
+     * Creates a USCB Building With Max Health being the given value and with the given size
      * 
-     * @param maxHealth   The max health of the USCB Bulding
-     * @param size        The physical size of the bulding
+     * @param maxHealth   The max health of the USCB Building
+     * @param size        The physical size of the building
      */
     public USCB(int maxHealth, int size){
         
-        /* Call the superclass' constructor to initlize behaivor and attribute variables */
+        /* Call the superclass' constructor to initialize behavior and attribute variables */
             super();
             
             
@@ -32,16 +32,16 @@ public class USCB extends Entity{
             images[26].scale(size, size);
             
             
-        /* Load and Store the exlposion animation images for the death animation */
+        /* Load and Store the explosion animation images for the death animation */
             for(int i=0;i<25;i++){
                 
                 /* Check if in first or second half of animation */
                     if(i<12){
                         
-                        /* Load the bulding for under the explosion */
+                        /* Load the building for under the explosion */
                             images[i+1] = new GreenfootImage("images/USCBSandSharks.png");
                         
-                    }// Emd if(1<12)
+                    }// End if(1<12)
                     else{
                         
                         /* Load the skull for under the explosion */
@@ -60,13 +60,13 @@ public class USCB extends Entity{
             }// End for(int i=0;i<25;i++)
             
             
-        /* Store the death animation images, death sound, and bulding health as an attribute */
+        /* Store the death animation images, death sound, and building health as an attribute */
             attributes.put(Attribute.DEATH_ANIMATION, images);
             attributes.put(Attribute.DEATH_SOUND, "sounds/Explosion.wav");
             attributes.put(Attribute.MAX_HP, maxHealth);
             attributes.put(Attribute.HP, maxHealth);
             
-        /* Initlize and store the Animation Behavior */
+        /* Initialize and store the Animation Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
             
     }// End one-argument constructor

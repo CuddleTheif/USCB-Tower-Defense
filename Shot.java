@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 import java.util.List;
 
 /**
@@ -11,23 +12,23 @@ public class Shot extends Entity
 {
     
     /**
-     * Inilitizes a shot entity that targets enemy's in it's given range
+     * Initializes a shot entity that targets enemy's in it's given range
      * 
      * @param   The range of this shot
      */
     public Shot(int range){
         
-        /* Call the superclass' constructor to initlize behaivor and attribute variables */
+        /* Call the superclass' constructor to initialize behavior and attribute variables */
             super();
             
         /* Make the shot bigger */
             getImage().scale(16,4);
             
-        /* Initilize variable to hold the images for the death animation */
+        /* Initialize variable to hold the images for the death animation */
             GreenfootImage images[] = new GreenfootImage[25];
             
             
-        /* Load and Store the exlposion animation images for the death animation */
+        /* Load and Store the explosion animation images for the death animation */
             for(int i=0;i<25;i++){
                 
                 /* Get and Overlay the current explosion image */
@@ -44,7 +45,7 @@ public class Shot extends Entity
             attributes.put(Attribute.RANGE, range);
             
             
-        /* Initlize and store the Animation and Movement and Combat Behavior */
+        /* Initialize and store the Animation and Movement and Combat Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
             behaviors.put(Behavior.Type.MOVEMENT, new Movement(this));
             behaviors.put(Behavior.Type.COMBAT, new Combat(this, 0, 10, 0));
@@ -72,7 +73,8 @@ public class Shot extends Entity
                     (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY)){
                         
                         /* Get all the entities the entity is touching */
-                            List<Entity> entities = getObjectsInRange(25-getImage().getWidth(), Entity.class);
+                            @SuppressWarnings("unchecked")
+							List<Entity> entities = getObjectsInRange(25-getImage().getWidth(), Entity.class);
                     
                         
                         /* Attack the entities it is touching */

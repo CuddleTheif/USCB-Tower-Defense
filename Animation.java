@@ -15,7 +15,7 @@ public class Animation extends Behavior {
     
     
     /**
-     * Initilizes an Animation Behavior for the given entity
+     * Initializes an Animation Behavior for the given entity
      * 
      * @param entity   The entity that has this behavior
      */
@@ -26,8 +26,8 @@ public class Animation extends Behavior {
             
             
         /* Get the entities animations */
-            animations = (HashMap<Attribute, GreenfootImage[]>) 
-                            entity.getAttributesType(Attribute.Type.ANIMATION);
+            animations = entity.getAttributesType(Attribute.Type.ANIMATION);
+            
         
     }// End one-argument constructor for Animation
     
@@ -57,7 +57,7 @@ public class Animation extends Behavior {
                     entity.setImage(images[step]);
                     
                     
-                /* Incriment the step variable */
+                /* Increment the step variable */
                     step++;
                     
                     
@@ -115,17 +115,17 @@ public class Animation extends Behavior {
                     }// End if(step>=images.length)
                     
                     
-                /* Check if the step has rached the first image and is going 'forth' */
+                /* Check if the step has reached the first image and is going 'forth' */
                     if(step==0){
                         
-                        /* Set the directon to 1 to go 'forth' and Incriment the counter */
+                        /* Set the direction to 1 to go 'forth' and Increment the counter */
                             direction = 1;
                             counter++;
                         
                     }// End if(step==0)
                     
                     
-                /* Incriment the step variable in the direction animating */
+                /* Increment the step variable in the direction animating */
                     step+=direction;
                 
             }// End else for if(step==-1)

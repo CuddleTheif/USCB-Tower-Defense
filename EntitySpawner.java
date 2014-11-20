@@ -1,5 +1,3 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Spawns entities at it's location
  * 
@@ -14,13 +12,13 @@ public class EntitySpawner extends Entity
     private int numEntities; // The number of possible entities this spawner can spawn
     
     /**
-     * Initilizes an EnemySpawner with the given entities to spawn
+     * Initializes an EnemySpawner with the given entities to spawn
      * 
      * @param entities   The entities to spawn (from weakest to strongest)
      */
     public EntitySpawner(Entity... entities){
         
-        /* Call the super class' consturctor to intilize behaviors and attributes */
+        /* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
             
@@ -35,7 +33,7 @@ public class EntitySpawner extends Entity
         /* Get and store the max number of possible entities */
             numEntities = entities.length;
             
-        /* Initilize time to zero */
+        /* Initialize time to zero */
             time = 0;
             
     }// End no-argument constructor for EnemySpawner
@@ -51,11 +49,11 @@ public class EntitySpawner extends Entity
         /* Check if it's spawning time */
             if(time%100==0){
                 
-                /* Spawn entites based on the time (later = more/harder entities) and max */
+                /* Spawn entities based on the time (later = more/harder entities) and max */
                     Spawner spawner = (Spawner) behaviors.get(Behavior.Type.SPAWNER);
                     for(int i=0;i<numEntities;i++){
                         
-                        /* Spawn enities of the current level based on time and their level */
+                        /* Spawn entities of the current level based on time and their level */
                             spawner.spawnfromArray(1, Attribute.SPAWNS, i);
                         
                     }// End for

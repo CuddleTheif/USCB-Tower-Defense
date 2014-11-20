@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 import java.util.List;
 import java.awt.Point;
 
@@ -16,8 +17,9 @@ public class Actors extends Actor{
      * @param cls   Class of objects to look for (passing 'null' will find all objects).
      * @return      all the objects that intersect this object
      */
-    @Override
-    public List getIntersectingObjects(java.lang.Class cls){
+    @SuppressWarnings({ "rawtypes" })
+	@Override
+    public List getIntersectingObjects(Class cls){
         
         /* Call the superclass' protected method with given values */
             return super.getIntersectingObjects(cls);
@@ -34,8 +36,9 @@ public class Actors extends Actor{
      * @param cls      Class of objects to look for (passing 'null' will find all objects)
      * @return         all objects within range 'radius' around this object
      */
-    @Override
-    public List getObjectsInRange(int radius, java.lang.Class cls){
+    @SuppressWarnings({ "rawtypes" })
+	@Override
+    public List getObjectsInRange(int radius, Class cls){
         
         /* Call the superclass' protected method with given values */
             return super.getObjectsInRange(radius, cls);
@@ -48,17 +51,19 @@ public class Actors extends Actor{
      * 
      * @param cls   The class of the actors to look for
      */
-    public Actor getClosestActor(Class cls){
+    @SuppressWarnings("rawtypes")
+	public Actor getClosestActor(Class cls){
         
         /* Get all objects in this actor's world */
-            List<Actor> actors = getWorld().getObjects(cls);
+            @SuppressWarnings("unchecked")
+			List<Actors> actors = getWorld().getObjects(cls);
             
             
-        /* Intilize Point variable to hold this actor's postion for easy distance calculations */
+        /* Initialize Point variable to hold this actor's position for easy distance calculations */
             Point postion = new Point(getX(), getY());
             
         /* 
-         * Intilize variable to hold the most current Actor that is the closest and
+         * Initialize variable to hold the most current Actor that is the closest and
          * set it equal to the first actor only if the first actor is not this one and
          * if it is set it equal to the second actor
          */
@@ -66,13 +71,13 @@ public class Actors extends Actor{
             
             
         /* 
-         * Intilize a variable to hold the currently closest distance from the closest 
+         * Initialize a variable to hold the currently closest distance from the closest 
          * actor to this one and set it equal to the distance between this and closestActor
          */
             double closestDistance = postion.distance(closestActor.getX(), closestActor.getY());
         
             
-        /* Check all of the actors postions */
+        /* Check all of the actors positions */
             for(int i=0;i<actors.size();i++){
                 
                 /* Check to make sure the current actor is not this actor */

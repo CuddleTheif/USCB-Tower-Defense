@@ -17,15 +17,15 @@ public class Road{
     
     
     /**
-     * Initlizes a road with the given starting postion, the given ending postion, and the given size of 
+     * Initializes a road with the given starting position, the given ending position, and the given size of 
      * road pieces,. Must run createRoad method to actually create the Road from 
      * road pieces.
      * 
      * @param size        The size of the road pieces
-     * @param xPosStart   The starting postion of the road on the x-axis
-     * @param yPosStart   The starting postion of the road on the y-axis
-     * @param xPosEnd     The ending postion of the road on the x-axis
-     * @param yPosEnd     The ending postion of the road on the y-axis
+     * @param xPosStart   The starting position of the road on the x-axis
+     * @param yPosStart   The starting position of the road on the y-axis
+     * @param xPosEnd     The ending position of the road on the x-axis
+     * @param yPosEnd     The ending position of the road on the y-axis
      */
     public Road(int size, int xPosStart, int yPosStart, int xPosEnd, int yPosEnd)
     {
@@ -40,7 +40,7 @@ public class Road{
             pieces = (int)Math.round((double)length/size)+1;
             
         
-        /* Intilize all class variables */
+        /* Initialize all class variables */
             this.size = size;
             this.xPosStart = xPosStart;
             this.yPosStart = yPosStart;
@@ -68,9 +68,9 @@ public class Road{
     
     
     /**
-     * Changes the X starting postion of the road
+     * Changes the X starting position of the road
      * 
-     * @param xPosStart   The new X starting postion of the road
+     * @param xPosStart   The new X starting position of the road
      */
     public void setXStartPostion(int xPosStart){
         
@@ -84,16 +84,16 @@ public class Road{
             length = (int) Math.sqrt(width*width+height*height);
             
             
-        /* Recreate the road with the new postion and size */
+        /* Recreate the road with the new position and size */
             createRoad();
             
     }// End method setXStartPostion
     
     
     /**
-     * Changes the Y starting postion of the road
+     * Changes the Y starting position of the road
      * 
-     * @param yPosStart   The new Y starting postion of the road
+     * @param yPosStart   The new Y starting position of the road
      */
     public void setYStartPostion(int yPosStart){
         
@@ -107,16 +107,16 @@ public class Road{
             length = (int) Math.sqrt(width*width+height*height);
             
             
-        /* Recreate the road with the new postion and size */
+        /* Recreate the road with the new position and size */
             createRoad();
             
     }// End method setYStartPostion
     
     
     /**
-     * Changes the X ending postion of the road
+     * Changes the X ending position of the road
      * 
-     * @param xPosEnd   The new X ending postion of the road
+     * @param xPosEnd   The new X ending position of the road
      */
     public void setXEndPostion(int xPosEnd){
         
@@ -130,16 +130,16 @@ public class Road{
             length = (int) Math.sqrt(width*width+height*height);
             
             
-        /* Recreate the road with the new postion and size */
+        /* Recreate the road with the new position and size */
             createRoad();
             
     }// End method setXEndPostion
     
     
     /**
-     * Changes the Y ending postion of the road
+     * Changes the Y ending position of the road
      * 
-     * @param yPosEnd   The new Y ending postion of the road
+     * @param yPosEnd   The new Y ending position of the road
      */
     public void setYEndPostion(int yPosEnd){
         
@@ -153,7 +153,7 @@ public class Road{
             length = (int) Math.sqrt(width*width+height*height);
             
             
-        /* Recreate the road with the new postion and size */
+        /* Recreate the road with the new position and size */
             createRoad();
             
     }// End method setYEndPostion
@@ -164,11 +164,11 @@ public class Road{
      */
     public void createRoad(){
         
-        /* Initlize the roadPieces again to "delete" the previous */
+        /* Initialize the roadPieces again to "delete" the previous */
             roadPieces = new RoadPiece[pieces];
         
         
-        /* Intilize varaibles for holding the "drawing" postion */
+        /* Initialize variables for holding the "drawing" position */
             int drawX = xPosStart;
             int drawY = yPosStart;
             
@@ -178,7 +178,7 @@ public class Road{
                 /* Create the current RoadPiece and set it's location */
                     roadPieces[piece] = new RoadPiece(size, drawX, drawY);
                     
-                /* Calculate the drawing x and y postion of the next RoadPiece */
+                /* Calculate the drawing x and y position of the next RoadPiece */
                     drawX += size*width/length;
                     drawY += size*height/length;
                 
