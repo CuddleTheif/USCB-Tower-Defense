@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/awetmore/Desktop/workspace/USCB Tower Defense/Greenfoot/bluejcore.jar"/>
-	<classpathentry kind="lib" path="C:/Users/awetmore/Desktop/workspace/USCB Tower Defense/Greenfoot/greenfoot.jar"/>
+	<classpathentry kind="lib" path="Greenfoot/bluejcore.jar"/>
+	<classpathentry kind="lib" path="Greenfoot/greenfoot.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
