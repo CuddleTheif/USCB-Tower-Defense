@@ -241,7 +241,7 @@ public class Entity extends Actors implements Cloneable{
                 /* Set the old class variable for behaviors to the given one */
                     this.behaviors = behaviors;
                 
-            }// End ifif(behaviors.size()==this.behaviors.size())
+            }// End if(behaviors.size()==this.behaviors.size())
         
     }// End method replaceAllBehaviors
     
@@ -259,7 +259,7 @@ public class Entity extends Actors implements Cloneable{
                 /* Set the old class variable for attributes to the given one */
                     this.attributes = attributes;
                 
-            }// End ifif(attributes.size()==this.attributes.size())
+            }// End if(attributes.size()==this.attributes.size())
         
     }// End method replaceAllAttributes
     
@@ -366,7 +366,7 @@ public class Entity extends Actors implements Cloneable{
      * 
      * @param radius         radius around the entity to look in
      * @param attribute      The attribute to check for
-     * @return               The List of entites found
+     * @return               The List of entities found
      */
     public List<Entity> getEntitiesInRange(int radius, Attribute attribute){
         

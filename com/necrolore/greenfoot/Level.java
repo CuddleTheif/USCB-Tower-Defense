@@ -14,7 +14,7 @@ import com.necrolore.road.PathShape;
 public class Level extends World{
 
     private Path path; // The current Path of the Level
-    private USCB uscb; // The current USCB Bulding of the Level
+    private USCB uscb; // The current USCB Building of the Level
     
     
     /**
@@ -36,7 +36,7 @@ public class Level extends World{
             path.addToWorld(this);
             
             
-        /* Create the Bulding */
+        /* Create the Building */
             uscb = new USCB(100, 50);
             addObject(uscb, 550, 50);
             
@@ -51,7 +51,7 @@ public class Level extends World{
             addObject(tower, 300, 75);
             
             
-    }// End zero-argument consturctor for USCB
+    }// End zero-argument constructor for USCB
     
     
     /**
@@ -68,9 +68,9 @@ public class Level extends World{
     
     
     /**
-     * Gets the current USCB Bulding of the Level
+     * Gets the current USCB Building of the Level
      * 
-     * @return   The current USCB Bulding of the Level
+     * @return   The current USCB Building of the Level
      */
     public USCB getUSCB(){
         

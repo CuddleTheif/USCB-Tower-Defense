@@ -19,17 +19,17 @@ public class Path{
     
     
     /**
-     * Initlize a path with the given junctions' postions and road piece size.
-     * Run createPath method to actualy create the path.
+     * Initialize a path with the given junctions' positions and road piece size.
+     * Run createPath method to actually create the path.
      * 
      * @param size      The size of the road pieces that make up the path
-     * @param xPoints   The junctions' postions on the x-axis
-     * @param yPoints   The junctions' postions on the y-axis
+     * @param xPoints   The junctions' positions on the x-axis
+     * @param yPoints   The junctions' positions on the y-axis
      */
     public Path(int size, int xPoints[], int yPoints[])
     {
         
-        /* Initlize class variables */
+        /* Initialize class variables */
             this.size = size;
             this.xPoints = xPoints;
             this.yPoints = yPoints;
@@ -39,15 +39,15 @@ public class Path{
     
     
     /**
-     * Initlizes a path with the given size, shape, staring point, and ending point.
+     * Initializes a path with the given size, shape, staring point, and ending point.
      * Run createPath method to actually create the path.
      * 
      * @param size   The size of the road pieces that make up the path
      * @param shape   The shape of the path
-     * @param startX   The starting postion of the path on the x-axis
-     * @param startY   The starting postion of the path on the y-axis
-     * @param endX     The ending postion of the path on the x-axis
-     * @param endY     The ending postion of the path on the y-axis
+     * @param startX   The starting position of the path on the x-axis
+     * @param startY   The starting position of the path on the y-axis
+     * @param endX     The ending position of the path on the x-axis
+     * @param endY     The ending position of the path on the y-axis
      */
     public Path(int size, PathShape shape, int startX, int startY, int endX, int endY){
         
@@ -55,19 +55,19 @@ public class Path{
             Point junctions[] = shape.getPoints(startX, startY, endX, endY);
             
         
-        /* Initlize class variables */
+        /* Initializes class variables */
             this.size = size;
             this.xPoints = new int[junctions.length];
             this.yPoints = new int[junctions.length];
             roads = new Road[xPoints.length-1];
             
         /* 
-         * Convert the points of the shape's conjuction to two arrays holding the x and y 
-         * coordiantes and store them into the class variables 
+         * Convert the points of the shape's conjunction to two arrays holding the x and y 
+         * coordinates and store them into the class variables 
          */
         for(int i=0;i<junctions.length;i++){
             
-            /* Get and store the current x and y postions */
+            /* Get and store the current x and y positions */
                 xPoints[i] = (int) junctions[i].getX();
                 yPoints[i] = (int) junctions[i].getY();
             
@@ -77,14 +77,14 @@ public class Path{
     
     
     /**
-     * Creates the Path from the path's current junction postions.
+     * Creates the Path from the path's current junction positions.
      */
     public void createPath(){
         
         /* Create each road that make up the path */
             for(int i=0;i<roads.length;i++){
                 
-                /* Initlize current road with the x and y postions */
+                /* Initialize current road with the x and y positions */
                     roads[i] = new Road(size,
                                     xPoints[i], yPoints[i],
                                     xPoints[i+1], yPoints[i+1]);
@@ -125,7 +125,7 @@ public class Path{
      */
     public RoadPiece getRoadPiece(int number){
         
-        /* Initlize variable to hold the wanted road piece */
+        /* Initializes variable to hold the wanted road piece */
             RoadPiece roadPiece = null;
         
             
@@ -180,8 +180,8 @@ public class Path{
      * Determines if the Road piece at the given number is at the given postion
      * 
      * @param number   The number of the road piece to look for
-     * @param xPos     The postion on the x-axis to look at
-     * @param yPos     The postion on the y-axis to look at
+     * @param xPos     The position on the x-axis to look at
+     * @param yPos     The position on the y-axis to look at
      * @return         If the road piece is at the given postion or not
      */
     public boolean isRoadPieceAt(int number, int xPos, int yPos){
@@ -190,7 +190,7 @@ public class Path{
             World world = getRoadPiece(0).getWorld();
             
             
-        /* Get the RoadPieces at the given postion */
+        /* Get the RoadPieces at the given position */
             @SuppressWarnings("unchecked")
 			List<RoadPiece> roadPieces = world.getObjectsAt(xPos, yPos, RoadPiece.class);
             
@@ -198,7 +198,7 @@ public class Path{
             RoadPiece roadPiece = getRoadPiece(number);
             
             
-        /* Return if the given road piece is at the given postion */
+        /* Return if the given road piece is at the given position */
             return roadPieces.contains(roadPiece);
         
     }// End method isRoadPieceAt
@@ -213,7 +213,7 @@ public class Path{
      */
     public int getRoadPieceNum(RoadPiece roadPiece){
         
-        /* Intilize a counter to count which number road piece is on */
+        /* Initializes a counter to count which number road piece is on */
             int counter = 0;
             
         /* Check each road to see which road the piece is in */
@@ -235,7 +235,7 @@ public class Path{
                             }// End if(roadPieces[piece]==roadPiece)
                         
                             
-                        /* Incriment the counter to count another road piece */
+                        /* Increment the counter to count another road piece */
                             counter++;
                             
                     }// End for(int piece=0;piece<roadPieces.length;piece++)

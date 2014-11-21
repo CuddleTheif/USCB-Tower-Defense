@@ -70,7 +70,7 @@ public class Animation extends Behavior {
                 /* Check if the step has reached the last image */
                     if(step>=images.length){
                         
-                        /* Reset the step variable and Incriment the counter of loops */
+                        /* Reset the step variable and Increment the counter of loops */
                             step = 0;
                             counter++;
                         

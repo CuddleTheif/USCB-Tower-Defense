@@ -10,7 +10,7 @@ import com.necrolore.road.Path;
 import com.necrolore.road.RoadPiece;
 
 /**
- * The Beahvior of an Entity to Move
+ * The Behavior of an Entity to Move
  * 
  * @author NecroTheif 
  * @version 2014.13.11
@@ -21,7 +21,7 @@ public class Movement extends Behavior {
     private Path path; // The path this entity is following
     
     /**
-     * Initilizes a Movement Behavior for the given entity
+     * Initializes a Movement Behavior for the given entity
      * 
      * @param entity   The entity that has this behavior
      */
@@ -47,7 +47,7 @@ public class Movement extends Behavior {
     public boolean moveAlongPath(Path path){
         
         /* 
-         * Intilize a varible to hold the road piece at the entity's postion and set it to 
+         * Initialize a variable to hold the road piece at the entity's position and set it to 
          * the road piece at the entity's position if there is one or set it to null if 
          * there isn't 
          */
@@ -95,7 +95,7 @@ public class Movement extends Behavior {
                             if(roadPiece.getX()==entity.getX() &&
                                 roadPiece.getY()==entity.getY()){
                                 
-                                /* Incriment the step variable to the next path step */
+                                /* Increment the step variable to the next path step */
                                     step++;
                                     
                             }// End if(roadPiece==path.getRoadPiece(step+1))
@@ -203,7 +203,7 @@ public class Movement extends Behavior {
             List<Entity> entities = entity.getEntitiesInRange(range, attribute);
             
             
-        /* Initilize a varible to hold the entites found on the path */
+        /* Initialize a variable to hold the entities found on the path */
             List<Entity> foundEntities = new ArrayList<Entity>();
             
             
@@ -263,7 +263,7 @@ public class Movement extends Behavior {
                     
                     
                 /* 
-                 * Intilize variables to hold the farthest entity on the path and how far it is
+                 * Initialize variables to hold the farthest entity on the path and how far it is
                  * and set them to the first entity on the list
                  */
                     Entity lastEntity = entities.get(0);

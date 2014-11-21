@@ -51,7 +51,8 @@ public class Combat extends Behavior
     
     
     private Maneuver defending; // If this entity is defending this is equal to it's level of defense
-    private int maxHealth, health, attack, defense; // The combat stats of this entity
+    @SuppressWarnings("unused")
+	private int maxHealth, health, attack, defense; // The combat stats of this entity
     
     
     /**
