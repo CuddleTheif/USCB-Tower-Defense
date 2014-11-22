@@ -51,8 +51,6 @@ public class Combat extends Behavior
     
     
     private Maneuver defending; // If this entity is defending this is equal to it's level of defense
-    @SuppressWarnings("unused")
-	private int maxHealth, health, attack, defense; // The combat stats of this entity
     
     
     /**
@@ -69,13 +67,9 @@ public class Combat extends Behavior
             super(entity);
         
         
-        /* Initialize and store the attributes for holding Health, Attack, and Defense */
-            this.maxHealth = maxHealth;
-            health = maxHealth;
-            this.attack = attack;
-            this.defense = defense;
+        /* Initialize and store the attributes for holding Health, Attack, And Defense */
             entity.setAttribute(Attribute.MAX_HP, maxHealth);
-            entity.setAttribute(Attribute.HP, health);
+            entity.setAttribute(Attribute.HP, maxHealth);
             entity.setAttribute(Attribute.ATK, attack);
             entity.setAttribute(Attribute.DEF, defense);
             
@@ -94,7 +88,9 @@ public class Combat extends Behavior
             
             
         /* Increase This Entity's Defense by the given level */
+            int defense = (int) entity.getAttribute(Attribute.DEF);
             defense += defense*defenseType.getMuti();
+            entity.setAttribute(Attribute.DEF, defense);
             
             
         /* Reset this entity's defense to the new value */
@@ -109,7 +105,9 @@ public class Combat extends Behavior
     public void stopDefending(){
             
         /* Calculate This Entity's Defense original defense with the defense level it had */
+        	int defense = (int) entity.getAttribute(Attribute.DEF);
             defense /= 1+defending.getMuti();
+            entity.setAttribute(Attribute.DEF, defense);
             
             
         /* Reset the entity's defense to it's original value */
@@ -160,11 +158,12 @@ public class Combat extends Behavior
             
             
         /* Get the attack of this entity with the given attack type */
-            int totAttack = (int) (attack*attackType.getMuti());
+            int attack = (int) entity.getAttribute(Attribute.DEF);
+            attack *= attackType.getMuti();
             
             
         /* Calculate and Do the damage to the health of the target entity (reducing it to a min of 0) */
-            int damage = totAttack-targetDefense;
+            int damage = attack-targetDefense;
             damage = damage<0 ? 0 : damage;
             targetHealth -= damage;
             targetHealth = targetHealth<0 ? 0 : targetHealth;
