@@ -54,24 +54,14 @@ public class Combat extends Behavior
     
     
     /**
-     * Initialize a Combat Behavior for the given entity with the given max health, attack, and defense
+     * Initialize a Combat Behavior for the given entity
      * 
      * @param entity      The entity that has this behavior
-     * @param maxHealth   The max health of the entity
-     * @param attack      The attack of the entity
-     * @param defense     The defense of the entity
      */
-    public Combat(Entity entity, int maxHealth, int attack, int defense){
+    public Combat(Entity entity){
         
         /* Call the superclass' constructor to store the given entity */
             super(entity);
-        
-        
-        /* Initialize and store the attributes for holding Health, Attack, And Defense */
-            entity.setAttribute(Attribute.MAX_HP, maxHealth);
-            entity.setAttribute(Attribute.HP, maxHealth);
-            entity.setAttribute(Attribute.ATK, attack);
-            entity.setAttribute(Attribute.DEF, defense);
             
     }// End no-argument constructor for Combat
     
@@ -82,20 +72,25 @@ public class Combat extends Behavior
      * @param defenseType   The level of defense to start.
      */
     public void startDefending(Maneuver defenseType){
-        
-        /* Set defending to the given defend type to store the defense Type */
-            defending = defenseType;
-            
-            
-        /* Increase This Entity's Defense by the given level */
-            int defense = (int) entity.getAttribute(Attribute.DEF);
-            defense += defense*defenseType.getMuti();
-            entity.setAttribute(Attribute.DEF, defense);
-            
-            
-        /* Reset this entity's defense to the new value */
-            entity.setAttribute(Attribute.DEF, defense);
-        
+    	
+    	/* Make sure the entity has defense to defend with */
+    		if(entity.hasAttribute(Attribute.DEF)){
+    			
+    			/* Set defending to the given defend type to store the defense Type */
+	                defending = defenseType;
+	                
+	                
+	            /* Increase This Entity's Defense by the given level */
+	                int defense = (int) entity.getAttribute(Attribute.DEF);
+	                defense += defense*defenseType.getMuti();
+	                entity.setAttribute(Attribute.DEF, defense);
+	                
+	                
+	            /* Reset this entity's defense to the new value */
+	                entity.setAttribute(Attribute.DEF, defense);
+    			
+    		}// End if(entity.hasAttribute(Attribute.DEF))
+    		
     }// End method startDefending
     
     
@@ -103,20 +98,25 @@ public class Combat extends Behavior
      * Decrease defense back to normal and can attack now
      */
     public void stopDefending(){
-            
-        /* Calculate This Entity's Defense original defense with the defense level it had */
-        	int defense = (int) entity.getAttribute(Attribute.DEF);
-            defense /= 1+defending.getMuti();
-            entity.setAttribute(Attribute.DEF, defense);
-            
-            
-        /* Reset the entity's defense to it's original value */
-            entity.setAttribute(Attribute.DEF, defense);
-        
-        
-        /* Reset the defending variable to null to indicate no longer defending */
-            defending = null;
-        
+    	
+    	/* Make sure the entity was defending so it can stop */
+    		if(defending!=null){
+    			
+    			/* Calculate This Entity's Defense original defense with the defense level it had */
+	            	int defense = (int) entity.getAttribute(Attribute.DEF);
+	                defense /= 1+defending.getMuti();
+	                entity.setAttribute(Attribute.DEF, defense);
+	                
+	                
+	            /* Reset the entity's defense to it's original value */
+	                entity.setAttribute(Attribute.DEF, defense);
+	            
+	            
+	            /* Reset the defending variable to null to indicate no longer defending */
+	                defending = null;
+    			
+    		}// End if(defending!=null)
+    		
     }// End method stopDefending
     
     
@@ -125,12 +125,16 @@ public class Combat extends Behavior
      * 
      * @param targetEntity   The entity to attack
      * @param attackType     The type of attack to use
-     * @return               If the attack was succesful
+     * @return               If the attack was successful
      */
     public boolean attackEntity(Entity targetEntity, Maneuver attackType){
-        
-        /* Make sure the entity being attacked has health and this entity is not defending */
-            if(!targetEntity.hasAttribute(Attribute.HP) || defending!=null){
+    	
+        /* 
+         * Make sure the entity being attacked has health, this entity is not 
+         * defending and this entity has attack
+         */
+            if(!targetEntity.hasAttribute(Attribute.HP) || defending!=null 
+            		|| !entity.hasAttribute(Attribute.ATK)){
                 
                 /* Return false because the entity can't be attacked */
                     return false;
@@ -140,25 +144,17 @@ public class Combat extends Behavior
             
             
         /* 
-         * Get the current Health of the entity being attacked and intilize a varible 
-         * to hold it's defense 
+         * Get the current Health of the entity being attacked and Get the current
+         * Defense of the entity being attacked if it has one
          */
             int targetHealth = (Integer) targetEntity.getAttribute(Attribute.HP);
-            int targetDefense = 0;
-            
-            
-        /* Check to see if the entity being attacked has a defense */
-            if(targetEntity.hasAttribute(Attribute.DEF)){
-                
-                /* Get the targets defense and store it */
-                    targetDefense = (Integer) targetEntity.getAttribute(Attribute.DEF);
-                    
-                
-            }// End if(targetEntity.hasAttribute(Entity.Attribute.DEF))
+            int targetDefense = targetEntity.hasAttribute(Attribute.DEF) ? 
+            						(Integer) targetEntity.getAttribute(Attribute.DEF) : 0;
             
             
         /* Get the attack of this entity with the given attack type */
-            int attack = (int) entity.getAttribute(Attribute.DEF);
+            int attack = entity.hasAttribute(Attribute.ATK) ? 
+            				(Integer) entity.getAttribute(Attribute.ATK) : 0;
             attack *= attackType.getMuti();
             
             

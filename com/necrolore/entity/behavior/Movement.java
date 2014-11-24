@@ -315,7 +315,7 @@ public class Movement extends Behavior {
                     
                     
                 /* Check to see if it has reached the entity yet */
-                    return entity.getObjectsInRange(25-entity.getImage().getWidth(), target.getClass()).contains(target);
+                    return entity.intersects(target);
                 
             }// End else for if(step==-1)
         

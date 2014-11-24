@@ -28,6 +28,22 @@ public class Actors extends Actor{
     }// End method getIntersectingObjects
     
     
+    
+    /**
+     * Check whether this object intersects with another given object.
+     * 
+     * @param other   Actor to check for
+     * @return        True if the object's intersect, false otherwise.
+     */
+	@Override
+    public boolean intersects(Actor other){
+        
+        /* Call the superclass' protected method with given values */
+            return super.intersects(other);
+        
+    }// End method intersects
+    
+    
     /**
      * Return all objects within range 'radius' around this object. An object is within 
      * range if the distance between its centre and this object's centre is less than or 

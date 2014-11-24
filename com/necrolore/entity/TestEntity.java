@@ -31,11 +31,13 @@ public class TestEntity extends Entity{
             
         /* Create and Add the TestEntity's Behaviors */
             behaviors.put(Behavior.Type.MOVEMENT, new Movement(this));
-            behaviors.put(Behavior.Type.COMBAT, new Combat(this, 20, 10, 0));
+            behaviors.put(Behavior.Type.COMBAT, new Combat(this));
         
             
         /* Add the TestEntity's Attributes */
             attributes.put(Attribute.ENEMY, true);
+            attributes.put(Attribute.HP, 20);
+            attributes.put(Attribute.ATK, 10);
         
     }// End no-argument constructor
     
@@ -50,7 +52,7 @@ public class TestEntity extends Entity{
                 ((Combat)behaviors.get(Behavior.Type.COMBAT)).attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
                 getWorld().removeObject(this);
             }
-            
+
         /* If the entity is dead remove it */
             if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);
     }    

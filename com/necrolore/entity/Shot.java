@@ -56,7 +56,11 @@ public class Shot extends Entity
         /* Initialize and store the Animation and Movement and Combat Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
             behaviors.put(Behavior.Type.MOVEMENT, new Movement(this));
-            behaviors.put(Behavior.Type.COMBAT, new Combat(this, 0, 10, 0));
+            behaviors.put(Behavior.Type.COMBAT, new Combat(this));
+            
+            
+        /* Initialize combat attributes */
+            attributes.put(Attribute.ATK, 10);
         
     }// End no-argument constructor for Shot
     
@@ -82,7 +86,7 @@ public class Shot extends Entity
                         
                         /* Get all the entities the entity is touching */
                             @SuppressWarnings("unchecked")
-							List<Entity> entities = getObjectsInRange(25-getImage().getWidth(), Entity.class);
+							List<Entity> entities = getIntersectingObjects(Entity.class);
                     
                         
                         /* Attack the entities it is touching */
