@@ -1,5 +1,7 @@
 package com.necrolore.entity;
 
+import java.awt.Point;
+
 import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Behavior;
@@ -25,19 +27,23 @@ public class EntitySpawner extends Entity
      */
     public EntitySpawner(Entity... entities){
         
-        /* Call the super class' constructor to initialize behaviors and attributes */
+    	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
             
         /* Set this objects' image */
             setImage(new GreenfootImage("images/Transparent.gif"));
             
-        /* Give this entity the Spawner Behavior */
+        /* Give this entity the Spawner Behavior*/
             behaviors.put(Behavior.Type.SPAWNER, new Spawner(this));
             
             
-        /* Give this entity an attribute holding the spawning entities */
+        /* 
+         * Give this entity an attribute holding the spawning entities
+         * and one holding this entity's position
+         */
             attributes.put(Attribute.SPAWNS, entities);
+            attributes.put(Attribute.POSTION, new Point(0,0));
             
             
         /* Get and store the max number of possible entities */

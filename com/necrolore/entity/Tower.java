@@ -22,7 +22,7 @@ public class Tower extends Entity
      */
     public Tower(int range, int cooldown){
         
-        /* Call the superclass' constructor to Initialize behavior and attribute variables */
+    	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
         

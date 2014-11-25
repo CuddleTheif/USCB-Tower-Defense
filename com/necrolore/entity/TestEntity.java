@@ -20,7 +20,7 @@ public class TestEntity extends Entity{
      */
     public TestEntity(){
         
-        /* Call the superclass' constructor to Initialize Behaviors and Attributes */
+    	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
             

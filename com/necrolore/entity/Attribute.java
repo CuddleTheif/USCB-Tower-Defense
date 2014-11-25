@@ -7,10 +7,11 @@ package com.necrolore.entity;
  */
 public enum Attribute{
     
-    MAX_HP(Type.COMBAT), HP(Type.COMBAT), ATK(Type.COMBAT), DEF(Type.COMBAT), 
-        DEATH_ANIMATION(Type.ANIMATION), DEATH_SOUND(Type.ANIMATION), SPAWNS(Type.SPAWN),
-        ENEMY(Type.TARGET), RANGE(Type.OTHER), MAX_COOLDOWN(Type.OTHER), CUR_COOLDOWN(Type.OTHER),
-        DIE(Type.OTHER);
+    MAX_HP(Type.COMBAT), HP(Type.COMBAT), ATK(Type.COMBAT), DEF(Type.COMBAT),
+        DEATH_ANIMATION(Type.ANIMATION), DEATH_SOUND(Type.ANIMATION), ENEMY(Type.TARGET),
+        SPAWNS(Type.OTHER), MAX_COOLDOWN(Type.OTHER), CUR_COOLDOWN(Type.OTHER),
+        RANGE(Type.OTHER), DIE(Type.OTHER), ENTITY(Type.OTHER), HITBOX(Type.OTHER),
+        POSTION(Type.OTHER), VERTEXES(Type.OTHER);
     
         
     /**
@@ -18,7 +19,7 @@ public enum Attribute{
      */
     public enum Type{
         
-        COMBAT, ANIMATION, SPAWN, TARGET, OTHER;
+        COMBAT, ANIMATION, TARGET, OTHER;
         
     }// End enum Type
     

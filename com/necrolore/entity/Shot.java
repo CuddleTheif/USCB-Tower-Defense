@@ -25,7 +25,7 @@ public class Shot extends Entity
      */
     public Shot(int range){
         
-        /* Call the superclass' constructor to initialize behavior and attribute variables */
+    	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
         /* Set this objects' image */

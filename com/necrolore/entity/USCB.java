@@ -20,7 +20,7 @@ public class USCB extends Entity{
      */
     public USCB(int maxHealth, int size){
         
-        /* Call the superclass' constructor to initialize behavior and attribute variables */
+    	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
             
             
