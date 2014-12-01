@@ -1,6 +1,7 @@
 package com.necrolore.entity;
 
 import java.awt.Point;
+import java.util.Vector;
 
 /**
  * Shape with the given vertexes that can be used to detect collisions with other Hitboxes
@@ -70,5 +71,109 @@ public class Hitbox extends Entity {
 			attributes.put(Attribute.VERTEXES, vertexes);
 		
 	}// End three-argument constructor for Hitbox
+	
+	
+	/**
+	 * Gets the axes of this hitbox
+	 * 
+	 * @return   The axes of this hitbox
+	 */
+	public Point[] getAxes(){
+		
+		/* Get the vertexes of this hitbox */
+			Point vertexes[] = (Point[]) attributes.get(Attribute.VERTEXES);
+		
+			
+		/* Initialize variable for holding the axes of this hitbox */
+			Point[] axes = new Point[vertexes.length];
+		
+		for (int i=0;i<axes.length;i++){
+		
+		  /* Get the next vertex */
+		  	Point nextVertex = vertexes[i+1==vertexes.length ? 0:i+1];
+		
+		
+		  /* Subtract the two and get the perpendicular vector */
+		  	int xVal = (int) (vertexes[i].getX()-nextVertex.getX());
+		  	int yVal = (int) (vertexes[i].getY()-nextVertex.getY());
+		  	axes[i] = new Point(-yVal, xVal);
+		  	
+		}// End for (int i=0;i<axes.length;i++)
+
+		
+		return axes;
+		
+	}// End method getAxes
+	
+	
+	/**
+	 * Gets the projection on the given axis of this hitbox
+	 * 
+	 * @param axis   Axis to check for
+	 * @return       The projection of this hitbox on the axis
+	 */
+	public Point getProjection(Point axis){
+		
+		/* Initialize variables for holding the min and max projections */
+			Point[] vertexes = (Point[]) attributes.get(Attribute.VERTEXES);
+			double min = axis.dot(vertexes[0]);
+			double max = min;
+			
+			
+		/* Find the min and max points */
+			for (int i=1;i<vertexes.length;i++){
+				
+				/* Do the dot * of the point and the axes to find the projection */
+					double p = axis.dot(vertexes[i]);
+				
+				
+				/* Check the projection to see if it's the new min or max */
+					if(p<min) min = p;
+					if(p>max) max = p;
+				
+			}// End for (int i=1;i<vertexes.length;i++)
+			
+			
+		/* Return the projection of this hitbox */
+			return new Point((int)min, (int)max);
+			
+	}// End method getOverlap
+	
+	
+	/**
+	 * Checks if this hitbox intersects the given hitbox
+	 * 
+	 * @param hitbox   The hitbox to check for intersection
+	 * @return         If the hitboxs intersect each other or not
+	 */
+	public boolean intersects(Hitbox hitbox){
+		
+		/* Get the axes between these two hitboxes */
+			Point axes1[] = getAxes();
+			Point axes2[] = hitbox.getAxes();
+			Point allAxes[] = new Point[axes1.length+axes2.length];
+			System.arraycopy(axes1, 0, allAxes, 0, axes1.length);
+			System.arraycopy(axes2, 0, allAxes, axes1.length, axes2.length);
+			
+			
+		/* Check every projection to see if any don't overlap */
+			for (int i=0;i<allAxes.length;i++){
+				  
+				  /* Get both HitBoxes Projections onto the current axis */
+				  Point p1 = projectionOn(allAxes[i]);
+				  Point p2 = hitbox.projectionOn(allAxes[i]);
+				  
+				  /* Check to see if the projections overlap */
+				  if (!p1.overlap(p2)) return false;
+				  
+				}// End for (int i=0;i<allAxes.length;i++)
+
+		
+		
+		/* Since every projection overlaps they intersect */
+			return true;
+		
+	}// End method intersects
+	
 	
 }// End class Hitbox

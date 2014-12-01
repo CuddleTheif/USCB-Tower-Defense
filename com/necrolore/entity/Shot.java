@@ -1,6 +1,7 @@
 package com.necrolore.entity;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+import java.awt.Point;
 import java.util.List;
 
 import com.necrolore.entity.behavior.Animation;
@@ -61,6 +62,9 @@ public class Shot extends Entity
             
         /* Initialize combat attributes */
             attributes.put(Attribute.ATK, 10);
+            attributes.put(Attribute.POSTION, new Point(0 ,0));
+            Point vertexes[] = {new Point(-16,4), new Point(16,4), new Point(-16,-4), new Point(16,-4)};
+            attributes.put(Attribute.HITBOX, new Hitbox(this, vertexes));
         
     }// End no-argument constructor for Shot
     
@@ -70,7 +74,10 @@ public class Shot extends Entity
      */
     public void act() 
     {
+    	/* Update the Hitbox's postion */
+    		attributes.replace(Attribute.POSTION, new Point(getX() ,getY()));
         
+    		
         /* Get Movement Behavior to move towards the closest Entity */
             Movement movement = (Movement)behaviors.get(Behavior.Type.MOVEMENT);
             
@@ -120,6 +127,10 @@ public class Shot extends Entity
                     }// End if(doneAni)
                     
             }// End else if((Boolean)attributes.get(Attribute.DIE))
+            
+            
+        /* Update the HitBox's position */
+            attributes.replace(Attribute.POSTION, new Point(getX() ,getY()));
             
     }// End method act
 }

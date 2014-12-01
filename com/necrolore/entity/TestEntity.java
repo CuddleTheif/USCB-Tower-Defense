@@ -1,5 +1,7 @@
 package com.necrolore.entity;
 
+import java.awt.Point;
+
 import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Behavior;
@@ -38,6 +40,9 @@ public class TestEntity extends Entity{
             attributes.put(Attribute.ENEMY, true);
             attributes.put(Attribute.HP, 20);
             attributes.put(Attribute.ATK, 10);
+            attributes.put(Attribute.POSTION, new Point(0 ,0));
+            Point vertexes[] = {new Point(-25,25), new Point(25,25), new Point(-25,-25), new Point(25,-25)};
+            attributes.put(Attribute.HITBOX, new Hitbox(this, vertexes));
         
     }// End no-argument constructor
     
@@ -47,6 +52,8 @@ public class TestEntity extends Entity{
      */
     public void act() 
     {
+
+        attributes.replace(Attribute.POSTION, new Point(getX() ,getY()));
         /* Follow the path */
             if(((Movement)behaviors.get(Behavior.Type.MOVEMENT)).moveAlongPath(((Level)getWorld()).getPath())){
                 ((Combat)behaviors.get(Behavior.Type.COMBAT)).attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
@@ -55,5 +62,7 @@ public class TestEntity extends Entity{
 
         /* If the entity is dead remove it */
             if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);
+            
+        attributes.replace(Attribute.POSTION, new Point(getX() ,getY()));
     }    
 }
