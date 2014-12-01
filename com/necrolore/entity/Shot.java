@@ -92,7 +92,6 @@ public class Shot extends Entity
                     (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY)){
                         
                         /* Get all the entities the entity is touching */
-                            @SuppressWarnings("unchecked")
 							List<Entity> entities = getIntersectingObjects(Entity.class);
                     
                         

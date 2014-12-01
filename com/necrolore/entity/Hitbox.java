@@ -93,10 +93,14 @@ public class Hitbox extends Entity {
 		  	Point nextVertex = vertexes[i+1==vertexes.length ? 0:i+1];
 		
 		
-		  /* Subtract the two and get the perpendicular vector */
+		  /* Subtract the two points to get the normal vector */
 		  	int xVal = (int) (vertexes[i].getX()-nextVertex.getX());
 		  	int yVal = (int) (vertexes[i].getY()-nextVertex.getY());
-		  	axes[i] = new Point(-yVal, xVal);
+		  	
+		  	
+	  	/* Get the perpendicular vector and normalize it */
+		  	double length = Math.sqrt(xVal*xVal+yVal*yVal);
+		  	axes[i] = new Point((int)(-yVal/length), (int)(xVal/length));
 		  	
 		}// End for (int i=0;i<axes.length;i++)
 
@@ -116,20 +120,20 @@ public class Hitbox extends Entity {
 		
 		/* Initialize variables for holding the min and max projections */
 			Point[] vertexes = (Point[]) attributes.get(Attribute.VERTEXES);
-			double min = axis.dot(vertexes[0]);
+			double min = axis.getX()*vertexes[0].getX()+axis.getY()*vertexes[0].getY();
 			double max = min;
 			
 			
 		/* Find the min and max points */
 			for (int i=1;i<vertexes.length;i++){
 				
-				/* Do the dot * of the point and the axes to find the projection */
-					double p = axis.dot(vertexes[i]);
+				/* Do the dot product of the point and the axes to find the projection */
+					double projection = axis.getX()*vertexes[i].getX()+axis.getY()*vertexes[i].getY();
 				
 				
 				/* Check the projection to see if it's the new min or max */
-					if(p<min) min = p;
-					if(p>max) max = p;
+					if(projection<min) min = projection;
+					if(projection>max) max = projection;
 				
 			}// End for (int i=1;i<vertexes.length;i++)
 			
@@ -160,11 +164,11 @@ public class Hitbox extends Entity {
 			for (int i=0;i<allAxes.length;i++){
 				  
 				  /* Get both HitBoxes Projections onto the current axis */
-				  Point p1 = projectionOn(allAxes[i]);
-				  Point p2 = hitbox.projectionOn(allAxes[i]);
+				  	Point p1 = getProjection(allAxes[i]);
+				  	Point p2 = hitbox.getProjection(allAxes[i]);
 				  
 				  /* Check to see if the projections overlap */
-				  if (!p1.overlap(p2)) return false;
+				  	if (p1.getX()>p2.getY() || p2.getX()>p1.getY()) return false;
 				  
 				}// End for (int i=0;i<allAxes.length;i++)
 
