@@ -1,7 +1,5 @@
 package com.necrolore.entity;
 
-import java.awt.Point;
-
 import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Behavior;
@@ -43,7 +41,6 @@ public class EntitySpawner extends Entity
          * and one holding this entity's position
          */
             attributes.put(Attribute.SPAWNS, entities);
-            attributes.put(Attribute.POSTION, new Point(0,0));
             
             
         /* Get and store the max number of possible entities */

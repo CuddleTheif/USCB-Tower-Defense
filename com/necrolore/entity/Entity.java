@@ -1,5 +1,4 @@
 package com.necrolore.entity;
-import greenfoot.Actor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -400,51 +399,6 @@ public class Entity extends Actors implements Cloneable{
             return foundEntities;
         
     }// End method getObjectsInRange
-    
-    
-    /**
-     * Return all the objects that intersect this object. This takes the graphical extent of objects into consideration. 
-     * 
-     * @param cls   Class of objects to look for (passing 'null' will find all objects).
-     * @return      all the objects that intersect this object
-     */
-	@SuppressWarnings("rawtypes")
-	@Override
-    public List<Entity> getIntersectingObjects(Class cls){
-		
-		/* Make sure this entity has a HitBox to check intersection with */
-			if(!attributes.containsKey(Attribute.HITBOX))return null;
-        
-			
-        /* Get all the objects in the world of the given class */
-			List objects = getWorld().getObjects(cls);
-			
-			
-		/* Initialize variable to hold all found entities with hitboxes that intersect */
-			List<Entity> foundEntities = new ArrayList<Entity>();
-			
-			
-		/* Determine all the objects in the world that are entities with Hitboxes that intersect this one's */
-			for(Object object : objects){
-				
-				/* Check the current object to see if it's an entity and has a hitbox and it intersects this ones's  */
-					if(object instanceof Entity && 
-							((Entity)object).hasAttribute(Attribute.HITBOX) &&
-							((Hitbox)((Entity)object).getAttribute(Attribute.HITBOX))
-							.intersects((Hitbox)attributes.get(Attribute.HITBOX))){
-						
-						/* Add the current Entity to the found entities */
-							foundEntities.add((Entity)object);
-						
-					}// End if(object instanceof Entity &&...
-				
-			}// End for(Object object : objects)
-			
-			
-		/* Return the found entities */
-            return foundEntities;
-        
-    }// End method getIntersectingObjects
     
     
     /**
