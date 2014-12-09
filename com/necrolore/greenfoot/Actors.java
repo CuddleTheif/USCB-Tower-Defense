@@ -194,25 +194,25 @@ public abstract class Actors extends Actor{
     		int x = getX()-getImage().getWidth()/2;
     		int y = getY()-getImage().getHeight()/2;
     		vertexes[0] = new Point(x,y);
-    		rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
+    		//rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
     		
     		
 		/* Get the top-right of this actors' image and rotate it to the image */
     		x = getX()+getImage().getWidth()/2;
     		vertexes[1] = new Point(x,y);
-    		rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
+    		//rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
     		
     		
 		/* Get the bottom-right of this actors' image and rotate it to the image */
     		y = getY()+getImage().getHeight()/2;
     		vertexes[2] = new Point(x,y);
-    		rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
+    		//rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
     		
 		
 		/* Get the bottom-left of this actors' image and rotate it to the image */
     		x = getX()-getImage().getWidth()/2;
     		vertexes[3] = new Point(x,y);
-    		rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
+    		//rotatePoint(vertexes[0], new Point(getX(), getY()), Math.toRadians(getRotation()));
     		
     		
 		/* Return the vertexes found */
@@ -221,29 +221,29 @@ public abstract class Actors extends Actor{
     }// End method getVertexes
     
     
-    /**
-     * Rotates the first given point about the second given point
-     * 
-     * @param point1     The point to rotate
-     * @param point2     The point to rotate about
-     * @param rotation   The amount to rotate (in radians)
-     */
-    private void rotatePoint(Point point1, Point point2, double rotation){
-    	
-    	/* Translate to origin to rotate */
-    		point1.translate(-(int)point2.getX(), -(int)point2.getX());
-    		
-    		
-		/* Multiply the x and y coordinate by cos and sin of the angle, respectively, to get the new x and y */
-    		int x = (int) (point1.getX()*Math.cos(rotation));
-    		int y = (int) (point1.getY()*Math.sin(rotation));
-    		point1.setLocation(x, y);
-    		
-    		
-		/* Translate back to final postion */
-    		point1.translate((int)point2.getX(), (int)point2.getX());
-    	
-    }// End method rotatePoint
+//    /**
+//     * Rotates the first given point about the second given point
+//     * 
+//     * @param point1     The point to rotate
+//     * @param point2     The point to rotate about
+//     * @param rotation   The amount to rotate (in radians)
+//     */
+//    private void rotatePoint(Point point1, Point point2, double rotation){
+//    	
+//    	/* Translate to origin to rotate */
+//    		point1.translate(-(int)point2.getX(), -(int)point2.getX());
+//    		
+//    		
+//		/* Multiply the x and y coordinate by cos and sin of the angle, respectively, to get the new x and y */
+//    		int x = (int) (point1.getX()*Math.cos(rotation));
+//    		int y = (int) (point1.getY()*Math.sin(rotation));
+//    		point1.setLocation(x, y);
+//    		
+//    		
+//		/* Translate back to final postion */
+//    		point1.translate((int)point2.getX(), (int)point2.getX());
+//    	
+//    }// End method rotatePoint
 	
 	
 	/**
@@ -304,6 +304,8 @@ public abstract class Actors extends Actor{
      * Act - do whatever the Actors wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public abstract void act();
-    
+    public void act() 
+    {
+        // Add your action code here.
+    }    
 }

@@ -15,7 +15,7 @@ import com.necrolore.greenfoot.Actors;
  * @author NecroTheif
  * @version 2014.12.11
  */
-public class Entity extends Actors implements Cloneable{
+public abstract class Entity extends Actors implements Cloneable{
     
     protected HashMap<Behavior.Type, Behavior> behaviors; // The behaviors of the Entity
     protected HashMap<Attribute, Object> attributes; // The attributes of the Entity
@@ -427,9 +427,6 @@ public class Entity extends Actors implements Cloneable{
     /**
      * A default Entity doesn't act. So this is left empty
      */
-    public void act() 
-    {
-        
-    }// End method act
+    public abstract void act();
     
 }// End class Entity

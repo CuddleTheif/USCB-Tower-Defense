@@ -4,6 +4,7 @@ import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Spawner;
 import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.greenfoot.Level;
 
 /**
  * A Tower that shots out shots when enemy's are in it's range
@@ -11,8 +12,10 @@ import com.necrolore.entity.behavior.Behavior;
  * @author NecroTheif
  * @version 2014.16.11
  */
-public class Tower extends Entity
+public abstract class Tower extends Entity
 {
+	public static final int WIDTH=Level.WORLD_WIDTH/20;
+	public static final int HEIGHT=Level.WORLD_HEIGHT/10;
     
     /**
      * Creates a Tower with the given range, cooldown, and spawns
@@ -29,6 +32,7 @@ public class Tower extends Entity
         
         /* Set this objects' image */
             setImage(new GreenfootImage("images/Tower.png"));
+            getImage().scale(WIDTH, HEIGHT);
             
             
         /* Store the given range and cooldown as attributes */
@@ -51,41 +55,6 @@ public class Tower extends Entity
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-    	
-    	/* Make sure the game is not paused */
-			if(pause)return;
-		
-    	
-        /* Check to see if the tower is not in cooldown */
-            if((Integer)attributes.get(Attribute.CUR_COOLDOWN)==0){
-                
-                /* Get this tower's range */
-                   int range =  (Integer) attributes.get(Attribute.RANGE);
-                
-                
-                /* Test to see if there is an enemy is this tower's range */
-                    if(getEntitiesInRange(range, Attribute.ENEMY).size()!=0){
-                        
-                        /* Spawn a shot that will attack the entity */
-                            Spawner spawner = (Spawner) behaviors.get(Behavior.Type.SPAWNER);
-                            spawner.spawn(1, Attribute.SPAWNS);
-                            
-                        /* Set the cooldown to max */
-                            int maxCooldown = (Integer) attributes.get(Attribute.MAX_COOLDOWN);
-                            attributes.replace(Attribute.CUR_COOLDOWN, maxCooldown);
-                        
-                    }// End if(hasEntityInRange(range, Attribute.ENEMY))
-                    
-            }// End if(attributes.get(Attribute.CUR_COOLDOWN)==0)
-            else{
-                
-                /* Reduce the cooldown by one */
-                    int cooldown = (Integer) attributes.get(Attribute.CUR_COOLDOWN);
-                    attributes.replace(Attribute.CUR_COOLDOWN, --cooldown);
-                
-            }// End else for if(attributes.get(Attribute.CUR_COOLDOWN)==0)
-    }// End method act
+    public abstract void act();
     
 }// End class Tower

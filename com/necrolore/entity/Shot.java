@@ -1,6 +1,7 @@
 package com.necrolore.entity;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+import java.awt.Point;
 import java.util.List;
 
 import com.necrolore.entity.behavior.Animation;
@@ -21,9 +22,10 @@ public class Shot extends Entity
     /**
      * Initializes a shot entity that targets enemy's in it's given range
      * 
-     * @param   The range of this shot
+     * @param range    The range of this shot
+     * @param attack   The attack of this shot
      */
-    public Shot(int range){
+    public Shot(int range, int attack){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -60,7 +62,7 @@ public class Shot extends Entity
             
             
         /* Initialize combat attributes */
-            attributes.put(Attribute.ATK, 10);
+            attributes.put(Attribute.ATK, attack);
         
     }// End no-argument constructor for Shot
     
@@ -89,8 +91,8 @@ public class Shot extends Entity
                         /* Get all the entities the entity is touching */
 							@SuppressWarnings("unchecked")
 							List<Entity> entities = getIntersectingObjects(Entity.class);
-                    
-                        
+							
+							
                         /* Attack the entities it is touching */
                             Combat combat = (Combat)behaviors.get(Behavior.Type.COMBAT);
                             for(int i=0;i<entities.size();i++){

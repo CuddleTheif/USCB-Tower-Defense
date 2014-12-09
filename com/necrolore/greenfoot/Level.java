@@ -22,8 +22,9 @@ public class Level extends World{
     private ArrayList<Tower> towers = new ArrayList<Tower>(); // The towers on the current level
     private Range range; // The current range of the currently selected tower
     private PauseButton pause; // The pause button
-    private final static int WORLD_HEIGHT = 400; // The height of the world
-    private final static int WORLD_WIDTH = 600; // The width of the world
+    private TowerMenu towerMenu; // THe tower menu for buying towers
+    public final static int WORLD_HEIGHT = 400; // The height of the world
+    public final static int WORLD_WIDTH = 600; // The width of the world
     
     
     /**
@@ -42,6 +43,7 @@ public class Level extends World{
             
         /* Create pause button, tower menu, and money display */
             pause = new PauseButton(WORLD_WIDTH, WORLD_HEIGHT);
+            towerMenu = new TowerMenu(new Tower[]{new Nursing(75, 50, 10)}, new String[]{" 15"});
             
             
         /* Create Road, Building, EntitySpawner, tower, and range objects */
@@ -49,7 +51,7 @@ public class Level extends World{
             path.createPath();
             uscb = new USCB(100, 50);
             spawners[0] = new EntitySpawner(new Bee());
-            towers.add(new Tower(75, 50, new Shot(75)));
+            towers.add(new Nursing(75, 50, 10));
             range = new Range();
             
             
@@ -68,7 +70,7 @@ public class Level extends World{
             
             
         /* Set the paint order so the ranges appear below entities */
-            setPaintOrder(Entity.class, Range.class);
+            setPaintOrder(Entity.class, TowerMenu.class, Range.class);
             
             
     }// End zero-argument constructor for USCB
@@ -81,6 +83,24 @@ public class Level extends World{
     			
     			/* Remove the current range from the world */
     				removeObject(range);
+    				
+    				
+				/* Check to see if the tower menu was not clicked */
+    				if(!Greenfoot.mouseClicked(towerMenu)){
+    					
+    					/* Remove the towerMenu */
+    						removeObject(towerMenu);
+    					
+    				}// End if(!Greenfoot.mouseClicked(towerMenu))
+    				
+    				
+				/* Check to see if this world was clicked */
+    				if(Greenfoot.mouseClicked(this)){
+    					
+    					/* Place the towerMenu at the location clicked */
+    						addObject(towerMenu, Greenfoot.getMouseInfo().getX(), Greenfoot.getMouseInfo().getY());
+    					
+    				}// End if(Greenfoot.mouseClicked(this))
     				
     				
 				/* Check to see if a tower was clicked */
