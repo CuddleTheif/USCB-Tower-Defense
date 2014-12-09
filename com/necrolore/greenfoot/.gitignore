@@ -1,3 +1,8 @@
 /Level.class
 /Actors.class
 /CollisionWorld.class
+/GifImage$GifDecoder$GifFrame.class
+/GifImage$GifDecoder.class
+/GifImage.class
+/Range.class
+/PauseButton.class

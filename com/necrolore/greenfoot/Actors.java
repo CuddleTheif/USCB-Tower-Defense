@@ -5,6 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Point;
+import java.awt.geom.Line2D;
 
 
 /**
@@ -56,20 +57,62 @@ public abstract class Actors extends Actor{
     
     /**
      * Return all objects within range 'radius' around this object. An object is within 
-     * range if the distance between its centre and this object's centre is less than or 
+     * range if the distance between its edge and this object's center is less than or 
      * equal to 'radius'.
      * 
      * @param radius   Radius of the circle (in cells)
      * @param cls      Class of objects to look for (passing 'null' will find all objects)
      * @return         all objects within range 'radius' around this object
      */
-    @SuppressWarnings({ "rawtypes" })
+    @SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
     public List getObjectsInRange(int radius, Class cls){
         
-        /* Call the superclass' protected method with given values */
-            return super.getObjectsInRange(radius, cls);
+        /* Get all actors of the given class in this world */
+    		List<Actors> actors = getWorld().getObjects(cls);
+    		
+    		
+		/* Initialize a list to hold all the actors within the radius */
+    		List<Actors> foundActors = new ArrayList<Actors>();
+    		
+    		
+		/* Check each actors position to find which ones are in the radius */
+    		for(Actors actor : actors){
+    			
+    			/* Get the closest point on the current actor to this actor */
+    				Point vertexes[] = actor.getVertexes();
+    				Point position = vertexes[0];
+    				for(Point vertex : vertexes){
+    					
+    					/* 
+    					 * Check to see if the current vertex is closer 
+    					 * than the current closest
+    					 */
+    					if(vertex.distance(getX(), getY())<
+    							position.distance(getX(), getY())){
+    						
+    						/* Make the current vertex the current closest */
+    							position = vertex;
+    						
+    					}// End if(vertex.distance(getX(), getY())<...
+    					
+    				}// End for(Point vertex : vertexes)
+    			
+    				
+    			/* Check the current actor's position */
+    				if(position.distance(getX(), getY())<=radius){
+    					
+    					/* Add the found actor the the list */
+    						foundActors.add(actor);
+    					
+    				}// End if(postion.distance(actor.getX(), actor.getY())<=radius)
+    			
+    		}// End for(objects object : objects)
         
+    		
+		/* Return the actors found in the radius */
+    		return foundActors;
+    		
     }// End method getObjectsInRange
         
     
@@ -201,77 +244,6 @@ public abstract class Actors extends Actor{
     		point1.translate((int)point2.getX(), (int)point2.getX());
     	
     }// End method rotatePoint
-    
-    
-	/**
-	 * Gets the axes of this actor
-	 * 
-	 * @return   The axes of this actor
-	 */
-	public Point[] getAxes(){
-		
-		/* Get the vertexes of this actor */
-			Point vertexes[] = getVertexes();
-		
-			
-		/* Initialize variable for holding the axes of this actor */
-			Point[] axes = new Point[vertexes.length];
-		
-		for (int i=0;i<axes.length;i++){
-		
-		  /* Get the next vertex */
-		  	Point nextVertex = vertexes[i+1==vertexes.length ? 0:i+1];
-		
-		
-		  /* Subtract the two points to get the normal vector */
-		  	int xVal = (int) (vertexes[i].getX()-nextVertex.getX());
-		  	int yVal = (int) (vertexes[i].getY()-nextVertex.getY());
-		  	
-		  	
-	  	/* Get the perpendicular vector and normalize it */
-		  	double length = Math.sqrt(xVal*xVal+yVal*yVal);
-		  	axes[i] = new Point((int)(-yVal/length), (int)(xVal/length));
-		  	
-		}// End for (int i=0;i<axes.length;i++)
-
-		
-		return axes;
-		
-	}// End method getAxes
-	
-	
-	/**
-	 * Gets the projection on the given axis of this actor
-	 * 
-	 * @param axis   Axis to check for
-	 * @return       The projection of this actor on the axis
-	 */
-	public Point getProjection(Point axis){
-		
-		/* Initialize variables for holding the min and max projections */
-			Point[] vertexes = getVertexes();
-			double min = axis.getX()*vertexes[0].getX()+axis.getY()*vertexes[0].getY();
-			double max = min;
-			
-			
-		/* Find the min and max points */
-			for (int i=1;i<vertexes.length;i++){
-				
-				/* Do the dot product of the point and the axes to find the projection */
-					double projection = axis.getX()*vertexes[i].getX()+axis.getY()*vertexes[i].getY();
-				
-				
-				/* Check the projection to see if it's the new min or max */
-					if(projection<min) min = projection;
-					if(projection>max) max = projection;
-				
-			}// End for (int i=1;i<vertexes.length;i++)
-			
-			
-		/* Return the projection of this actor */
-			return new Point((int)min, (int)max);
-			
-	}// End method getOverlap
 	
 	
 	/**
@@ -282,30 +254,48 @@ public abstract class Actors extends Actor{
 	 */
 	public boolean intersects(Actors other){
 		
-		/* Get the axes between these two actors */
-			Point axes1[] = getAxes();
-			Point axes2[] = other.getAxes();
-			Point allAxes[] = new Point[axes1.length+axes2.length];
-			System.arraycopy(axes1, 0, allAxes, 0, axes1.length);
-			System.arraycopy(axes2, 0, allAxes, axes1.length, axes2.length);
-			
-			
-		/* Check every projection to see if any don't overlap */
-			for (int i=0;i<allAxes.length;i++){
-				  
-				  /* Get both HitBoxes Projections onto the current axis */
-				  	Point p1 = getProjection(allAxes[i]);
-				  	Point p2 = other.getProjection(allAxes[i]);
-				  
-				  /* Check to see if the projections overlap */
-				  	if (p1.getX()>p2.getY() || p2.getX()>p1.getY()) return false;
-				  
-				}// End for (int i=0;i<allAxes.length;i++)
+		/* Get the sides of this actor */
+			Point vertexes[] = getVertexes();
+			Line2D.Double sides[] = new Line2D.Double[vertexes.length];
+			for(int i=0;i<sides.length;i++){
+				
+				sides[i] = new Line2D.Double(
+							vertexes[i-i/sides.length*sides.length], 
+							vertexes[i+1-(i+1)/sides.length*sides.length]);
+				
+			}// End for(int i=0;i<sides.length;i++)
+		
 
+		/* Get the sides of the other actor */
+			vertexes = other.getVertexes();
+			Line2D.Double sidesOther[] = new Line2D.Double[vertexes.length];
+			for(int i=0;i<sidesOther.length;i++){
+				
+				sidesOther[i] = new Line2D.Double(
+							vertexes[i-i/sidesOther.length*sidesOther.length], 
+							vertexes[i+1-(i+1)/sidesOther.length*sidesOther.length]);
+				
+			}// End for(int i=0;i<sidesOther.length;i++)
 		
+			
+		/* Check to see if any of the actors' sides intersect */
+			for(Line2D.Double side : sides){
+				for(Line2D.Double sideOther : sidesOther){
+					
+					/* Check to see if the current sides intersect */
+						if(side.intersectsLine(sideOther)){
+							
+							/* If one pair of sides intersect than the actors intersect */
+								return true;
+							
+						}// End if(side.intersectsLine(sideOther))
+						
+				}// End for(Line2D.Double sideOther : sidesOther)
+			}// End for(Line2D.Double side : sides)
 		
-		/* Since every projection overlaps they intersect */
-			return true;
+			
+		/* If none of the sides intersect than the actors don't intersect */
+			return false;
 		
 	}// End method intersects
     
@@ -314,8 +304,6 @@ public abstract class Actors extends Actor{
      * Act - do whatever the Actors wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+    public abstract void act();
+    
 }

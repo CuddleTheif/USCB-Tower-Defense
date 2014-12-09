@@ -52,7 +52,7 @@ public class Movement extends Behavior {
          * there isn't 
          */
             @SuppressWarnings("unchecked")
-			List<RoadPiece> roadPieces = entity.getObjectsInRange(0, RoadPiece.class);
+			List<RoadPiece> roadPieces = entity.getIntersectingObjects(RoadPiece.class);
             RoadPiece roadPiece = roadPieces.size()!=0 ? roadPieces.get(0) : null;
             
                                     

@@ -13,12 +13,12 @@ import com.necrolore.greenfoot.Level;
  * @author NecroTheif
  * @version 2014.14.11
  */
-public class TestEntity extends Entity{
+public class Bee extends Entity{
     
     /**
-     * Creates a TestEntity
+     * Creates a Bee
      */
-    public TestEntity(){
+    public Bee(){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -29,12 +29,12 @@ public class TestEntity extends Entity{
             getImage().scale(25, 25);
             
             
-        /* Create and Add the TestEntity's Behaviors */
+        /* Create and Add the Bee's Behaviors */
             behaviors.put(Behavior.Type.MOVEMENT, new Movement(this));
             behaviors.put(Behavior.Type.COMBAT, new Combat(this));
         
             
-        /* Add the TestEntity's Attributes */
+        /* Add the Bee's Attributes */
             attributes.put(Attribute.ENEMY, true);
             attributes.put(Attribute.HP, 20);
             attributes.put(Attribute.ATK, 10);
@@ -42,11 +42,13 @@ public class TestEntity extends Entity{
     }// End no-argument constructor
     
     /**
-     * Act - do whatever the TestEntity wants to do. This method is called whenever
+     * Act - do whatever the Bee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+    	/* Make sure the game is not paused */
+    		if(pause)return;
 
         /* Follow the path */
             if(((Movement)behaviors.get(Behavior.Type.MOVEMENT)).moveAlongPath(((Level)getWorld()).getPath())){

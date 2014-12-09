@@ -70,7 +70,8 @@ public class Shot extends Entity
      */
     public void act() 
     {
-        
+    	/* Make sure the game is not paused */
+			if(pause)return;
     		
         /* Get Movement Behavior to move towards the closest Entity */
             Movement movement = (Movement)behaviors.get(Behavior.Type.MOVEMENT);

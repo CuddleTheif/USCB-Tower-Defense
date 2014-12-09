@@ -58,7 +58,11 @@ public class EntitySpawner extends Entity
      */
     public void act() 
     {
+    	
+    	/* Make sure the game is not paused */
+			if(pause)return;
         
+			
         /* Check if it's spawning time */
             if(time%100==0){
                 

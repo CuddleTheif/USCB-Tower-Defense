@@ -51,7 +51,7 @@ public class Combat extends Behavior
     
     
     private Maneuver defending; // If this entity is defending this is equal to it's level of defense
-    
+    private Entity fighting; // If this entity is fighting this is equal to the entity it is fighting
     
     /**
      * Initialize a Combat Behavior for the given entity
@@ -64,6 +64,64 @@ public class Combat extends Behavior
             super(entity);
             
     }// End no-argument constructor for Combat
+    
+    /**
+     * Engages the given entity in combat
+     * 
+     * @param entity   The entity to engage in combat with
+     */
+    public void engage(Entity entity){
+    	
+    	/* Make this entity engaged with the given one */
+    		engageWith(entity);
+    		
+    		
+		/* Check to see if the given entity can fight */
+    		if(entity.hasBehavior(Type.COMBAT)){
+    			
+    			/* Make the given entity engaged with this one */
+    				Combat combat = (Combat) entity.getBehavior(Type.COMBAT);
+    				combat.engageWith(this.entity);
+    			
+    		}// End if(entity.hasBehavior(Type.COMBAT))
+    	
+    }// End method engage
+    
+    /**
+     * Become engaged in combat with another entity
+     * 
+     * @param entity   The entity that this entity is now engaged with
+     */
+    public void engageWith(Entity entity){
+    			
+			/* Set fighting to the given entity */
+                fighting = entity;
+                				
+    }// End method engageWith
+    
+    
+    /**
+     * Become disengaged from combat
+     */
+    public void disengage(){
+    	
+    	/* Set fighting back to null since this entity is no longer fighting anyone */
+    	fighting = null;
+    	
+    }// End method disengage
+    
+    
+    /**
+     * Gets the entity this entity is in combat with if any
+     * 
+     * @return   the entity this entity is in combat with (null if none)
+     */
+    public Entity getFightingEntity(){
+    	
+    	/* Return the entity this entity is fighting with (if any) */
+    		return fighting;
+    	
+    }// End getFightingEntity
     
     
     /**

@@ -83,6 +83,10 @@ public class USCB extends Entity{
      */
     public void act() 
     {
+    	/* Make sure the game is not paused */
+			if(pause)return;
+    	
+			
         if((Integer)attributes.get(Attribute.HP)==0)((Animation)behaviors.get(Behavior.Type.ANIMATION)).loopThroughTimes(Attribute.DEATH_ANIMATION, 1, Attribute.DEATH_SOUND);
     }    
 }

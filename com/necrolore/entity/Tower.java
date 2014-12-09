@@ -15,12 +15,13 @@ public class Tower extends Entity
 {
     
     /**
-     * Creates a Tower with the given range and cooldown
+     * Creates a Tower with the given range, cooldown, and spawns
      * 
      * @param range      The range of the tower
      * @param cooldown   The cooldown of the tower (how long it must wait between shots)
+     * @param spawns     What the tower spawns or attacks with
      */
-    public Tower(int range, int cooldown){
+    public Tower(int range, int cooldown, Entity spawns){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -37,7 +38,7 @@ public class Tower extends Entity
             
             
         /* Store a shot as it's entity Spawn attribute */
-            attributes.put(Attribute.SPAWNS, new Shot(range));
+            attributes.put(Attribute.SPAWNS, spawns);
             
             
         /* Give spawning behavior to spawn shots */
@@ -52,6 +53,11 @@ public class Tower extends Entity
      */
     public void act() 
     {
+    	
+    	/* Make sure the game is not paused */
+			if(pause)return;
+		
+    	
         /* Check to see if the tower is not in cooldown */
             if((Integer)attributes.get(Attribute.CUR_COOLDOWN)==0){
                 
