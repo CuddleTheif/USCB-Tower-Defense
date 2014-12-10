@@ -62,6 +62,13 @@ public class ComputationalScience extends Tower {
 	                attributes.replace(Attribute.CUR_COOLDOWN, --cooldown);
 				
 			}// End else if((int)attributes.get(Attribute.CUR_COOLDOWN)!=0)
+			
+			if(getWorld().getObjects(Robot.class).size()<(Integer)attributes.get(Attribute.NUM_SPAWNS)){
+			    
+			    int numSpawns = (Integer) attributes.get(Attribute.NUM_SPAWNS);
+	                attributes.replace(Attribute.NUM_SPAWNS, --numSpawns);
+			    
+			 }
 		
 	}// End method act
 	

@@ -68,7 +68,7 @@ public class Bee extends Entity{
     			
     			/* Check if in cooldown from last attack */
 				if((Integer)attributes.get(Attribute.CUR_COOLDOWN)==0){
-					
+				    
 	    			/* Attack the entity this entity is in combat with */
 	    				combat.attackEntity(combat.getFightingEntity(), Combat.Maneuver.NORMAL);
 	    				

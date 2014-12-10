@@ -35,7 +35,6 @@ public class Robot extends Entity {
             
         /* Add the Robot's Attributes */
             attributes.put(Attribute.HP, health);
-            attributes.put(Attribute.MAX_HP, health);
             attributes.put(Attribute.ATK, attack);
             attributes.put(Attribute.DEF, defense);
             attributes.put(Attribute.RANGE, range);
@@ -68,7 +67,6 @@ public class Robot extends Entity {
     					
     	    			/* Attack the entity this entity is in combat with */
     	    				combat.attackEntity(target, Combat.Maneuver.NORMAL);
-    	    				((Combat)target.getBehavior(Behavior.Type.COMBAT)).attackEntity(this, Combat.Maneuver.NORMAL);
     	    				
 	    				/* Set cooldown to max */
     	    				int maxCool = (Integer) attributes.get(Attribute.MAX_COOLDOWN);

@@ -7,6 +7,8 @@ import java.util.List;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 
+import com.sun.prism.paint.Color;
+
 
 /**
  * Added Methods to Actor class
@@ -15,7 +17,7 @@ import java.awt.geom.Line2D;
  * @version 2014.14.11
  */
 public abstract class Actors extends Actor{
-    
+	
     /**
      * Return all the objects that intersect this object. This takes the graphical extent of objects into consideration. 
      * 

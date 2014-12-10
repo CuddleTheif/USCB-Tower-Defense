@@ -70,7 +70,7 @@ public class Menu extends World {
 		}else if(Greenfoot.mouseClicked(buttons[2])){
 
 			PathShape shapes[] = new PathShape[1];
-			shapes[2] = PathShape.VERTICAL_S;
+			shapes[0] = PathShape.VERTICAL_S;
 			Point starts[] = new Point[1];
 			starts[0] = new Point(50, 50);
 			Point ends[] = new Point[1];

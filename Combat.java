@@ -191,7 +191,7 @@ public class Combat extends Behavior
          */
             if(!targetEntity.hasAttribute(Attribute.HP) || defending!=null 
             		|| !entity.hasAttribute(Attribute.ATK)){
-            	
+            		    
                 /* Return false because the entity can't be attacked */
                     return false;
                 

@@ -44,7 +44,7 @@ public class Level extends World{
         /* Create pause button, tower menu, and money display */
             pause = new PauseButton(WORLD_WIDTH, WORLD_HEIGHT);
             Nursing nursing = new Nursing(50, 100, 10);
-            ComputationalScience compSci = new ComputationalScience(50, 100, 2, 10, 10, 10);
+            ComputationalScience compSci = new ComputationalScience(50, 100, 1, 20, 10, 10);
             buyMenu = new NewTowerMenu(new Tower[]{nursing, compSci}, new int[]{15, 30});
             gold = 60;
             moneyDisplay = new MoneyDisplay();
@@ -59,8 +59,8 @@ public class Level extends World{
                 paths[i].addToWorld(this);
             	
             }
-            uscb = new USCB(100, 50);
-            spawners[0] = new EntitySpawner(new Bee(20, 50, 10, 5));
+            uscb = new USCB(200, 50);
+            spawners[0] = new EntitySpawner(new Bee(20, 50, 20, 5));
             range = new Range();
             
             
