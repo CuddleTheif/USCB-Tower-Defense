@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=objects\ objectsWidth\ objectsHeight\ prices
+comment0.target=void\ createMenu(greenfoot.GreenfootImage[],\ int,\ int,\ int[])
+comment0.text=\r\n\ Creates\ a\ tower\ menu\ of\ a\ size\ based\ on\ the\ given\ sizes\r\n\ \r\n\ @param\ objects\ \ \ Objects\ selectable\ in\ this\ menu\r\n\ @param\ prices\ \ \ \tThe\ price\ of\ each\ objects\ given\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2

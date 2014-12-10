@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=range\ attack
+comment0.target=Shot(int,\ int)
+comment0.text=\r\n\ Initializes\ a\ shot\ entity\ that\ targets\ enemy's\ in\ it's\ given\ range\r\n\ \r\n\ @param\ range\ \ \ \ The\ range\ of\ this\ shot\r\n\ @param\ attack\ \ \ The\ attack\ of\ this\ shot\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Shot\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=2

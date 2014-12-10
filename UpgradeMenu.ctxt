@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=tower
+comment0.target=UpgradeMenu(Tower)
+comment0.text=\r\n\ Creates\ a\ upgrade\ menu\ for\ the\ given\ tower\r\n\ \r\n\ @param\ tower\ \ \ The\ tower\ to\ create\ the\ upgrade\ menu\ for\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2
