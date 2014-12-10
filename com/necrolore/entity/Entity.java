@@ -288,8 +288,9 @@ public abstract class Entity extends Actors implements Cloneable{
             for(int i=0;i<entities.size();i++){
                 
                 /* Check the current entity for the attribute and it's value */
-                    if(entities.get(i).hasAttribute(attribute) && 
-                        (Boolean) entities.get(i).getAttribute(attribute)){
+                    if(entities.get(i)!=this &&
+                		entities.get(i).hasAttribute(attribute) && 
+                        (boolean) entities.get(i).getAttribute(attribute)){
                             
                             /* Add this entity to the new list */
                                 trueEntities.add(entities.get(i));
@@ -313,12 +314,11 @@ public abstract class Entity extends Actors implements Cloneable{
          * set if the first entity on the list is not this entity set it to that one
          * otherwise set it to the second entity on the list
          */
-            Entity closestEntity = trueEntities.get(0)!=this ? 
-                                        trueEntities.get(0) : trueEntities.get(1);
+            Entity closestEntity = trueEntities.get(0);
             
             
             
-        /* Initialize Point variable to hold this actor's postion for easy distance calculations */
+        /* Initialize Point variable to hold this actor's position for easy distance calculations */
             Point postion = new Point(getX(), getY());
             
             
@@ -358,7 +358,7 @@ public abstract class Entity extends Actors implements Cloneable{
         /* Return the closest Entity */
             return closestEntity;
             
-    }// End method getCLosestObject(Class object)
+    }// End method getClosestEntity(Attribute attribute)
     
     
     /**

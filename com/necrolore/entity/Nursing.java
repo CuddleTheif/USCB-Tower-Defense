@@ -25,6 +25,10 @@ public class Nursing extends Tower {
 		
     	/* Make sure the game is not paused */
 			if(pause)return;
+			
+			
+		/* Call super classes act method to check for clicking */
+			super.act();
 		
     	
         /* Check to see if the nursing is not in cooldown */

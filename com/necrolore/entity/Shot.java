@@ -81,12 +81,9 @@ public class Shot extends Entity
             
         /* If not exploding, Move towards the closest Enemy and explode when it reaches it */
             if(!((Boolean)attributes.get(Attribute.DIE)) &&
-                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
-                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
-                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
-                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
-                movement.moveToLastInRange(((Level)getWorld()).getPath(), 
-                    (Integer)attributes.get(Attribute.RANGE),Attribute.ENEMY)){
+                movement.moveToLastInRange((int)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
+                movement.moveToLastInRange((int)attributes.get(Attribute.RANGE),Attribute.ENEMY) &
+                movement.moveToLastInRange((int)attributes.get(Attribute.RANGE),Attribute.ENEMY)){
                         
                         /* Get all the entities the entity is touching */
 							@SuppressWarnings("unchecked")

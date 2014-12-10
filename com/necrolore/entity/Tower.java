@@ -1,10 +1,12 @@
 package com.necrolore.entity;
 
+import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Spawner;
 import com.necrolore.entity.behavior.Behavior;
 import com.necrolore.greenfoot.Level;
+import com.necrolore.menu.tower.UpgradeMenu;
 
 /**
  * A Tower that shots out shots when enemy's are in it's range
@@ -16,6 +18,7 @@ public abstract class Tower extends Entity
 {
 	public static final int WIDTH=Level.WORLD_WIDTH/20;
 	public static final int HEIGHT=Level.WORLD_HEIGHT/10;
+	protected UpgradeMenu upgradeMenu; // The upgradeMenu fot this tower
     
     /**
      * Creates a Tower with the given range, cooldown, and spawns
@@ -55,6 +58,23 @@ public abstract class Tower extends Entity
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public abstract void act();
+    public void act(){
+    	
+    	/* Check to see if this tower was clicked */
+    		if(Greenfoot.mouseClicked(this)){
+    			
+    			/* Create a Upgrade menu for this tower at this location */
+    				upgradeMenu = new UpgradeMenu(this);
+    				getWorld().addObject(upgradeMenu, getX()+upgradeMenu.getImage().getWidth(), getY());
+    			
+    		}// End if(Greenfoot.mouseClicked(this))
+    		else if(Greenfoot.mouseClicked(null) && !Greenfoot.mouseClicked(upgradeMenu)){
+    			
+    			/* Remove the Upgrade menu from the world */
+    				getWorld().removeObject(upgradeMenu);
+    			
+    		}// End else if(Greenfoot.mouseClicked(null))
+    	
+    }// End method act
     
 }// End class Tower

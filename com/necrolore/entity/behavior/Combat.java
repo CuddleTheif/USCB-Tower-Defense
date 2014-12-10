@@ -92,7 +92,7 @@ public class Combat extends Behavior
      * 
      * @param entity   The entity that this entity is now engaged with
      */
-    public void engageWith(Entity entity){
+    private void engageWith(Entity entity){
     			
 			/* Set fighting to the given entity */
                 fighting = entity;
@@ -106,7 +106,7 @@ public class Combat extends Behavior
     public void disengage(){
     	
     	/* Set fighting back to null since this entity is no longer fighting anyone */
-    	fighting = null;
+    		fighting = null;
     	
     }// End method disengage
     
@@ -193,7 +193,7 @@ public class Combat extends Behavior
          */
             if(!targetEntity.hasAttribute(Attribute.HP) || defending!=null 
             		|| !entity.hasAttribute(Attribute.ATK)){
-                
+            	
                 /* Return false because the entity can't be attacked */
                     return false;
                 

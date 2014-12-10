@@ -1,11 +1,13 @@
 package com.necrolore.entity;
 
+import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
 import com.necrolore.entity.behavior.Behavior;
 import com.necrolore.entity.behavior.Combat;
 import com.necrolore.entity.behavior.Movement;
 import com.necrolore.greenfoot.Level;
+import com.necrolore.road.Path;
 
 /**
  * An Entity to test Behaviors
@@ -16,9 +18,9 @@ import com.necrolore.greenfoot.Level;
 public class Bee extends Entity{
     
     /**
-     * Creates a Bee
+     * Creates a Bee with the given health, cooldown, attack and value
      */
-    public Bee(){
+    public Bee(int health, int cooldown, int attack, int value){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -26,7 +28,7 @@ public class Bee extends Entity{
             
         /* Set this objects' image */
             setImage(new GreenfootImage("images/bee2.png"));
-            getImage().scale(25, 25);
+            getImage().scale(Level.WORLD_WIDTH/40, Level.WORLD_HEIGHT/20);
             
             
         /* Create and Add the Bee's Behaviors */
@@ -36,8 +38,11 @@ public class Bee extends Entity{
             
         /* Add the Bee's Attributes */
             attributes.put(Attribute.ENEMY, true);
-            attributes.put(Attribute.HP, 20);
-            attributes.put(Attribute.ATK, 10);
+            attributes.put(Attribute.HP, health);
+            attributes.put(Attribute.ATK, attack);
+            attributes.put(Attribute.MAX_COOLDOWN, cooldown);
+            attributes.put(Attribute.CUR_COOLDOWN, 0);
+            attributes.put(Attribute.VALUE, value);
         
     }// End no-argument constructor
     
@@ -49,15 +54,70 @@ public class Bee extends Entity{
     {
     	/* Make sure the game is not paused */
     		if(pause)return;
-
+    		
+		/* Get the path this entity will follow */
+    		if(!attributes.containsKey(Attribute.PATH)){
+    			
+    			Path paths[] = ((Level)getWorld()).getPaths();
+    			attributes.put(Attribute.PATH, paths[Greenfoot.getRandomNumber(paths.length)]);
+    			
+    		}
+    		
+    		
+		/* Get the behaviors this entity will use */
+    		Movement movement = (Movement)behaviors.get(Behavior.Type.MOVEMENT);
+    		Combat combat = (Combat)behaviors.get(Behavior.Type.COMBAT);
+    		
+    		
+		/* Check if in combat */
+    		if(combat.getFightingEntity()!=null){
+    			
+    			/* Check if in cooldown from last attack */
+				if((int)attributes.get(Attribute.CUR_COOLDOWN)==0){
+					
+	    			/* Attack the entity this entity is in combat with */
+	    				combat.attackEntity(combat.getFightingEntity(), Combat.Maneuver.NORMAL);
+	    				
+	    				
+    				/* Set cooldown to max */
+	    				int maxCool = (int) attributes.get(Attribute.MAX_COOLDOWN);
+	    				attributes.replace(Attribute.CUR_COOLDOWN, maxCool);
+					
+				}// End if((int)attributes.get(Attribute.CUR_COOLDOWN)==0)
+				else{
+					
+					/* Reduce cooldown */
+    					int cooldown = (int) attributes.get(Attribute.CUR_COOLDOWN);
+    	                attributes.replace(Attribute.CUR_COOLDOWN, --cooldown);
+					
+				}// End else for if((int)attributes.get(Attribute.CUR_COOLDOWN)==0)
+    				
+    				
+				/* Check if the entity this entity is fighting is dead yet */
+    				if((int)combat.getFightingEntity().getAttribute(Attribute.HP)==0){
+    					
+    					/* Disengage since there is no one left to fight */
+    						combat.disengage();
+    					
+    				}// End if((int)combat.getFightingEntity().getAttribute(Attribute.HP)==0)
+    			
+    		}// End if
         /* Follow the path */
-            if(((Movement)behaviors.get(Behavior.Type.MOVEMENT)).moveAlongPath(((Level)getWorld()).getPath())){
-                ((Combat)behaviors.get(Behavior.Type.COMBAT)).attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
-                getWorld().removeObject(this);
-            }
+    		else if(movement.moveAlongPath((Path) attributes.get(Attribute.PATH))){
+            	
+            	/* If reached the end of the path, attack the building and die */
+	            	combat.attackEntity(((Level)getWorld()).getUSCB(), Combat.Maneuver.NORMAL);
+	                getWorld().removeObject(this);
+                
+            }// End else if(movement.moveAlongPath(((Level)getWorld()).getPath())){
 
-        /* If the entity is dead remove it */
-            if((Integer)attributes.get(Attribute.HP)==0)getWorld().removeObject(this);
+        /* If the entity is dead remove it and add it's value to the gold */
+            if((int)attributes.get(Attribute.HP)==0){
+            	
+            	((Level)getWorld()).addGold((int) attributes.get(Attribute.VALUE));
+            	getWorld().removeObject(this);
+            	
+            }// End if((int)attributes.get(Attribute.HP)==0)
             
     }    
 }

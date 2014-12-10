@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Entity;
+import com.necrolore.greenfoot.Actors;
 import com.necrolore.road.Path;
 import com.necrolore.road.RoadPiece;
 
@@ -187,70 +188,24 @@ public class Movement extends Behavior {
         
     }// End method moveToClosest
     
-    /**
-     * Gets the Entities in the given range of this entity with the given attribute set to true
-     * And in the given path.
-     * 
-     * @param path        The path to look on
-     * @param range       The range to look in
-     * @param attribute   The attribute the target entity must have set to true
-     * @return            The Entities in the range, in the path, and with the attribute set to true
-     */
-    @SuppressWarnings("rawtypes")
-	private List getEntitiesInRangeAndPath(Path path, int range, Attribute attribute){
-        
-        /* Get all entities in the given range with the given attribute set to true */
-            List<Entity> entities = entity.getEntitiesInRange(range, attribute);
-            
-            
-        /* Initialize a variable to hold the entities found on the path */
-            List<Entity> foundEntities = new ArrayList<Entity>();
-            
-            
-        /* Check each entity to see if any are on the path */
-            for(int i=0;i<entities.size();i++){
-                
-                /* Check if the current entity has the behavior movement and get it */
-                    Movement movement = entities.get(i).hasBehavior(Type.MOVEMENT) ?
-                                        (Movement)entities.get(i).getBehavior(Type.MOVEMENT) :
-                                        null;
-                
-                /* 
-                 * Check the current entity to see if it can move and 
-                 * is following the given path 
-                 */
-                    if(movement!=null && movement.getPath()==path){
-                        
-                        /* Add the found entity to the list */
-                            foundEntities.add(entities.get(i));
-                            
-                    }// End if(entities.hasBehavior(Type.MOVEMENT) &&...
-                
-            }// End for(int i=0;i<entities.size();i++)
-            
-        /* Return the entities found */
-            return foundEntities;
-        
-    }// End method getEntitiesInRangeAndPath
-    
     
     /**
      * Moves the Entity to the last entity on the given path within the given range with the 
      * given attribute at true
      * 
-     * @param path        The path to look on
+     * @param paths       The paths to look on
      * @param range       The range that it can target in
      * @param attribute   The attribute the target entity must have set to true
      * @return            If the Entity has reached one yet
      */
-    public boolean moveToLastInRange(Path path, int range, Attribute attribute){
+    public boolean moveToLastInRange(int range, Attribute attribute){
         
         /* Check if targeted on the entity or not yet */
             if(step==-1){
                 
                 /* Get the entities on the path with the attribute and in the range */
                     @SuppressWarnings("unchecked")
-					List<Entity> entities = getEntitiesInRangeAndPath(path, range, attribute);
+					List<Entity> entities = entity.getEntitiesInRange(range, attribute);
                     
                     
                 /* Make sure entities were found */
