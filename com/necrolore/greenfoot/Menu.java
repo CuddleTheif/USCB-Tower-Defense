@@ -1,9 +1,12 @@
+package com.necrolore.greenfoot;
 
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 import java.util.Arrays;
+
+import com.necrolore.road.PathShape;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

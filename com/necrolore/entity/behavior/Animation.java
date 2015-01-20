@@ -1,7 +1,11 @@
+package com.necrolore.entity.behavior;
 
 import greenfoot.*;
 
 import java.util.HashMap;
+
+import com.necrolore.entity.Attribute;
+import com.necrolore.entity.Entity;
 
 /**
  * The Behavior of an Entity to Animate through images

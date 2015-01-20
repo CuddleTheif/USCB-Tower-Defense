@@ -1,3 +1,4 @@
+package com.necrolore.road;
 
 import greenfoot.*;
 

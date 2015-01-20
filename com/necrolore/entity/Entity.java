@@ -1,9 +1,14 @@
+package com.necrolore.entity;
 
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.Point;
+
+import com.necrolore.entity.Attribute.Type;
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.greenfoot.Actors;
  
 
 /**

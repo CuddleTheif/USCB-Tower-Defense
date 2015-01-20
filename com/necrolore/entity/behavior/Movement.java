@@ -1,8 +1,15 @@
+package com.necrolore.entity.behavior;
 
 import greenfoot.*;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import com.necrolore.entity.Attribute;
+import com.necrolore.entity.Entity;
+import com.necrolore.entity.behavior.Behavior.Type;
+import com.necrolore.road.Path;
+import com.necrolore.road.RoadPiece;
 
 /**
  * The Behavior of an Entity to Move

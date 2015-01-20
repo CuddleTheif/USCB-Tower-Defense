@@ -1,4 +1,10 @@
+package com.necrolore.entity;
 
+
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.entity.behavior.Combat;
+import com.necrolore.entity.behavior.Movement;
+import com.necrolore.entity.behavior.Combat.Maneuver;
 
 import sun.net.ftp.FtpDirEntry.Type;
 import greenfoot.Greenfoot;

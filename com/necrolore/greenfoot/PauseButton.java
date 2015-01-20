@@ -1,7 +1,10 @@
+package com.necrolore.greenfoot;
 
 
 import java.awt.Color;
 import java.util.List;
+
+import com.necrolore.entity.Entity;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

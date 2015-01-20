@@ -1,3 +1,8 @@
+package com.necrolore.entity;
+
+import com.necrolore.entity.behavior.Animation;
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.entity.behavior.Behavior.Type;
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 

@@ -1,4 +1,9 @@
+package com.necrolore.entity;
 
+import com.necrolore.entity.behavior.Spawner;
+import com.necrolore.greenfoot.Level;
+import com.necrolore.menu.tower.UpgradeMenu;
+import com.necrolore.entity.behavior.Behavior;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

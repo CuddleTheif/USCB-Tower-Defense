@@ -1,7 +1,21 @@
+package com.necrolore.greenfoot;
 
 
 import java.awt.Point;
 import java.util.ArrayList;
+
+import com.necrolore.entity.Attribute;
+import com.necrolore.entity.Bee;
+import com.necrolore.entity.ComputationalScience;
+import com.necrolore.entity.Entity;
+import com.necrolore.entity.EntitySpawner;
+import com.necrolore.entity.Nursing;
+import com.necrolore.entity.Tower;
+import com.necrolore.entity.USCB;
+import com.necrolore.menu.tower.NewTowerMenu;
+import com.necrolore.menu.tower.TowerMenu;
+import com.necrolore.road.Path;
+import com.necrolore.road.PathShape;
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 

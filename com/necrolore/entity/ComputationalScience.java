@@ -1,3 +1,8 @@
+package com.necrolore.entity;
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.entity.behavior.Spawner;
+import com.necrolore.entity.behavior.Behavior.Type;
+
 
 
 

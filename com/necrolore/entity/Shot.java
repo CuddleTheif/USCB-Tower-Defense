@@ -1,8 +1,16 @@
+package com.necrolore.entity;
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 import java.awt.Point;
 import java.util.List;
+
+import com.necrolore.entity.behavior.Animation;
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.entity.behavior.Combat;
+import com.necrolore.entity.behavior.Movement;
+import com.necrolore.entity.behavior.Behavior.Type;
+import com.necrolore.entity.behavior.Combat.Maneuver;
 
 /**
  * Write a description of class Shot here.

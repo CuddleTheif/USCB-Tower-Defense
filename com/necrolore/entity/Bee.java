@@ -1,4 +1,11 @@
+package com.necrolore.entity;
 
+
+import com.necrolore.entity.behavior.Behavior;
+import com.necrolore.entity.behavior.Combat;
+import com.necrolore.entity.behavior.Movement;
+import com.necrolore.greenfoot.Level;
+import com.necrolore.road.Path;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

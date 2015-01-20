@@ -1,3 +1,4 @@
+package com.necrolore.greenfoot;
 
 
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)

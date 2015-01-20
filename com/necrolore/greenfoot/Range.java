@@ -1,6 +1,8 @@
+package com.necrolore.greenfoot;
 
 
 import java.awt.Color;
+
 import greenfoot.GreenfootImage;
 
 public class Range extends Actors {

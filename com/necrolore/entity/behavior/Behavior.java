@@ -1,5 +1,8 @@
+package com.necrolore.entity.behavior;
 
 import java.lang.CloneNotSupportedException;
+
+import com.necrolore.entity.Entity;
 
 /**
  * A Behavior an Entity can have. Something an Entity can do.

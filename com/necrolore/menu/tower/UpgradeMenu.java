@@ -1,10 +1,16 @@
+package com.necrolore.menu.tower;
 
 
+import com.necrolore.entity.Tower;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.necrolore.entity.Attribute;
+import com.necrolore.entity.Entity;
+import com.necrolore.greenfoot.Level;
 
 public class UpgradeMenu extends TowerMenu {
 	

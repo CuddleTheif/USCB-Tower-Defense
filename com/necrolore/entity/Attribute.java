@@ -1,3 +1,4 @@
+package com.necrolore.entity;
 
 
 import greenfoot.GreenfootImage;
