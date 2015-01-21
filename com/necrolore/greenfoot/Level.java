@@ -12,7 +12,7 @@ import com.necrolore.entity.EntitySpawner;
 import com.necrolore.entity.Nursing;
 import com.necrolore.entity.Tower;
 import com.necrolore.entity.USCB;
-import com.necrolore.menu.tower.NewTowerMenu;
+import com.necrolore.menu.tower.BuyTowerMenu;
 import com.necrolore.menu.tower.TowerMenu;
 import com.necrolore.road.Path;
 import com.necrolore.road.PathShape;
@@ -34,7 +34,7 @@ public class Level extends World{
     private ArrayList<Tower> towers = new ArrayList<Tower>(); // The towers on the current level
     private Range range; // The current range of the currently selected tower
     private PauseButton pause; // The pause button
-    private NewTowerMenu buyMenu; // The tower menu for buying towers
+    private BuyTowerMenu buyMenu; // The tower menu for buying towers
     private MoneyDisplay moneyDisplay; // The money display on the world
     private int gold; // The amount of gold the player has on the level
     public final static int WORLD_HEIGHT = 400; // The height of the world
@@ -51,7 +51,7 @@ public class Level extends World{
          * Create a new world with 600x400 cells with a cell size of 1x1 pixels 
          * and green background. 
          */
-            super(WORLD_WIDTH, WORLD_HEIGHT, 1, false); 
+            super(WORLD_WIDTH, WORLD_HEIGHT, 1); 
             setBackground(new GreenfootImage("images/green-grass-texture.jpg"));
             
             
@@ -59,6 +59,7 @@ public class Level extends World{
             pause = new PauseButton(WORLD_WIDTH, WORLD_HEIGHT);
             Nursing nursing = new Nursing(50, 100, 10, 15);
             ComputationalScience compSci = new ComputationalScience(50, 100, 1, 30, 20, 10, 10);
+            buyMenu = new BuyTowerMenu(nursing, compSci);
             gold = 60;
             moneyDisplay = new MoneyDisplay();
             

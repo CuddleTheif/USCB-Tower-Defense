@@ -8,7 +8,7 @@ import com.necrolore.greenfoot.Level;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
-public class NewTowerMenu extends TowerMenu {
+public class BuyTowerMenu extends TowerMenu {
 	
 	private Tower towers[]; // The towers in this menu
 	
@@ -17,7 +17,7 @@ public class NewTowerMenu extends TowerMenu {
 	 * 
 	 * @param towers   The towers buyable in this menu
 	 */
-	public NewTowerMenu(Tower[] towers) {
+	public BuyTowerMenu(Tower... towers) {
 		
 		/* Get all the images and prices of the towers given */
 			GreenfootImage images[] = new GreenfootImage[towers.length];
@@ -37,7 +37,7 @@ public class NewTowerMenu extends TowerMenu {
 		/* Store given towers in class variable */
 			this.towers = towers;
 			
-	}// End two-argument constructor for NewTowerMenu
+	}// End two-argument constructor for BuyTowerMenu
 
 	public void act() {
 		
@@ -72,4 +72,4 @@ public class NewTowerMenu extends TowerMenu {
 		
 	}// End method act
 
-}// End class NewTowerMenu
+}// End class BuyTowerMenu

@@ -15,7 +15,7 @@ public enum Attribute{
         DEATH_ANIMATION(Type.ANIMATION), DEATH_SOUND(Type.ANIMATION), ENEMY(Type.TARGET),
         SPAWNS(Type.OTHER), MAX_SPAWNS(Type.OTHER), MAX_COOLDOWN(Type.OTHER, 2000, -1), 
         CUR_COOLDOWN(Type.OTHER), RANGE(Type.OTHER, 2, 1), DIE(Type.OTHER), NUM_SPAWNS(Type.OTHER),
-        PATH(Type.OTHER), PRICE(Type.OTHER, 0.5, 0);
+        PATH(Type.OTHER), PRICE(Type.OTHER, -0.5, 0);
     
         
     /**
