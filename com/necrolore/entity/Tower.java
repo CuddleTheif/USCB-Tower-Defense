@@ -26,8 +26,9 @@ public abstract class Tower extends Entity
      * @param range      The range of the tower
      * @param cooldown   The cooldown of the tower (how long it must wait between shots)
      * @param spawns     What the tower spawns or attacks with
+     * @param price      The price of the tower
      */
-    public Tower(int range, int cooldown, Entity spawns){
+    public Tower(int range, int cooldown, Entity spawns, Integer price){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -38,10 +39,11 @@ public abstract class Tower extends Entity
             getImage().scale(WIDTH, HEIGHT);
             
             
-        /* Store the given range and cooldown as attributes */
+        /* Store the given range, cooldown, and price as attributes */
             attributes.put(Attribute.RANGE, range);
             attributes.put(Attribute.MAX_COOLDOWN, cooldown);
             attributes.put(Attribute.CUR_COOLDOWN, 0);
+            attributes.put(Attribute.PRICE, price);
             
             
         /* Store a shot as it's entity Spawn attribute */

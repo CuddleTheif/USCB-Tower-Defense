@@ -18,9 +18,8 @@ public abstract class TowerMenu extends Actors {
 	 * Creates a tower menu of a size based on the given sizes
 	 * 
 	 * @param objects   Objects selectable in this menu
-	 * @param prices   	The price of each objects given
 	 */
-	public void createMenu(GreenfootImage[] objects,int objectsWidth, int objectsHeight, int[] prices){
+	public void createMenu(GreenfootImage[] objects,int objectsWidth, int objectsHeight){
 		
 		/* Store the prices given in class variables */
 			this.prices = prices;

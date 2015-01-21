@@ -15,9 +15,8 @@ public class NewTowerMenu extends TowerMenu {
 	 * Creates a menu for buying new towers
 	 * 
 	 * @param towers   The towers buyable in this menu
-	 * @param prices   The price of each tower
 	 */
-	public NewTowerMenu(Tower[] towers, int[] prices) {
+	public NewTowerMenu(Tower[] towers) {
 		
 		/* Get all the images of the towers given */
 			GreenfootImage images[] = new GreenfootImage[towers.length];
@@ -28,8 +27,8 @@ public class NewTowerMenu extends TowerMenu {
 			}// End for(int i=0;i<images.length;i++)
 			
 			
-		/* Create the menu from the images of towers and the given prices */
-			createMenu(images, Tower.WIDTH, Tower.HEIGHT, prices);
+		/* Create the menu from the images of towers */
+			createMenu(images, Tower.WIDTH, Tower.HEIGHT);
 			
 			
 		/* Store given towers in class variable */

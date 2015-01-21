@@ -36,17 +36,18 @@ public class UpgradeMenu extends TowerMenu {
 			if(spawn.hasAttribute(Attribute.HP))upgrades.add(Attribute.HP);
 			
 		/* Get the images of the possible upgrades of this tower */
-			images = new GreenfootImage[upgrades.size()];
+			images = new GreenfootImage[upgrades.size()+1];
 			for(int i=0;i<upgrades.size();i++){
 				
 				/* Get the image of the current attribute */
 					images[i] = upgrades.get(i).getImage();
 				
 			}// End for(Attribute attr : upgrades)
+			images[images.length-1] = new GreenfootImage("images/attributes/sell.png");
 			
 			
 		/* Get the prices of the possible upgrades of this tower */
-			prices = new int[upgrades.size()];
+			prices = new int[upgrades.size()+1];
 			for(int i=0;i<upgrades.size();i++){
 				
 				/* Get the image of the current attribute */
@@ -54,6 +55,7 @@ public class UpgradeMenu extends TowerMenu {
 					else prices[i] = (Integer)spawn.getAttribute(upgrades.get(i))*2;
 				
 			}// End for(Attribute attr : upgrades)
+			prices[prices.length-1] = ;
 			
 			
 		/* Draw the menu based on the images found */
