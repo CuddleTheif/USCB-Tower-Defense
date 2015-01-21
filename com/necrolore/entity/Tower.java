@@ -28,7 +28,7 @@ public abstract class Tower extends Entity
      * @param spawns     What the tower spawns or attacks with
      * @param price      The price of the tower
      */
-    public Tower(int range, int cooldown, Entity spawns, Integer price){
+    public Tower(int range, int cooldown, Entity spawns, int price){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();

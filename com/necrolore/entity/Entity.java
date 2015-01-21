@@ -57,6 +57,42 @@ public abstract class Entity extends Actors implements Cloneable{
         
     }// End method setAttribute
     
+    
+    /**
+     * Get all attributes of this entity that are upgradeable
+     * 
+     * @return   An array containing all the attributes of this entity that are upgradeable
+     */
+    public Attribute[] getUpgradeAttr(){
+        
+        /* Get all the attributes of this entity */
+    		Attribute[] attributes = this.attributes.keySet().toArray(new Attribute[this.attributes.size()]);
+    		
+    		
+		/* Initialize variable for holding found attributes that are upradeable */
+    		ArrayList<Attribute> foundAttr = new ArrayList<Attribute>();
+    		
+    		
+		/* Find which attributes are upgradeable */
+    		for(Attribute attr : attributes){
+    			
+    			/* Check to see if the current attribute is upgradeable */
+    				if(attr.getPriceMuti()!=0){
+    					
+    					/* Add the found attribute to the list */
+    						foundAttr.add(attr);
+    					
+    				}// End if(attr.getPriceMuti()!=0){
+    			
+    		}// End for(Attribute attr : attributes)
+    		
+    		
+		/* Return the found list of attributes */
+    		return foundAttr.toArray(new Attribute[foundAttr.size()]);
+        
+    }// End method getAttributesNames
+    
+    
     /**
      * Gets the wanted attribute's value
      * 

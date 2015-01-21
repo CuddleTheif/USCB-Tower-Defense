@@ -19,9 +19,14 @@ import greenfoot.GreenfootImage;
 public class Bee extends Entity{
     
     /**
-     * Creates a Bee with the given health, cooldown, attack and value
+     * Creates a Bee with the given health, cooldown, attack and "price"
+     * 
+     * @param health     The health of the bee
+     * @param cooldown   The cooldown of the bee's attack
+     * @param attack     The attack of the bee
+     * @param price      The amount of money given of death of the bee
      */
-    public Bee(int health, int cooldown, int attack, int value){
+    public Bee(int health, int cooldown, int attack, int price){
         
     	/* Call the super class' constructor to initialize behaviors and attributes */
             super();
@@ -43,7 +48,7 @@ public class Bee extends Entity{
             attributes.put(Attribute.ATK, attack);
             attributes.put(Attribute.MAX_COOLDOWN, cooldown);
             attributes.put(Attribute.CUR_COOLDOWN, 0);
-            attributes.put(Attribute.VALUE, value);
+            attributes.put(Attribute.PRICE, price);
         
     }// End no-argument constructor
     
@@ -115,7 +120,7 @@ public class Bee extends Entity{
         /* If the entity is dead remove it and add it's value to the gold */
             if((Integer)attributes.get(Attribute.HP)==0){
             	
-            	((Level)getWorld()).addGold((Integer) attributes.get(Attribute.VALUE));
+            	((Level)getWorld()).addGold((Integer) attributes.get(Attribute.PRICE));
             	getWorld().removeObject(this);
             	
             }// End if((int)attributes.get(Attribute.HP)==0)

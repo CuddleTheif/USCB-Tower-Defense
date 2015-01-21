@@ -9,16 +9,17 @@ import com.necrolore.entity.behavior.Behavior.Type;
 public class Nursing extends Tower {
 
 	/**
-	 * Creates a nursing tower with the given 
+	 * Creates a nursing tower with the given attributes
 	 * 
-	 * @param range
-	 * @param cooldown
-	 * @param attack
+	 * @param range      The range of the tower
+	 * @param cooldown   The cooldown of the tower
+	 * @param attack     The attack of the tower
+	 * @param price      The price of the tower
 	 */
-	public Nursing(int range, int cooldown, int attack) {
+	public Nursing(int range, int cooldown, int attack, int price) {
 		
 		/* Call the superclass' constructor with a shot */
-			super(range, cooldown, new Shot(range, attack));
+			super(range, cooldown, new Shot(range, attack), price);
 		
 	}// End two-argument constructor for Nursing
 

@@ -2,11 +2,14 @@ package com.necrolore.menu.tower;
 
 
 import com.necrolore.entity.Tower;
+
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Entity;
@@ -14,8 +17,7 @@ import com.necrolore.greenfoot.Level;
 
 public class UpgradeMenu extends TowerMenu {
 	
-	private Tower tower; // The tower this upgrade menu is for
-	private Attribute upgrades[]; // The upgrades possible for this tower
+	private Map<Entity, Attribute> upgrades = new LinkedHashMap<Entity, Attribute>(); // The upgrades possible for this tower
 	private GreenfootImage images[]; // The images of upgrades in this menu
 
 	/**
@@ -26,36 +28,37 @@ public class UpgradeMenu extends TowerMenu {
 	@SuppressWarnings("unused")
 	public UpgradeMenu(Tower tower){
 		
-		/* Get the upgrades possible by this tower */
+		/* Get the upgrades possible by this tower and store them in the class variable */
+			Attribute[] tempUpgrades = tower.getUpgradeAttr();
+			for(Attribute attr : tempUpgrades)upgrades.put(tower, attr);
+			
+			
+		/* Get the upgrades possible by this tower's spawn and store them in the class variable */
 			Entity spawn = (Entity)tower.getAttribute(Attribute.SPAWNS);
-			List<Attribute> upgrades = new ArrayList<Attribute>();
-			upgrades.add(Attribute.MAX_COOLDOWN);
-			upgrades.add(Attribute.RANGE);
-			if(spawn.hasAttribute(Attribute.ATK))upgrades.add(Attribute.ATK);
-			if(spawn.hasAttribute(Attribute.DEF))upgrades.add(Attribute.DEF);
-			if(spawn.hasAttribute(Attribute.HP))upgrades.add(Attribute.HP);
+			tempUpgrades = spawn.getUpgradeAttr();
+			for(Attribute attr : tempUpgrades)upgrades.put(spawn, attr);
+			
 			
 		/* Get the images of the possible upgrades of this tower */
-			images = new GreenfootImage[upgrades.size()+1];
-			for(int i=0;i<upgrades.size();i++){
+			images = new GreenfootImage[upgrades.size()];
+			for(int i=0;i<images.length;i++){
 				
 				/* Get the image of the current attribute */
-					images[i] = upgrades.get(i).getImage();
+					Attribute curAttr = upgrades.get(upgrades.keySet().toArray()[i]);
+					images[i] = curAttr.getImage();
 				
 			}// End for(Attribute attr : upgrades)
-			images[images.length-1] = new GreenfootImage("images/attributes/sell.png");
 			
 			
 		/* Get the prices of the possible upgrades of this tower */
-			prices = new int[upgrades.size()+1];
-			for(int i=0;i<upgrades.size();i++){
+			prices = new int[upgrades.size()];
+			for(int i=0;i<prices.length;i++){
 				
-				/* Get the image of the current attribute */
-					if(i<2) prices[i] = (Integer)tower.getAttribute(upgrades.get(i))*2;
-					else prices[i] = (Integer)spawn.getAttribute(upgrades.get(i))*2;
+				/* Get the price of the current attribute */
+					Attribute curAttr = upgrades.get(upgrades.keySet().toArray()[i]);
+					prices[i] = curAttr.getPriceMuti();
 				
 			}// End for(Attribute attr : upgrades)
-			prices[prices.length-1] = ;
 			
 			
 		/* Draw the menu based on the images found */

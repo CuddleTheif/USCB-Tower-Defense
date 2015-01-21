@@ -12,15 +12,19 @@ public class ComputationalScience extends Tower {
 	 * Creates a ComputationalScience major with the 
 	 * given range and cooldown
 	 * 
-	 * @param range      The range of its attacks
-	 * @param cooldown   The cooldown of the tower (how long it must wait between attacks)
-     * @param maxBots    The max number of bots out of this tower
-     * @param botStats   The stats of the bot (health, attack, defense)
+	 * @param range        The range of its attacks
+	 * @param cooldown     The cooldown of the tower (how long it must wait between attacks)
+     * @param maxBots      The max number of bots out of this tower
+     * @param price        The price of the ComputationalScience tower
+     * @param botHealth    The health of bots of this tower
+     * @param botAttack    The attack of bots of this tower
+     * @param botDefense   The defense of bots of this tower
 	 */
-	public ComputationalScience(int range, int cooldown, int maxBots, int... botStats) {
+	public ComputationalScience(int range, int cooldown, int maxBots, int price,
+									int botHealth, int botAttack, int botDefense) {
 		
 		/* Call the super class' constructor to create the tower */
-			super(range, cooldown, new Robot(range, cooldown, botStats[0], botStats[1], botStats[2]));
+			super(range, cooldown, new Robot(range, cooldown, botHealth, botAttack, botDefense), price);
 			
 			setImage("images/bots/robot-00-00.png");
 			

@@ -57,9 +57,8 @@ public class Level extends World{
             
         /* Create pause button, tower menu, and money display */
             pause = new PauseButton(WORLD_WIDTH, WORLD_HEIGHT);
-            Nursing nursing = new Nursing(50, 100, 10);
-            ComputationalScience compSci = new ComputationalScience(50, 100, 1, 20, 10, 10);
-            buyMenu = new NewTowerMenu(new Tower[]{nursing, compSci}, new int[]{15, 30});
+            Nursing nursing = new Nursing(50, 100, 10, 15);
+            ComputationalScience compSci = new ComputationalScience(50, 100, 1, 30, 20, 10, 10);
             gold = 60;
             moneyDisplay = new MoneyDisplay();
             
