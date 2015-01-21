@@ -1,6 +1,7 @@
 package com.necrolore.menu.tower;
 
 
+import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Tower;
 import com.necrolore.greenfoot.Level;
 
@@ -18,17 +19,19 @@ public class NewTowerMenu extends TowerMenu {
 	 */
 	public NewTowerMenu(Tower[] towers) {
 		
-		/* Get all the images of the towers given */
+		/* Get all the images and prices of the towers given */
 			GreenfootImage images[] = new GreenfootImage[towers.length];
+			int prices[] = new int[towers.length];
 			for(int i=0;i<images.length;i++){
 				
 				images[i] = towers[i].getImage();
+				prices[i] = (int) towers[i].getAttribute(Attribute.PRICE);
 				
 			}// End for(int i=0;i<images.length;i++)
 			
 			
 		/* Create the menu from the images of towers */
-			createMenu(images, Tower.WIDTH, Tower.HEIGHT);
+			createMenu(images, Tower.WIDTH, Tower.HEIGHT, prices);
 			
 			
 		/* Store given towers in class variable */

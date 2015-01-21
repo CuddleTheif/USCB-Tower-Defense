@@ -14,10 +14,11 @@ import java.util.Map;
 import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Entity;
 import com.necrolore.greenfoot.Level;
+import com.necrolore.java.Pair;
 
 public class UpgradeMenu extends TowerMenu {
 	
-	private Map<Entity, Attribute> upgrades = new LinkedHashMap<Entity, Attribute>(); // The upgrades possible for this tower
+	private Pair<Entity, Attribute> upgrades[]; // The upgrades possible for this tower
 	private GreenfootImage images[]; // The images of upgrades in this menu
 
 	/**
@@ -25,18 +26,22 @@ public class UpgradeMenu extends TowerMenu {
 	 * 
 	 * @param tower   The tower to create the upgrade menu for
 	 */
-	@SuppressWarnings("unused")
+	@SuppressWarnings("unchecked")
 	public UpgradeMenu(Tower tower){
+		
+		/* Initialize variable for holding upgrades found */
+			List<Pair<Entity, Attribute>> upgrades = new ArrayList<Pair<Entity, Attribute>>();
+		
 		
 		/* Get the upgrades possible by this tower and store them in the class variable */
 			Attribute[] tempUpgrades = tower.getUpgradeAttr();
-			for(Attribute attr : tempUpgrades)upgrades.put(tower, attr);
+			for(Attribute attr : tempUpgrades)upgrades.add(new Pair<Entity, Attribute>(tower, attr));
 			
 			
 		/* Get the upgrades possible by this tower's spawn and store them in the class variable */
 			Entity spawn = (Entity)tower.getAttribute(Attribute.SPAWNS);
 			tempUpgrades = spawn.getUpgradeAttr();
-			for(Attribute attr : tempUpgrades)upgrades.put(spawn, attr);
+			for(Attribute attr : tempUpgrades)upgrades.add(new Pair<Entity, Attribute>(spawn, attr));
 			
 			
 		/* Get the images of the possible upgrades of this tower */
@@ -44,8 +49,7 @@ public class UpgradeMenu extends TowerMenu {
 			for(int i=0;i<images.length;i++){
 				
 				/* Get the image of the current attribute */
-					Attribute curAttr = upgrades.get(upgrades.keySet().toArray()[i]);
-					images[i] = curAttr.getImage();
+					images[i] = upgrades.get(i).getB().getImage();
 				
 			}// End for(Attribute attr : upgrades)
 			
@@ -55,8 +59,18 @@ public class UpgradeMenu extends TowerMenu {
 			for(int i=0;i<prices.length;i++){
 				
 				/* Get the price of the current attribute */
-					Attribute curAttr = upgrades.get(upgrades.keySet().toArray()[i]);
-					prices[i] = curAttr.getPriceMuti();
+					Pair<Entity, Attribute> curPair = upgrades.get(i);
+					if(curPair.getB().getIncreaseVal()<0){
+						
+						prices[i] = -1*(int)(curPair.getB().getPriceMuti()/(Double)curPair.getA().getAttribute(curPair.getB()));
+						
+					}// End if(curPair.getB().getPriceMuti()<0)
+					else{
+						
+						prices[i] = (int)((Double)curPair.getA().getAttribute(curPair.getB())*curPair.getB().getPriceMuti());
+						
+					}// End else for if(curPair.getB().getPriceMuti()<0)
+					
 				
 			}// End for(Attribute attr : upgrades)
 			
@@ -65,9 +79,8 @@ public class UpgradeMenu extends TowerMenu {
 			createMenu(images, Tower.WIDTH, Tower.HEIGHT, prices);
 			
 			
-		/* Store the given tower and change the upgrades into an array */
-			this.tower = tower;
-			this.upgrades = upgrades.toArray(new Attribute[upgrades.size()]);
+		/* Store the upgrades into an array */
+			this.upgrades = (Pair<Entity, Attribute>[]) upgrades.toArray();
 			
 	}// End one-argument constructor for UpgradeMenu 
 	
@@ -84,46 +97,21 @@ public class UpgradeMenu extends TowerMenu {
 				/* make sure a tower was selected */
 					if(selected>=0){
 						
-						/* Check to see if there is enought gold to buy it */
+						/* Check to see if there is enough gold to buy it */
 						if(((Level)getWorld()).getGold()>=prices[selected]){
-							
-							/* Check to see if the upgrade is cooldown (because than it decrease in value) */
-								int increase = 1;
-								if(upgrades[selected]==Attribute.MAX_COOLDOWN)increase = -1;
 	
 	
 							/* Spend the cost of the upgrade */
 								((Level)getWorld()).spendGold(prices[selected]);
 								
 								
-							/* Upgrade the tower */
-									/* Check to see if the tower, its entity, or both have the attribute */
-										Entity spawn = (Entity) tower.getAttribute(Attribute.SPAWNS);	
-										if(spawn.hasAttribute(upgrades[selected])){
-											
-											/* increase the spawn's attribute */
-												spawn.setAttribute(upgrades[selected], (Integer)spawn.getAttribute(upgrades[selected])+increase);
-												
-												
-											/* Update the price of the upgrade */
-												if(upgrades[selected]==Attribute.MAX_COOLDOWN) prices[selected] =  1000 - (Integer)spawn.getAttribute(upgrades[selected])*2;
-												else prices[selected] = (Integer)spawn.getAttribute(upgrades[selected])*2;
+							/* Upgrade the tower or spawn */
+								Double curVal = (Double) upgrades[selected].getA().getAttribute(upgrades[selected].getB());
+								upgrades[selected].getA().setAttribute(upgrades[selected].getB(), curVal+upgrades[selected].getB().getIncreaseVal());
 										
-										}// End if(spawn.hasAttribute(upgrades[selected]))
-										if(tower.hasAttribute(upgrades[selected])){
-											
-											/* increase the tower's attribute */
-												tower.setAttribute(upgrades[selected], (Integer)tower.getAttribute(upgrades[selected])+increase);
-										
-												
-											/* Update the price of the upgrade */
-												if(upgrades[selected]==Attribute.MAX_COOLDOWN) prices[selected] = 1000-(Integer) tower.getAttribute(upgrades[selected])*2;
-												else prices[selected] = (Integer) tower.getAttribute(upgrades[selected])*2;
-												
-										}// End if(tower.hasAttribute(upgrades[selected]))
 								
-								/* Recreate the menu */
-										createMenu(images, Tower.WIDTH, Tower.HEIGHT, prices);
+							/* Recreate the menu */
+								createMenu(images, Tower.WIDTH, Tower.HEIGHT, prices);
 						}
 									
 					}// End if(selected>=0)
