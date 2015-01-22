@@ -3,7 +3,7 @@ package com.necrolore.menu.tower;
 
 import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Tower;
-import com.necrolore.greenfoot.Level;
+import com.necrolore.level.Level;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

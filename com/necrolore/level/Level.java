@@ -1,6 +1,8 @@
-package com.necrolore.greenfoot;
+package com.necrolore.level;
 
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -12,6 +14,7 @@ import com.necrolore.entity.EntitySpawner;
 import com.necrolore.entity.Nursing;
 import com.necrolore.entity.Tower;
 import com.necrolore.entity.USCB;
+import com.necrolore.menu.Menu;
 import com.necrolore.menu.tower.BuyTowerMenu;
 import com.necrolore.menu.tower.TowerMenu;
 import com.necrolore.road.Path;
@@ -37,26 +40,25 @@ public class Level extends World{
     private BuyTowerMenu buyMenu; // The tower menu for buying towers
     private MoneyDisplay moneyDisplay; // The money display on the world
     private int gold; // The amount of gold the player has on the level
-    public final static int WORLD_HEIGHT = 400; // The height of the world
-    public final static int WORLD_WIDTH = 600; // The width of the world
+    private boolean gameOver = false; // If the level is over yet because the player lost
     
     
     /**
      * Create A Level with given shapes and points
      */
-    public Level(PathShape[] shape, Point[] start, Point[] end)
+    public Level(int width, int height, PathShape[] shape, Point[] start, Point[] end)
     {    
         
         /* 
          * Create a new world with 600x400 cells with a cell size of 1x1 pixels 
          * and green background. 
          */
-            super(WORLD_WIDTH, WORLD_HEIGHT, 1); 
+            super(width, height, 1); 
             setBackground(new GreenfootImage("images/green-grass-texture.jpg"));
             
             
         /* Create pause button, tower menu, and money display */
-            pause = new PauseButton(WORLD_WIDTH, WORLD_HEIGHT);
+            pause = new PauseButton(width, height);
             Nursing nursing = new Nursing(50, 100, 10, 15);
             ComputationalScience compSci = new ComputationalScience(50, 100, 1, 30, 20, 10, 10);
             buyMenu = new BuyTowerMenu(nursing, compSci);
@@ -79,8 +81,8 @@ public class Level extends World{
             
             
         /* Add the pause button and money display to the world */
-            addObject(pause, WORLD_WIDTH-pause.getImage().getWidth(), pause.getImage().getHeight());
-            addObject(moneyDisplay, WORLD_WIDTH-moneyDisplay.getImage().getWidth(), WORLD_HEIGHT-moneyDisplay.getImage().getHeight());
+            addObject(pause, width-pause.getImage().getWidth(), pause.getImage().getHeight());
+            addObject(moneyDisplay, width-moneyDisplay.getImage().getWidth(), height-moneyDisplay.getImage().getHeight());
             
             
         /* Add the path with the building at the end and the spawner at the start */
@@ -141,7 +143,22 @@ public class Level extends World{
     				}// End for(Tower tower : towers)
     			
     		}// End if(Greenfoot.mouseClicked(null))
-    	
+    		
+    		/* Check if the player has lost yet */
+	    		if((boolean)uscb.getAttribute(Attribute.DIE) && !gameOver){
+	    			
+	    			getBackground().setColor(Color.WHITE);
+	    			getBackground().setFont(new Font(Font.MONOSPACED, Font.BOLD, 42));
+	    			getBackground().drawString("Game Over", getBackground().getWidth()/4, getBackground().getHeight()/32);
+	    			gameOver = true;
+	    			
+	    		}// End if((boolean) uscb.getAttribute(Attribute.DIE))
+    		
+	    		
+    		/* Check to see if it's game over and return to menu on click */
+	    		if(gameOver && Greenfoot.mouseClicked(null))Greenfoot.setWorld(new Menu());;
+	    		
+	    		
     }// End method act 
     
     

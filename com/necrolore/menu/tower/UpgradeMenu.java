@@ -11,8 +11,8 @@ import java.util.List;
 
 import com.necrolore.entity.Attribute;
 import com.necrolore.entity.Entity;
-import com.necrolore.greenfoot.Level;
 import com.necrolore.java.Pair;
+import com.necrolore.level.Level;
 
 public class UpgradeMenu extends TowerMenu {
 	

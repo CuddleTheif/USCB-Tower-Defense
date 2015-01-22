@@ -72,6 +72,7 @@ public class USCB extends Entity{
             attributes.put(Attribute.DEATH_SOUND, "sounds/Explosion.wav");
             attributes.put(Attribute.MAX_HP, maxHealth);
             attributes.put(Attribute.HP, maxHealth);
+            attributes.put(Attribute.DIE, false);
             
         /* Initialize and store the Animation Behavior */
             behaviors.put(Behavior.Type.ANIMATION, new Animation(this));
@@ -89,6 +90,9 @@ public class USCB extends Entity{
 			if(pause)return;
     	
 			
-        if((Integer)attributes.get(Attribute.HP)==0)((Animation)behaviors.get(Behavior.Type.ANIMATION)).loopThroughTimes(Attribute.DEATH_ANIMATION, 1, Attribute.DEATH_SOUND);
+        if((Integer)attributes.get(Attribute.HP)==0){
+        	boolean die = ((Animation)behaviors.get(Behavior.Type.ANIMATION)).loopThroughTimes(Attribute.DEATH_ANIMATION, 1, Attribute.DEATH_SOUND);
+        	attributes.replace(Attribute.DIE, die);
+        }// End if((Integer)attributes.get(Attribute.HP)==0)
     }    
 }
