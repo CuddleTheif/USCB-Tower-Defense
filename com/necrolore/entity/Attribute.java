@@ -14,7 +14,7 @@ public enum Attribute{
     MAX_HP(Type.COMBAT, 2, 1), HP(Type.COMBAT), ATK(Type.COMBAT, 2, 1), DEF(Type.COMBAT, 2, 1),
         DEATH_ANIMATION(Type.ANIMATION), DEATH_SOUND(Type.ANIMATION), ENEMY(Type.TARGET),
         SPAWNS(Type.OTHER), MAX_SPAWNS(Type.OTHER), MAX_COOLDOWN(Type.OTHER, 2000, -1), 
-        CUR_COOLDOWN(Type.OTHER), RANGE(Type.OTHER, 2, 1), DIE(Type.OTHER), NUM_SPAWNS(Type.OTHER),
+        CUR_COOLDOWN(Type.OTHER), RANGE(Type.OTHER, .5, 5), DIE(Type.OTHER), NUM_SPAWNS(Type.OTHER),
         PATH(Type.OTHER), PRICE(Type.OTHER, -0.5, 0);
     
         
@@ -94,7 +94,7 @@ public enum Attribute{
      * 
      * @return   The amount the attribute increases when upgraded (0 doesn't mean not upgradeable)
      */
-    public double getIncreaseVal(){
+    public int getIncreaseVal(){
         
         /* Return the attrbute's increase value */
             return increase;

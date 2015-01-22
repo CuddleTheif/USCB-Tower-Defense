@@ -54,10 +54,6 @@ public class UpgradeMenu extends TowerMenu {
 			}// End for(Attribute spawnAttr : spawnUpgrades)
 			
 			
-		/* Get the upgrades possible by this tower's spawn and store them in the class variable */
-			for(Attribute attr : spawnUpgrades)upgrades.add(new Pair<Entity, Attribute>(spawn, attr));
-			
-			
 		/* Get the images of the possible upgrades of this tower */
 			images = new GreenfootImage[upgrades.size()];
 			for(int i=0;i<images.length;i++){
@@ -128,7 +124,7 @@ public class UpgradeMenu extends TowerMenu {
 								
 								
 							/* Reset the price of the upgrade and increase the price of the tower */
-								upgrades[0].getA().setAttribute(Attribute.PRICE, (int)upgrades[0].getA().getAttribute(Attribute.PRICE)-prices[selected]*Attribute.PRICE.getPriceMuti());
+								upgrades[0].getA().setAttribute(Attribute.PRICE, (int)((int)upgrades[0].getA().getAttribute(Attribute.PRICE)-prices[selected]*Attribute.PRICE.getPriceMuti()));
 								prices[selected] = getPrice(upgrades[selected]);
 								
 								
