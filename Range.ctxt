@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=range
-comment0.target=void\ setRange(int)
-comment0.text=\r\n\ Sets\ the\ range's\ range\ to\ the\ given\ value\r\n\ \r\n\ @param\ range\ \ \ The\ new\ range\r\n
-comment1.params=
-comment1.target=void\ act()
-numComments=2

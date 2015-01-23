@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=maxHealth\ size
-comment0.target=USCB(int,\ int)
-comment0.text=\r\n\ Creates\ a\ USCB\ Building\ With\ Max\ Health\ being\ the\ given\ value\ and\ with\ the\ given\ size\r\n\ \r\n\ @param\ maxHealth\ \ \ The\ max\ health\ of\ the\ USCB\ Building\r\n\ @param\ size\ \ \ \ \ \ \ \ The\ physical\ size\ of\ the\ building\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ USCB\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2

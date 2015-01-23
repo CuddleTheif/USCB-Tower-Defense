@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import com.necrolore.entity.Tower;
 import com.necrolore.greenfoot.Actors;
+import com.necrolore.menu.Menu;
 
 import greenfoot.GreenfootImage;
 
@@ -18,7 +19,7 @@ public class MoneyDisplay extends Actors {
 	public MoneyDisplay(){
 		
 		/* Set the size of the money display depending on the level size */
-			setImage(new GreenfootImage(Level.WORLD_WIDTH/10, Level.WORLD_HEIGHT/20));
+			setImage(new GreenfootImage(Menu.WIDTH/10, Menu.HEIGHT/20));
 		
 	}// End zero-argument constructor
 	

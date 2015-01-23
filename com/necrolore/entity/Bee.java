@@ -5,6 +5,7 @@ import com.necrolore.entity.behavior.Behavior;
 import com.necrolore.entity.behavior.Combat;
 import com.necrolore.entity.behavior.Movement;
 import com.necrolore.level.Level;
+import com.necrolore.menu.Menu;
 import com.necrolore.road.Path;
 
 import greenfoot.Greenfoot;
@@ -34,7 +35,7 @@ public class Bee extends Entity{
             
         /* Set this objects' image */
             setImage(new GreenfootImage("images/bee2.png"));
-            getImage().scale(Level.WORLD_WIDTH/40, Level.WORLD_HEIGHT/20);
+            getImage().scale(Menu.WIDTH/40, Menu.HEIGHT/20);
             
             
         /* Create and Add the Bee's Behaviors */

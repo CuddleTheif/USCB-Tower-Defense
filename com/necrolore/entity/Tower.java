@@ -2,6 +2,7 @@ package com.necrolore.entity;
 
 import com.necrolore.entity.behavior.Spawner;
 import com.necrolore.level.Level;
+import com.necrolore.menu.Menu;
 import com.necrolore.menu.tower.UpgradeMenu;
 import com.necrolore.entity.behavior.Behavior;
 
@@ -16,8 +17,8 @@ import greenfoot.GreenfootImage;
  */
 public abstract class Tower extends Entity
 {
-	public static final int WIDTH=Level.WORLD_WIDTH/20;
-	public static final int HEIGHT=Level.WORLD_HEIGHT/10;
+	public static final int WIDTH=Menu.WIDTH/20;
+	public static final int HEIGHT=Menu.HEIGHT/10;
 	protected UpgradeMenu upgradeMenu; // The upgradeMenu fot this tower
     
     /**

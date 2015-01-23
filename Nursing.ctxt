@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.params=range\ cooldown\ attack
-comment0.target=Nursing(int,\ int,\ int)
-comment0.text=\r\n\ Creates\ a\ nursing\ tower\ with\ the\ given\ \r\n\ \r\n\ @param\ range\r\n\ @param\ cooldown\r\n\ @param\ attack\r\n
-comment1.params=
-comment1.target=void\ act()
-numComments=2
