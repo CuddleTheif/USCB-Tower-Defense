@@ -1,4 +1,6 @@
 package com.necrolore.entity;
+import greenfoot.GreenfootImage;
+
 import com.necrolore.entity.behavior.Behavior;
 import com.necrolore.entity.behavior.Spawner;
 import com.necrolore.entity.behavior.Behavior.Type;
@@ -26,7 +28,7 @@ public class ComputationalScience extends Tower {
 		/* Call the super class' constructor to create the tower */
 			super(range, cooldown, new Robot(range, cooldown, botHealth, botAttack, botDefense), price);
 			
-			setImage("images/bots/robot-00-00.png");
+			setImage(getBaseImage());
 			
 		/* Store attribute that holds the count of robots out */
 			attributes.put(Attribute.MAX_SPAWNS, maxBots);
@@ -34,7 +36,7 @@ public class ComputationalScience extends Tower {
 			
 	}// End two-argument Constructor for ComputationalScience
 
-	
+
 	public void act(){
 		
     	/* Make sure the game is not paused */
@@ -80,5 +82,18 @@ public class ComputationalScience extends Tower {
 			 }
 		
 	}// End method act
+	
+	
+	/**
+	 * Get the base image of this tower
+	 */
+	public static GreenfootImage getBaseImage(){
+		
+		/* Return the base image of this tower */
+			GreenfootImage image = new GreenfootImage("images/bots/robot-00-00.png");
+			image.scale(WIDTH, HEIGHT);
+			return image;
+		
+	}// End method getBaseImage
 	
 }// End class ComputationalScience

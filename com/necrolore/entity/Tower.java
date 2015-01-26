@@ -36,8 +36,7 @@ public abstract class Tower extends Entity
             
         
         /* Set this objects' image */
-            setImage(new GreenfootImage("images/Tower.png"));
-            getImage().scale(WIDTH, HEIGHT);
+            setImage(getBaseImage());
             
             
         /* Store the given range, cooldown, and price as attributes */
@@ -55,9 +54,9 @@ public abstract class Tower extends Entity
             behaviors.put(Behavior.Type.SPAWNER, new Spawner(this));
         
     }// End no-argument constructor Tower
-    
-    
-    /**
+
+
+	/**
      * Act - do whatever the Tower wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
@@ -79,5 +78,18 @@ public abstract class Tower extends Entity
     		}// End else if(Greenfoot.mouseClicked(null))
     	
     }// End method act
+
+
+	/**
+	 * Get the base image of this tower
+	 */
+	public static GreenfootImage getBaseImage(){
+		
+		/* Return the base image of this tower */
+			GreenfootImage image = new GreenfootImage("images/Tower.png");
+			image.scale(WIDTH, HEIGHT);
+			return image;
+		
+	}// End method getBaseImage
     
 }// End class Tower

@@ -1,4 +1,6 @@
 package com.necrolore.entity;
+import greenfoot.GreenfootImage;
+
 import com.necrolore.entity.behavior.Behavior;
 import com.necrolore.entity.behavior.Spawner;
 import com.necrolore.entity.behavior.Behavior.Type;
@@ -23,8 +25,7 @@ public class Nursing extends Tower {
 		
 	}// End two-argument constructor for Nursing
 
-	
-	
+
 	public void act() {
 		
     	/* Make sure the game is not paused */

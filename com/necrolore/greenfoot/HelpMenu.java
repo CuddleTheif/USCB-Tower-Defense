@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.geom.Rectangle2D;
 
+import com.necrolore.entity.Attribute;
+import com.necrolore.entity.ComputationalScience;
+import com.necrolore.entity.Nursing;
 import com.necrolore.menu.Button;
 import com.necrolore.menu.Menu;
 
@@ -23,16 +26,8 @@ public class HelpMenu extends World {
 	private int page; // The page the help menu is on
 	private Button nextButton, prevButton; // The next and previous page buttons
 	private Button backButton; // The button to go back to the main menu
-	private String text[][] = {{"The Goal", "stop 10 bees from reaching", "the USCB logo for as", "long as possible"},
-								{"The Towers", "Computational Science: A tower the produces \"robots\" that fight bees until they die"},
-								{"page 3"},
-								{"page 4"},
-								{"page 5"}}; // The text on all the pages
-	private GreenfootImage images[][] = {{},
-										 {},
-										 {},
-										 {}}; // The images on all the pages
-	}
+	private String text[][] = new String[3][]; // The text on all the pages
+	private GreenfootImage images[][] = new GreenfootImage[3][]; // The images on all the pages
 
 	/**
 	 * Creates a help menu of the given size
@@ -53,6 +48,35 @@ public class HelpMenu extends World {
 			prevButton = new Button(width/4, height/8, Color.BLACK, Color.WHITE, "Previous");
 			backButton = new Button(width/4, height/8, Color.BLACK, Color.WHITE, "Back");
 			page = -1;
+			
+			
+		/* Assign and/or get all the text for the pages */
+			text[0] = new String[]{"The Goal", "stop the bees from reaching the USCB logo for", "as long as possible by placing and upgrading", "towers along the path to kill them"};
+			text[1] = new String[]{"The Towers", 
+									"Computational Science: A tower the produces \"robots\"", "that fight bees until they die", "",
+									"Nursing: A tower that shoots syringes at the bees", "to hurt them"};
+			
+			
+		/* Assign and/or get all the images for the pages */
+			images[0] = new GreenfootImage[0];
+			images[1] = new GreenfootImage[]{ComputationalScience.getBaseImage(), null, null, Nursing.getBaseImage()};
+			images[1][0].scale(getBackground().getWidth()/20, getBackground().getHeight()/10);
+			images[1][3].scale(getBackground().getWidth()/20, getBackground().getHeight()/10);
+			
+			
+		/* Get the images and text for the upgrade page */
+			text[2] = new String[Attribute.upgradeValues().length*2];
+			text[2][0] = "Upgrades";
+			images[2] = new GreenfootImage[Attribute.upgradeValues().length];
+			for(int i=0;i<Attribute.upgradeValues().length;i++){
+				text[2][i*2+1] = Attribute.upgradeValues()[i].getDescription();
+				text[2][i*2+2==text[2].length ? 2 : i*2+2] = "";
+				images[2][i] = Attribute.upgradeValues()[i].getImage();
+				images[2][i*2+1].scale(getBackground().getWidth()/20, getBackground().getHeight()/10);
+			}// End for(int i=0;i<text[2].length;i++)
+			
+			for(String str : text[2])
+				System.out.println(str);
 		
 	}// End two-argument constructor for HelpMenu
 	
@@ -96,26 +120,33 @@ public class HelpMenu extends World {
 			
 			
 		/* Draw the title of the page */
-			Font font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/4000);
+			Font font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/8000);
 			FontMetrics fontMetrics = getBackground().getAwtImage().getGraphics().getFontMetrics(font);
 			getBackground().setColor(Color.WHITE);
 			getBackground().setFont(font);
-			getBackground().drawString(pages[page][0], 
-					getBackground().getWidth()/2-fontMetrics.stringWidth(pages[page][0])/2, fontMetrics.getHeight()/2);
+			getBackground().drawString(text[page][0], 
+					getBackground().getWidth()/2-fontMetrics.stringWidth(text[page][0])/2, fontMetrics.getHeight()/2);
 			
 			
-		/* Draw the  text on the current page */
-			font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/8000);
+		/* Draw the text on the current page */
+			font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/16000);
 			fontMetrics = getBackground().getAwtImage().getGraphics().getFontMetrics(font);
 			getBackground().setFont(font);
-			for(int line=1;line<pages[page].length;line++)
-				getBackground().drawString(pages[page][line], 
-						getBackground().getWidth()/2-fontMetrics.stringWidth(pages[page][line])/2, getBackground().getHeight()/2-fontMetrics.getHeight()*(pages[page].length-line-1));
+			for(int line=1;line<text[page].length;line++)
+				getBackground().drawString(text[page][line], 
+						getBackground().getWidth()/2-fontMetrics.stringWidth(text[page][line])/2, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length-line-1));
+			
+			
+		/* Draw the images on the current page */
+			for(int line=0;line<images[page].length;line++)
+				if(images[page][line]!=null)
+					getBackground().drawImage(images[page][line], 0, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length-line-1));
+			
 			
 			
 		/* Draw the buttons on the page */
 			addButton(backButton, 2);
-			if(page<4)addButton(nextButton, 3);
+			if(page<text.length-1)addButton(nextButton, 3);
 			if(page>0)addButton(prevButton, 1);
 		
 	}// End method updatePage
