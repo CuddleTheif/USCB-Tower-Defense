@@ -67,16 +67,14 @@ public class HelpMenu extends World {
 		/* Get the images and text for the upgrade page */
 			text[2] = new String[Attribute.upgradeValues().length*2];
 			text[2][0] = "Upgrades";
-			images[2] = new GreenfootImage[Attribute.upgradeValues().length];
+			images[2] = new GreenfootImage[Attribute.upgradeValues().length*2];
 			for(int i=0;i<Attribute.upgradeValues().length;i++){
 				text[2][i*2+1] = Attribute.upgradeValues()[i].getDescription();
 				text[2][i*2+2==text[2].length ? 2 : i*2+2] = "";
-				images[2][i] = Attribute.upgradeValues()[i].getImage();
-				images[2][i*2+1].scale(getBackground().getWidth()/20, getBackground().getHeight()/10);
+				images[2][i*2] = Attribute.upgradeValues()[i].getImage();
+				images[2][i*2].scale(getBackground().getWidth()/20, getBackground().getHeight()/10);
+				images[2][i*2+1==text[2].length ? 1 : i*2+1] = null;
 			}// End for(int i=0;i<text[2].length;i++)
-			
-			for(String str : text[2])
-				System.out.println(str);
 		
 	}// End two-argument constructor for HelpMenu
 	
@@ -134,13 +132,13 @@ public class HelpMenu extends World {
 			getBackground().setFont(font);
 			for(int line=1;line<text[page].length;line++)
 				getBackground().drawString(text[page][line], 
-						getBackground().getWidth()/2-fontMetrics.stringWidth(text[page][line])/2, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length-line-1));
+						getBackground().getWidth()/2-fontMetrics.stringWidth(text[page][line])/2, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length/2-line));
 			
 			
 		/* Draw the images on the current page */
 			for(int line=0;line<images[page].length;line++)
 				if(images[page][line]!=null)
-					getBackground().drawImage(images[page][line], 0, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length-line-1));
+					getBackground().drawImage(images[page][line], 0, getBackground().getHeight()/2-fontMetrics.getHeight()*(text[page].length/2-line));
 			
 			
 			
