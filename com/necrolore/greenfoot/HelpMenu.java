@@ -1,10 +1,15 @@
 package com.necrolore.greenfoot;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.geom.Rectangle2D;
 
 import com.necrolore.menu.Button;
+import com.necrolore.menu.Menu;
 
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 /**
@@ -18,6 +23,16 @@ public class HelpMenu extends World {
 	private int page; // The page the help menu is on
 	private Button nextButton, prevButton; // The next and previous page buttons
 	private Button backButton; // The button to go back to the main menu
+	private String text[][] = {{"The Goal", "stop 10 bees from reaching", "the USCB logo for as", "long as possible"},
+								{"The Towers", "Computational Science: A tower the produces \"robots\" that fight bees until they die"},
+								{"page 3"},
+								{"page 4"},
+								{"page 5"}}; // The text on all the pages
+	private GreenfootImage images[][] = {{},
+										 {},
+										 {},
+										 {}}; // The images on all the pages
+	}
 
 	/**
 	 * Creates a help menu of the given size
@@ -62,6 +77,8 @@ public class HelpMenu extends World {
 				updatePage();
 			
 		}// End else if(Greenfoot.mouseClicked(prevButton))
+		else if(Greenfoot.mouseClicked(backButton))
+			Greenfoot.setWorld(new Menu());
 		
 	}// End method act
 	
@@ -73,36 +90,33 @@ public class HelpMenu extends World {
 		
 		/* Clear the current menu */
 			getBackground().clear();
+			getBackground().setColor(Color.BLACK);
+			getBackground().fillRect(0, 0, getBackground().getWidth(), getBackground().getHeight());
 			removeObjects(getObjects(Button.class));
-			addButton(backButton, 1);
-		
-		/* Find out which page the menu is on */
-			switch(page){
 			
-			case 0:
-				addButton(nextButton, 0);
-				break;
-				
-			case 1:
-				addButton(nextButton, 0);
-				addButton(prevButton, 2);
-				break;
-				
-			case 2:
-				addButton(nextButton, 0);
-				addButton(prevButton, 2);
-				break;
-				
-			case 3:
-				addButton(nextButton, 0);
-				addButton(prevButton, 2);
-				break;
-				
-			case 4:
-				addButton(prevButton, 2);
-				break;
 			
-			}// End switch(page)
+		/* Draw the title of the page */
+			Font font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/4000);
+			FontMetrics fontMetrics = getBackground().getAwtImage().getGraphics().getFontMetrics(font);
+			getBackground().setColor(Color.WHITE);
+			getBackground().setFont(font);
+			getBackground().drawString(pages[page][0], 
+					getBackground().getWidth()/2-fontMetrics.stringWidth(pages[page][0])/2, fontMetrics.getHeight()/2);
+			
+			
+		/* Draw the  text on the current page */
+			font = new Font(Font.MONOSPACED, Font.BOLD, getBackground().getWidth()*getBackground().getHeight()/8000);
+			fontMetrics = getBackground().getAwtImage().getGraphics().getFontMetrics(font);
+			getBackground().setFont(font);
+			for(int line=1;line<pages[page].length;line++)
+				getBackground().drawString(pages[page][line], 
+						getBackground().getWidth()/2-fontMetrics.stringWidth(pages[page][line])/2, getBackground().getHeight()/2-fontMetrics.getHeight()*(pages[page].length-line-1));
+			
+			
+		/* Draw the buttons on the page */
+			addButton(backButton, 2);
+			if(page<4)addButton(nextButton, 3);
+			if(page>0)addButton(prevButton, 1);
 		
 	}// End method updatePage
 	
@@ -111,12 +125,12 @@ public class HelpMenu extends World {
 	 * Add the given button of the given number
 	 * 
 	 * @param button   The button to add
-	 * @param num      The number of the button (0, 1, or 2)
+	 * @param num      The number of the button (1, 2, or 3)
 	 */
 	private void addButton(Button button, int num){
 		
 		/* Add the button given */
-			addObject(button, getBackground().getWidth()*(1+5*num)/16, getBackground().getHeight()-button.getImage().getHeight());
+			addObject(button, getBackground().getWidth()*num/4, getBackground().getHeight()-button.getImage().getHeight());
 		
 	}// End method add Button
 
