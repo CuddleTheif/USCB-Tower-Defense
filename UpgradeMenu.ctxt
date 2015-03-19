@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=tower
+comment0.target=UpgradeMenu(Tower)
+comment0.text=\r\n\ Creates\ a\ upgrade\ menu\ for\ the\ given\ tower\r\n\ \r\n\ @param\ tower\ \ \ The\ tower\ to\ create\ the\ upgrade\ menu\ for\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=pair
+comment2.target=int\ getPrice(Pair)
+comment2.text=\r\n\ Gets\ the\ price\ of\ upgrading\ the\ give\ pair\ of\ entity\ and\ attribute\r\n\ \r\n\ @param\ pair\ \ \ The\ pair\ of\ entity\ and\ attribute\r\n\ @return\ \ \ \ \ \ \ The\ price\ of\ the\ upgrading\ the\ attribute\r\n
+numComments=3

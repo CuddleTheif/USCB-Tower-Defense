@@ -1,17 +1,15 @@
 package com.necrolore.menu;
 
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
-import java.util.Arrays;
-
-import com.necrolore.greenfoot.HelpMenu;
-import com.necrolore.level.Level;
-import com.necrolore.road.PathShape;
+import com.necrolore.Level;
+import com.necrolore.actor.Button;
+import com.necrolore.actor.path.PathShape;
 
 import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 public class Menu extends World {

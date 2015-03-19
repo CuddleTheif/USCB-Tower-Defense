@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=health\ cooldown\ attack\ price
+comment0.target=Bee(int,\ int,\ int,\ int)
+comment0.text=\r\n\ Creates\ a\ Bee\ with\ the\ given\ health,\ cooldown,\ attack\ and\ "price"\r\n\ \r\n\ @param\ health\ \ \ \ \ The\ health\ of\ the\ bee\r\n\ @param\ cooldown\ \ \ The\ cooldown\ of\ the\ bee's\ attack\r\n\ @param\ attack\ \ \ \ \ The\ attack\ of\ the\ bee\r\n\ @param\ price\ \ \ \ \ \ The\ amount\ of\ money\ given\ of\ death\ of\ the\ bee\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Bee\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=2

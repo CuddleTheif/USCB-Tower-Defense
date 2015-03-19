@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=width\ height\ background\ foreground\ text
+comment0.target=Button(int,\ int,\ java.awt.Color,\ java.awt.Color,\ java.lang.String)
+comment0.text=\r\n\ Creates\ a\ button\ for\ a\ menu\r\n\ \r\n\ @param\ width\ \ \ \ \ \ \ \ The\ width\ of\ the\ button\r\n\ @param\ height\ \ \ \ \ \ \ The\ height\ of\ the\ button\r\n\ @param\ background\ \ \ The\ color\ of\ the\ background\ in\ the\ button\r\n\ @param\ foreground\ \ \ The\ color\ of\ the\ foreground\ in\ the\ button\r\n\ @param\ text\ \ \ \ \ \ \ \ \ The\ text\ on\ the\ button\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2

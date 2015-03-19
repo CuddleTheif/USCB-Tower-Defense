@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=towers
+comment0.target=BuyTowerMenu(Tower[])
+comment0.text=\r\n\ Creates\ a\ menu\ for\ buying\ new\ towers\r\n\ \r\n\ @param\ towers\ \ \ The\ towers\ buyable\ in\ this\ menu\r\n
+comment1.params=
+comment1.target=void\ act()
+numComments=2

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=size\ globalX\ globalY
+comment0.target=RoadPiece(int,\ int,\ int)
+comment0.text=\r\n\ Creates\ a\ road\ with\ given\ size\ at\ the\ given\ global\ coordinates\r\n\ \r\n\ @param\ size\ \ \ \ \ \ The\ size\ of\ the\ road\r\n\ @param\ globalX\ \ \ The\ global\ X\ coordinate\ of\ the\ road\ piece\r\n\ @param\ globalY\ \ \ The\ global\ Y\ coordinate\ of\ the\ road\ piece\r\n
+comment1.params=
+comment1.target=int\ getGlobalX()
+comment1.text=\r\n\ Gets\ the\ global\ X\ coordinate\ of\ the\ road\ piece\r\n\ \r\n\ @return\ \ \ The\ global\ X\ coordinate\r\n
+comment2.params=
+comment2.target=int\ getGlobalY()
+comment2.text=\r\n\ Gets\ the\ global\ Y\ coordinate\ of\ the\ road\ piece\r\n\ \r\n\ @return\ \ \ The\ global\ Y\ coordinate\r\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ wq\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=4

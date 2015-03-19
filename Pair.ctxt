@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=A\ B
+comment0.target=Pair(java.lang.Object,\ java.lang.Object)
+comment0.text=\r\n\ Creates\ a\ pair\ object\ holding\ the\ two\ given\ objects\r\n\ \r\n\ @param\ B\ \ \ \ The\ first\ object\ of\ the\ pair\r\n\ @param\ A\ \ \ The\ second\ object\ of\ the\ pair\r\n
+comment1.params=
+comment1.target=java.lang.Object\ getA()
+comment1.text=\r\n\ Gets\ the\ first\ object\ of\ the\ pair\r\n\ \r\n\ @return\ the\ first\ object\ in\ the\ pair\r\n
+comment2.params=A
+comment2.target=void\ setA(java.lang.Object)
+comment2.text=\r\n\ Changes\ the\ first\ object\ of\ the\ pair\ to\ the\ given\ value\r\n\ \r\n\ @param\ A\ \ \ the\ new\ first\ object\ in\ the\ pair\r\n
+comment3.params=
+comment3.target=java.lang.Object\ getB()
+comment3.text=\r\n\ Gets\ the\ second\ object\ of\ the\ pair\r\n\ \r\n\ @return\ the\ second\ object\ in\ the\ pair\r\n
+comment4.params=B
+comment4.target=void\ setB(java.lang.Object)
+comment4.text=\r\n\ Changes\ the\ second\ object\ of\ the\ pair\ to\ the\ given\ value\r\n\ \r\n\ @param\ B\ \ \ the\ new\ second\ object\ in\ the\ pair\r\n
+numComments=5

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=worldWidth\ worldHeight
+comment0.target=PauseButton(int,\ int)
+comment0.text=\r\n\ Creates\ a\ pause\ button\ based\ on\ the\ given\ world\ sizes\r\n\ \r\n\ @param\ worldWidth\ \ \ \ The\ width\ of\ the\ world\r\n\ @param\ worldHeight\ \ \ The\ height\ of\ the\ world\r\n
+comment1.params=
+comment1.target=void\ drawPaused()
+comment2.params=
+comment2.target=void\ drawUnpaused()
+comment3.params=
+comment3.target=void\ act()
+numComments=4

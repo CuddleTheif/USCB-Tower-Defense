@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=range\ cooldown\ spawns\ price
+comment0.target=Tower(int,\ int,\ Entity,\ int)
+comment0.text=\r\n\ Creates\ a\ Tower\ with\ the\ given\ range,\ cooldown,\ and\ spawns\r\n\ \r\n\ @param\ range\ \ \ \ \ \ The\ range\ of\ the\ tower\r\n\ @param\ cooldown\ \ \ The\ cooldown\ of\ the\ tower\ (how\ long\ it\ must\ wait\ between\ shots)\r\n\ @param\ spawns\ \ \ \ \ What\ the\ tower\ spawns\ or\ attacks\ with\r\n\ @param\ price\ \ \ \ \ \ The\ price\ of\ the\ tower\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Tower\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=greenfoot.GreenfootImage\ getBaseImage()
+comment2.text=\r\n\ Get\ the\ base\ image\ of\ this\ tower\r\n
+numComments=3
